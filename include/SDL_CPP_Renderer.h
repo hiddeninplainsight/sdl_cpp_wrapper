@@ -1,7 +1,7 @@
 #ifndef SDL_CPP_RENDERER_H
 #define SDL_CPP_RENDERER_H
 
-#include <SDL.h>
+#include <SDL2/SDL.h>
 #include "SDL_CPP_Renderer_forward_declaration.h"
 #include "SDL_CPP_Texture.h"
 

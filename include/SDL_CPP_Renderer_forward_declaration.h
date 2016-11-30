@@ -1,7 +1,7 @@
 #ifndef SDL_RENDERER_FORWARD_DECLARATION_H
 #define SDL_RENDERER_FORWARD_DECLARATION_H
 
-#include <SDL.h>
+#include <SDL2/SDL.h>
 #include "SDL_CPP_Exception.h"
 
 namespace SDL

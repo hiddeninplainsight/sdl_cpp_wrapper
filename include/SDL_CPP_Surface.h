@@ -1,7 +1,7 @@
 #ifndef SDL_CPP_SURFACE_H
 #define SDL_CPP_SURFACE_H
 
-#include <SDL.h>
+#include <SDL2/SDL.h>
 #include <string>
 #include "SDL_CPP_Exception.h"
 

@@ -1,7 +1,7 @@
 #ifndef SDL_CPP_TEXTURE_H
 #define SDL_CPP_TEXTURE_H
 
-#include <SDL.h>
+#include <SDL2/SDL.h>
 #include "SDL_CPP_Renderer_forward_declaration.h"
 #include "SDL_CPP_Exception.h"
 #include "SDL_CPP_Surface.h"
