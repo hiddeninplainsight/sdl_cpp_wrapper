@@ -2,6 +2,7 @@
 #define SDL_CPP_SURFACE_H
 
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
 #include <string>
 #include "SDL_CPP_Exception.h"
 
@@ -23,6 +24,22 @@ namespace SDL
                 throw SDL_Exception("Surface::CreateFromBitmap", SDL_GetError());
 
             return bitmapSurface;
+        }
+
+        static Surface CreateFromImage(const std::string& path)
+        {
+            int flags = IMG_INIT_JPG | IMG_INIT_PNG;
+            int initted = IMG_Init(flags);
+            if((initted & flags) != flags)
+                throw SDL_Exception("Surface::CreateFromImage - IMG_Init", IMG_GetError());
+
+            Surface imageSurface{IMG_Load(path.c_str())};
+            if(imageSurface.surface == nullptr)
+                throw SDL_Exception("Surface::CreateFromImage", IMG_GetError());
+
+            IMG_Quit();
+
+            return imageSurface;
         }
 
         ~Surface()
