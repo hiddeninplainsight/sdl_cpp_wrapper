@@ -1,4 +1,4 @@
-#include <SDL_CPP.h>
+#include <sdl_cpp.h>
 #include <string>
 #include <algorithm>
 #include <iostream>
@@ -23,11 +23,11 @@ int main(int argc, char** argv)
 
     try
     {
-        SDL::Context context;
+        sdl::context context;
 
-        SDL::Window window{"Test-app", 100, 100, 640, 480};
-        SDL::Renderer renderer{window};
-        SDL::Texture circleTexture{renderer, SDL::Surface::CreateFromImage(application_path + "/circle.png")};
+        sdl::window window{"test-app", 100, 100, 640, 480};
+        sdl::renderer renderer{window};
+        sdl::texture circleTexture{renderer, sdl::surface::create_from_image(application_path + "/circle.png")};
 
         bool runGame{true};
         while(runGame)
@@ -45,12 +45,12 @@ int main(int argc, char** argv)
                 }
             }
 
-            renderer.Clear();
-            renderer.Copy(circleTexture, 10, 10);
-            renderer.Present();
+            renderer.clear();
+            renderer.copy(circleTexture, 10, 10);
+            renderer.present();
         }
     }
-    catch(SDL::SDL_Exception const& error)
+    catch(sdl::sdl_exception const& error)
     {
         std::cerr << "SDL Exception : " << error.what() << std::endl;
         return exit_code::sdl_exception;

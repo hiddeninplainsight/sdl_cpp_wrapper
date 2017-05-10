@@ -3,14 +3,14 @@
 
 #include <exception>
 
-namespace SDL
+namespace sdl
 {
-    class SDL_Exception : public std::exception
+    class sdl_exception : public std::exception
     {
         const char *method;
         const char *message;
     public:
-        SDL_Exception(const char *method, const char *message)
+        sdl_exception(const char *method, const char *message)
                 : method{method}
                 , message{message}
         {
