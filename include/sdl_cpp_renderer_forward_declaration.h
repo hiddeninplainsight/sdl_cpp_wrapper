@@ -13,7 +13,7 @@ namespace sdl
     private:
         SDL_Renderer *renderer_ptr;
     public:
-        renderer(const window& window)
+        explicit renderer(const window& window)
         {
             renderer_ptr = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 

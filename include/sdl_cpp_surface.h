@@ -13,7 +13,7 @@ namespace sdl
     private:
         SDL_Surface *surface_ptr;
 
-        surface(SDL_Surface *surface_ptr)
+        explicit surface(SDL_Surface *surface_ptr)
                 : surface_ptr{surface_ptr}
         {
         }

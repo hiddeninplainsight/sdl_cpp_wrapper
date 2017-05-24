@@ -11,7 +11,7 @@ namespace sdl
         bool quit{false};
     public:
         quit_event_bool() = default;
-        quit_event_bool(events& events_system);
+        explicit quit_event_bool(events& events_system);
 
         virtual void quit_event() override;
 
