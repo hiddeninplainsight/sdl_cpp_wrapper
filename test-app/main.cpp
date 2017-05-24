@@ -29,21 +29,12 @@ int main(int argc, char** argv)
         sdl::renderer renderer{window};
         sdl::texture circleTexture{renderer, sdl::surface::create_from_image(application_path + "/circle.png")};
 
-        bool runGame{true};
-        while(runGame)
+        sdl::events events;
+        sdl::quit_event_bool quit{events};
+
+        while(!quit)
         {
-            SDL_Event event;
-            while(SDL_PollEvent(&event))
-            {
-                switch(event.type)
-                {
-                    case SDL_QUIT:
-                        runGame = false;
-                        break;
-                    default:
-                        break;
-                }
-            }
+            events.poll();
 
             renderer.clear();
             renderer.copy(circleTexture, 10, 10);
