@@ -4,6 +4,7 @@ include(../cmake/FindSDL2.cmake)
 add_library(sdl-cpp
         sdl_cpp_events.cpp
         sdl_cpp_event_quit.cpp
+        sdl_cpp_event_key_state.cpp
         )
 
 target_include_directories(sdl-cpp SYSTEM PUBLIC

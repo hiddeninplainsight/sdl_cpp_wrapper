@@ -31,13 +31,23 @@ int main(int argc, char** argv)
 
         sdl::events events;
         sdl::quit_event_bool quit{events};
+        sdl::key_state w_key{events, SDLK_w};
+        sdl::key_state s_key{events, SDLK_s};
+
+        int y = 10;
 
         while(!quit)
         {
             events.poll();
 
+            if(w_key)
+                --y;
+
+            if(s_key)
+                ++y;
+
             renderer.clear();
-            renderer.copy(circleTexture, 10, 10);
+            renderer.copy(circleTexture, 10, y);
             renderer.present();
         }
     }

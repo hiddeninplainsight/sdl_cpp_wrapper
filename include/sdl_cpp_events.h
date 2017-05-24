@@ -1,10 +1,34 @@
 #ifndef SDL_CPP_EVENTS_H
 #define SDL_CPP_EVENTS_H
 
-#include <functional>
+#include <SDL2/SDL.h>
+#include <map>
 
 namespace sdl
 {
+    class quit_event_handler;
+    class key_down_event_handler;
+    class key_up_event_handler;
+
+    class events
+    {
+    private:
+        quit_event_handler* quit_handler{nullptr};
+        std::map<SDL_Keycode, key_down_event_handler*> key_down_handlers;
+        std::map<SDL_Keycode, key_up_event_handler*> key_up_handlers;
+    public:
+        void poll() const;
+
+        void set_quit_event_handler(quit_event_handler& handler);
+        void clear_quit_event_handler();
+
+        void add_key_down_event_handler(SDL_Keycode key, key_down_event_handler& handler);
+        void remove_key_down_event_handler(SDL_Keycode key);
+
+        void add_key_up_event_handler(SDL_Keycode key, key_up_event_handler& handler);
+        void remove_key_up_event_handler(SDL_Keycode key);
+    };
+
     class quit_event_handler
     {
     public:
@@ -12,17 +36,18 @@ namespace sdl
         virtual void quit_event() = 0;
     };
 
-    class events
+    class key_down_event_handler
     {
-    private:
-        quit_event_handler* quit_handler{nullptr};
     public:
-        void poll() const;
+        virtual ~key_down_event_handler() {}
+        virtual void key_down_event(SDL_Keycode key) = 0;
+    };
 
-        void set_quit_event_handler(quit_event_handler& handler)
-        {
-            quit_handler = &handler;
-        }
+    class key_up_event_handler
+    {
+    public:
+        virtual ~key_up_event_handler() {}
+        virtual void key_up_event(SDL_Keycode key) = 0;
     };
 }
 
