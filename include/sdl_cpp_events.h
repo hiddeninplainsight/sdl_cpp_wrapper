@@ -40,14 +40,14 @@ namespace sdl
     {
     public:
         virtual ~key_down_event_handler() {}
-        virtual void key_down_event(SDL_Keycode key) = 0;
+        virtual void key_down_event(SDL_Keycode key, Uint16 modifier) = 0;
     };
 
     class key_up_event_handler
     {
     public:
         virtual ~key_up_event_handler() {}
-        virtual void key_up_event(SDL_Keycode key) = 0;
+        virtual void key_up_event(SDL_Keycode key, Uint16 modifier) = 0;
     };
 }
 

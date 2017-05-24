@@ -22,7 +22,7 @@ namespace sdl
                         auto sym = event.key.keysym.sym;
                         if(key_down_handlers.count(sym) && key_down_handlers.at(sym))
                         {
-                            key_down_handlers.at(sym)->key_down_event(sym);
+                            key_down_handlers.at(sym)->key_down_event(sym, event.key.keysym.mod);
                         }
                     }
                     break;
@@ -33,7 +33,7 @@ namespace sdl
                         auto sym = event.key.keysym.sym;
                         if(key_up_handlers.count(sym) && key_up_handlers.at(sym))
                         {
-                            key_up_handlers.at(sym)->key_up_event(sym);
+                            key_up_handlers.at(sym)->key_up_event(sym, event.key.keysym.mod);
                         }
                     }
                     break;

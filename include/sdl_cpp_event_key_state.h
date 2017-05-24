@@ -17,8 +17,8 @@ namespace sdl
         key_state(key_state const&) = delete;
         key_state& operator=(key_state const&) = delete;
 
-        virtual void key_down_event(SDL_Keycode key) override;
-        virtual void key_up_event(SDL_Keycode key) override;
+        virtual void key_down_event(SDL_Keycode key, Uint16 modifier) override;
+        virtual void key_up_event(SDL_Keycode key, Uint16 modifier) override;
 
         operator bool() const { return down; }
     };

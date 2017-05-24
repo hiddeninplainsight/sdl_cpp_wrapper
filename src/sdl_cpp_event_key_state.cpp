@@ -16,12 +16,12 @@ namespace sdl
         events_system.remove_key_down_event_handler(key);
     }
 
-    void key_state::key_down_event(SDL_Keycode)
+    void key_state::key_down_event(SDL_Keycode, Uint16)
     {
         down = true;
     }
 
-    void key_state::key_up_event(SDL_Keycode)
+    void key_state::key_up_event(SDL_Keycode, Uint16)
     {
         down = false;
     }
