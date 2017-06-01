@@ -10,5 +10,6 @@
 #include "sdl_cpp_events.h"
 #include "sdl_cpp_event_quit.h"
 #include "sdl_cpp_event_key_state.h"
+#include "sdl_cpp_collision_detection.h"
 
 #endif //SDL_CPP_H

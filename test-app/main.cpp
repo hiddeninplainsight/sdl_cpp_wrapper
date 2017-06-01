@@ -21,6 +21,14 @@ int main(int argc, char** argv)
 {
     std::string application_path = executable_path_to_application_path(argv[0]);
 
+    SDL_Point collider[4] =
+    {
+        { 100, 100 },
+        { 200, 100 },
+        { 150, 150 },
+        { 100, 100 }
+    };
+
     try
     {
         sdl::context context;
@@ -33,21 +41,59 @@ int main(int argc, char** argv)
         sdl::quit_event_bool quit{events};
         sdl::key_state w_key{events, SDLK_w};
         sdl::key_state s_key{events, SDLK_s};
+        sdl::key_state a_key{events, SDLK_a};
+        sdl::key_state d_key{events, SDLK_d};
 
-        int y = 10;
+        SDL_Point location{10, 10};
 
         while(!quit)
         {
             events.poll();
 
             if(w_key)
-                --y;
+            {
+                --location.y;
+                if(sdl::tri_point_collision(collider, location))
+                {
+                    ++location.y;
+                }
+            }
 
             if(s_key)
-                ++y;
+            {
+                ++location.y;
+                if(sdl::tri_point_collision(collider, location))
+                {
+                    --location.y;
+                }
+            }
 
+            if(a_key)
+            {
+                --location.x;
+                if(sdl::tri_point_collision(collider, location))
+                {
+                    ++location.x;
+                }
+            }
+
+            if(d_key)
+            {
+                ++location.x;
+                if(sdl::tri_point_collision(collider, location))
+                {
+                    --location.x;
+                }
+            }
+
+            renderer.set_draw_colour(0xAA, 0xAA, 0xAA);
             renderer.clear();
-            renderer.copy(circleTexture, 10, y);
+
+            renderer.copy(circleTexture, location.x, location.y);
+
+            renderer.set_draw_colour(0xFF, 0x00, 0x00);
+            renderer.draw_lines(collider);
+
             renderer.present();
         }
     }

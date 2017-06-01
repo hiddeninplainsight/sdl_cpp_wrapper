@@ -7,6 +7,7 @@ include(cmake/FindSDL2.cmake)
 
 add_library(sdl-cpp
         include/sdl_cpp.h
+        include/sdl_cpp_collision_detection.h
         include/sdl_cpp_context.h
         include/sdl_cpp_event_key_state.h
         include/sdl_cpp_event_quit.h
