@@ -24,7 +24,9 @@ namespace sdl
         U const d1 = nx1 * (p1.x - toCheck.x) + ny1 * (p1.y - toCheck.y);
         U const d2 = nx2 * (p2.x - toCheck.x) + ny2 * (p2.y - toCheck.y);
 
-        return ((d0 < 0.0f) && (d1 < 0.0f) && (d2 < 0.0f));
+        U const zero{0};
+
+        return ((d0 < zero) && (d1 < zero) && (d2 < zero));
     }
 
     template<typename T>
