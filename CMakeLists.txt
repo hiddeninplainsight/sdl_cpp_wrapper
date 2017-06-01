@@ -19,6 +19,7 @@ add_library(sdl-cpp
         include/sdl_cpp_surface.h
         include/sdl_cpp_texture.h
         include/sdl_cpp_window.h
+        src/sdl_cpp_collision_detection.cpp
         src/sdl_cpp_event_key_state.cpp
         src/sdl_cpp_event_quit.cpp
         src/sdl_cpp_events.cpp
