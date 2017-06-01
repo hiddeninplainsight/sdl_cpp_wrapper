@@ -34,6 +34,22 @@ namespace sdl
         inline void copy(const texture& texture);
         inline void copy(const texture& texture, const SDL_Rect& destination);
         inline void copy(const texture& texture, int x, int y);
+
+        int draw_lines(SDL_Point const* points, int numberOfPoints)
+        {
+            return SDL_RenderDrawLines(renderer_ptr, points, numberOfPoints);
+        }
+
+        template<int number_of_points>
+        int draw_lines(SDL_Point const (&points)[number_of_points])
+        {
+            return SDL_RenderDrawLines(renderer_ptr, points, number_of_points);
+        }
+
+        void set_draw_colour(unsigned char r, unsigned char g, unsigned char b, unsigned char a = 0xFF)
+        {
+            SDL_SetRenderDrawColor(renderer_ptr, r, g, b, a);
+        }
     };
 }
 
