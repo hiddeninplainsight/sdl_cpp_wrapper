@@ -13,6 +13,7 @@ add_library(sdl-cpp
         include/sdl_cpp_event_quit.h
         include/sdl_cpp_events.h
         include/sdl_cpp_exception.h
+        include/sdl_cpp_point_transforms.h
         include/sdl_cpp_renderer.h
         include/sdl_cpp_renderer_forward_declaration.h
         include/sdl_cpp_surface.h
@@ -21,6 +22,7 @@ add_library(sdl-cpp
         src/sdl_cpp_event_key_state.cpp
         src/sdl_cpp_event_quit.cpp
         src/sdl_cpp_events.cpp
+        src/sdl_cpp_point_transforms.cpp
         )
 
 target_include_directories(sdl-cpp SYSTEM PUBLIC

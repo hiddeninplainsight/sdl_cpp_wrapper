@@ -21,13 +21,17 @@ int main(int argc, char** argv)
 {
     std::string application_path = executable_path_to_application_path(argv[0]);
 
-    SDL_Point collider[4] =
+    using collider_t = SDL_Point[4];
+
+    collider_t const collider_base =
     {
-        { 100, 100 },
-        { 200, 100 },
-        { 150, 150 },
-        { 100, 100 }
+        { -50, -25 },
+        { 50, -25 },
+        { 0, 25 },
+        { -50, -25 }
     };
+
+    collider_t collider;
 
     try
     {
@@ -43,48 +47,45 @@ int main(int argc, char** argv)
         sdl::key_state s_key{events, SDLK_s};
         sdl::key_state a_key{events, SDLK_a};
         sdl::key_state d_key{events, SDLK_d};
+        sdl::key_state q_key{events, SDLK_q};
+        sdl::key_state e_key{events, SDLK_e};
 
         SDL_Point location{10, 10};
+        double angle = 0.0;
+
+        auto rotate_collider = [&collider_base, &collider, &angle](double change)
+        {
+            angle += change;
+
+            if(angle < 0.0) angle += 360.0;
+            if(angle > 360.0) angle -= 360.0;
+
+            sdl::rotate_points(collider_base, collider, 4, angle);
+            sdl::translate_points(collider, collider, 4, 200, 200);
+        };
+
+        auto attempt_move = [&collider, &location](SDL_Point const& transform)
+        {
+            SDL_Point new_location = location + transform;
+            if(!sdl::tri_point_collision(collider, new_location))
+            {
+                location = new_location;
+            }
+        };
+
+        rotate_collider(0.0);
 
         while(!quit)
         {
             events.poll();
 
-            if(w_key)
-            {
-                --location.y;
-                if(sdl::tri_point_collision(collider, location))
-                {
-                    ++location.y;
-                }
-            }
+            if(q_key) rotate_collider(-1.0);
+            if(e_key) rotate_collider(1.0);
 
-            if(s_key)
-            {
-                ++location.y;
-                if(sdl::tri_point_collision(collider, location))
-                {
-                    --location.y;
-                }
-            }
-
-            if(a_key)
-            {
-                --location.x;
-                if(sdl::tri_point_collision(collider, location))
-                {
-                    ++location.x;
-                }
-            }
-
-            if(d_key)
-            {
-                ++location.x;
-                if(sdl::tri_point_collision(collider, location))
-                {
-                    --location.x;
-                }
-            }
+            if(w_key) attempt_move({0, -1});
+            if(s_key) attempt_move({0, 1});
+            if(a_key) attempt_move({-1, 0});
+            if(d_key) attempt_move({1, 0});
 
             renderer.set_draw_colour(0xAA, 0xAA, 0xAA);
             renderer.clear();
