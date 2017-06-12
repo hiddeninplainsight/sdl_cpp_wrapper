@@ -4,9 +4,12 @@
 
 namespace sdl
 {
+    double const pi = 3.14159265359;
+    double const tau = 2.0 * pi;
+
     double degrees_to_radians(double degrees)
     {
-        return (degrees * 2 * 3.142) / 360;
+        return (degrees * tau) / 360.0;
     }
 
     void rotate_points(SDL_Point const *source, SDL_Point *destination,
