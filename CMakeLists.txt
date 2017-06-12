@@ -37,3 +37,4 @@ target_link_libraries(sdl-cpp
         )
 
 add_subdirectory(test-app)
+add_subdirectory(tests)
