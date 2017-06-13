@@ -48,7 +48,8 @@ int main(int argc, char** argv)
         sdl::key_state a_key{events, SDLK_a};
         sdl::key_state d_key{events, SDLK_d};
         sdl::key_state q_key{events, SDLK_q};
-        sdl::key_state e_key{events, SDLK_e};
+        sdl::key_state e_key{events, SDLK_SPACE};
+        e_key.change_key(SDLK_e);
 
         SDL_Point location{10, 10};
         double angle = 0.0;

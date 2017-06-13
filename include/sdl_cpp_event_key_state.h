@@ -11,6 +11,9 @@ namespace sdl
         bool down{false};
         events& events_system;
         SDL_Keycode key;
+
+        void add_to_events_system();
+        void remove_from_events_system();
     public:
         key_state(events& events_system, SDL_Keycode key);
         virtual ~key_state();
@@ -21,6 +24,9 @@ namespace sdl
         virtual void key_up_event(SDL_Keycode key, Uint16 modifier) override;
 
         operator bool() const { return down; }
+
+        void clear_down() { down = false; }
+        void change_key(SDL_Keycode new_key);
     };
 }
 
