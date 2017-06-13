@@ -23,8 +23,11 @@ namespace sdl
         {
             using T = decltype(SDL_Point::x);
 
-            destination[i].x = static_cast<T>((source[i].x * c) - (source[i].y * s));
-            destination[i].y = static_cast<T>((source[i].x * s) + (source[i].y * c));
+            auto const x = source[i].x;
+            auto const y = source[i].y;
+
+            destination[i].x = static_cast<T>((x * c) - (y * s));
+            destination[i].y = static_cast<T>((x * s) + (y * c));
         }
     }
 
