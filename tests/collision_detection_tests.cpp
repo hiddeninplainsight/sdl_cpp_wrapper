@@ -36,6 +36,7 @@ void test_collision_detection_circle_collision()
 
     description("A point inside the circle has collided");
     assert(sdl::circle_collision({10, 10}, 5, {10, 10}));
+    assert(sdl::circle_collision({10, 10}, 5, {7, 9}));
 }
 
 int main(int argc, char ** argv)
