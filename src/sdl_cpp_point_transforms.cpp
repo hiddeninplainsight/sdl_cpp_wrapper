@@ -37,6 +37,16 @@ namespace sdl
             destination[i].y = source[i].y + y;
         }
     }
+
+    void scale_points(SDL_Point const *source, SDL_Point *destination,
+                      std::size_t numberOfPoints, double scale)
+    {
+        for(std::size_t i = 0; i < numberOfPoints; ++i)
+        {
+            destination[i].x = static_cast<int>(static_cast<double>(source[i].x) * scale);
+            destination[i].y = static_cast<int>(static_cast<double>(source[i].y) * scale);
+        }
+    }
 }
 
 SDL_Point operator+(SDL_Point const& a, SDL_Point const & b)

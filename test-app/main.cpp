@@ -60,7 +60,8 @@ int main(int argc, char** argv)
             if(angle < 0.0) angle += 360.0;
             if(angle > 360.0) angle -= 360.0;
 
-            sdl::rotate_points(collider_base, collider, 4, angle);
+            sdl::scale_points(collider_base, collider, 4, 1.2);
+            sdl::rotate_points(collider, collider, 4, angle);
             sdl::translate_points(collider, collider, 4, 200, 200);
         };
 

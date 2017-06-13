@@ -13,6 +13,9 @@ namespace sdl
 
     void translate_points(SDL_Point const *source, SDL_Point *destination,
                           std::size_t numberOfPoints, int x, int y);
+
+    void scale_points(SDL_Point const *source, SDL_Point *destination,
+                      std::size_t numberOfPoints, double scale);
 }
 
 SDL_Point operator+(SDL_Point const& a, SDL_Point const & b);
