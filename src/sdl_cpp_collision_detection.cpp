@@ -24,4 +24,14 @@ namespace sdl
 
         return ((d0 < zero) && (d1 < zero) && (d2 < zero));
     }
+
+    bool circle_collision(SDL_Point const& circle_center, int radius, SDL_Point const& point)
+    {
+        using U = decltype(SDL_Point::x);
+
+        U const dx = circle_center.x - point.x;
+        U const dy = circle_center.y - point.y;
+
+        return (radius * radius) > ((dx * dx) + (dy * dy));
+    }
 };

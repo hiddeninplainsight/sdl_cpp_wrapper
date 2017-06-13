@@ -13,6 +13,8 @@ namespace sdl
     {
         return tri_point_collision(points[0], points[1], points[2], toCheck);
     }
+
+    bool circle_collision(SDL_Point const& circle_center, int radius, SDL_Point const& point);
 }
 
 #endif // SDL_CPP_COLLISION_DETECTION_H

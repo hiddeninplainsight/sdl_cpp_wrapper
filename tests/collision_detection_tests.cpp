@@ -26,9 +26,23 @@ void test_collision_detection_tri_point_collision()
     assert(sdl::tri_point_collision(triangle, {19, 18}));
 }
 
+void test_collision_detection_circle_collision()
+{
+    fixture_description("test_collision_detection_circle_collision");
+
+    description("A point outside the circle has not collided");
+    assert(!sdl::circle_collision({10, 10}, 5, {10, 0}));
+    assert(!sdl::circle_collision({10, 10}, 5, {0, 10}));
+
+    description("A point inside the circle has collided");
+    assert(sdl::circle_collision({10, 10}, 5, {10, 10}));
+    cerr.flush();
+}
+
 int main(int argc, char ** argv)
 {
     test_collision_detection_tri_point_collision();
+    test_collision_detection_circle_collision();
 
     cout << "All tests passed" << endl;
     return 0;
