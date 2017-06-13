@@ -23,7 +23,7 @@ int main(int argc, char** argv)
 
     using collider_t = SDL_Point[4];
 
-    collider_t const collider_base =
+    collider_t const collider_shape =
     {
         { -50, -25 },
         { 50, -25 },
@@ -54,14 +54,14 @@ int main(int argc, char** argv)
         SDL_Point location{10, 10};
         double angle = 0.0;
 
-        auto rotate_collider = [&collider_base, &collider, &angle](double change)
+        auto rotate_collider = [&collider_shape, &collider, &angle](double change)
         {
             angle += change;
 
             if(angle < 0.0) angle += 360.0;
             if(angle > 360.0) angle -= 360.0;
 
-            sdl::scale_points(collider_base, collider, 4, 1.2);
+            sdl::scale_points(collider_shape, collider, 4, 1.2);
             sdl::rotate_points(collider, collider, 4, angle);
             sdl::translate_points(collider, collider, 4, 200, 200);
         };

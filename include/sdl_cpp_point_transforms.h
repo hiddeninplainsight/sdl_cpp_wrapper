@@ -6,8 +6,6 @@
 
 namespace sdl
 {
-    double degrees_to_radians(double degrees);
-
     void rotate_points(SDL_Point const *source, SDL_Point *destination,
                        std::size_t numberOfPoints, double angle);
 

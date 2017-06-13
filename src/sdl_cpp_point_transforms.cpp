@@ -1,17 +1,10 @@
 #include "sdl_cpp_point_transforms.h"
+#include "sdl_cpp_maths.h"
 
 #include <cmath>
 
 namespace sdl
 {
-    double const pi = 3.14159265359;
-    double const tau = 2.0 * pi;
-
-    double degrees_to_radians(double degrees)
-    {
-        return (degrees * tau) / 360.0;
-    }
-
     void rotate_points(SDL_Point const *source, SDL_Point *destination,
                        std::size_t numberOfPoints, double angle)
     {
