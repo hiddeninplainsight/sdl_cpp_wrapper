@@ -38,4 +38,21 @@ namespace sdl
     };
 }
 
+/*
+@startuml
+namespace sdl {
+    class texture {
+        + texture(const renderer& renderer, const surface& surface)
+        + operator SDL_Texture*() const
+        + SDL_Rect dimensions() const
+    }
+
+    texture --> sdl_exception
+    texture --> renderer
+    texture --> surface
+    context .. texture : <<must exist>> <
+}
+@enduml
+*/
+
 #endif //SDL_CPP_TEXTURE_H

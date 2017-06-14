@@ -51,4 +51,37 @@ namespace sdl
     };
 }
 
+/*
+@startuml
+namespace sdl {
+    class events {
+        + void poll() const
+        + void set_quit_event_handler(quit_event_handler& handler)
+        + void clear_quit_event_handler()
+        + void add_key_down_event_handler(SDL_Keycode key, key_down_event_handler& handler)
+        + void remove_key_down_event_handler(SDL_Keycode key)
+        + void add_key_up_event_handler(SDL_Keycode key, key_up_event_handler& handler)
+        + void remove_key_up_event_handler(SDL_Keycode key)
+    }
+
+    interface quit_event_handler {
+        +{abstract} void quit_event()
+    }
+
+    interface key_down_event_handler {
+        +{abstract} void key_down_event(SDL_Keycode key, Uint16 modifier)
+    }
+
+    interface key_up_event_handler {
+        +{abstract} void key_up_event(SDL_Keycode key, Uint16 modifier)
+    }
+
+    events o--> quit_event_handler
+    events o--> key_down_event_handler
+    events o--> key_up_event_handler
+    context .. events : boo <
+}
+@enduml
+*/
+
 #endif // SDL_CPP_EVENTS_H

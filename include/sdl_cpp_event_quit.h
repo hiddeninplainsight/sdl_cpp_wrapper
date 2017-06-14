@@ -19,4 +19,16 @@ namespace sdl
     };
 }
 
+/*
+@startuml
+namespace sdl {
+    class quit_event_bool {
+        + operator bool() const
+    }
+
+    quit_event_handler <|.. quit_event_bool
+}
+@enduml
+*/
+
 #endif // SDL_CPP_EVENT_QUIT_H

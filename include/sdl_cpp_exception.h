@@ -21,4 +21,22 @@ namespace sdl
     };
 }
 
+/*
+@startuml
+namespace sdl {
+    class sdl_exception {
+        + const char * source_method() const noexcept
+        + const char * what() const noexcept override
+    }
+
+    sdl_exception --|> std::exception
+}
+
+namespace std {
+    hide exception methods
+    hide exception fields
+}
+@enduml
+*/
+
 #endif //SDL_CPP_EXCEPTION_H

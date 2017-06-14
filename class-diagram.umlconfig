@@ -1,0 +1,13 @@
+@startuml
+
+'hide circle
+
+hide interface fields
+
+hide <<global>> circle
+hide <<global>> fields
+hide <<global>> stereotype
+
+set namespaceSeparator ::
+
+@enduml

@@ -74,4 +74,21 @@ namespace sdl
         operator bool() const { return surface_ptr != nullptr; }
     };
 }
+
+/*
+@startuml
+namespace sdl {
+    class surface {
+        + {static} surface create_from_bitmap(const std::string& path)
+        + {static} surface create_from_image(const std::string& path)
+        + operator SDL_Surface*() const { return surface_ptr; }
+        + operator bool() const
+    }
+
+    surface --> sdl_exception
+    context .. surface : <<must exist>> <
+}
+@enduml
+*/
+
 #endif //SDL_CPP_SURFACE_H

@@ -30,4 +30,18 @@ namespace sdl
     };
 }
 
+/*
+@startuml
+namespace sdl {
+    class window {
+        + window(const std::string& title, int x, int y, int width, int height)
+        + operator SDL_Window*() const
+    }
+
+    window --> sdl_exception
+    context .. window : <<must exist>> <
+}
+@enduml
+*/
+
 #endif //SDL_CPP_WINDOW_H

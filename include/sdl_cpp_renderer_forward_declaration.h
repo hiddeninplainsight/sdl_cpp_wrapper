@@ -53,4 +53,28 @@ namespace sdl
     };
 }
 
+/*
+@startuml
+namespace sdl {
+    class renderer {
+        + renderer(const window& window)
+        + operator SDL_Renderer*() const
+        + void clear() const
+        + void present() const
+        + void copy(const texture& texture)
+        + void copy(const texture& texture, const SDL_Rect& destination)
+        + void copy(const texture& texture, int x, int y)
+        + int draw_lines(SDL_Point const* points, int numberOfPoints)
+        + int draw_lines(SDL_Point const (&points)[number_of_points])
+        + void set_draw_colour(unsigned char r, unsigned char g, unsigned char b, unsigned char a = 0xFF)
+    }
+
+    renderer --> window
+    renderer --> sdl_exception
+    renderer --> texture
+    context .. renderer : <<must exist>> <
+}
+@enduml
+*/
+
 #endif //SDL_RENDERER_FORWARD_DECLARATION_H

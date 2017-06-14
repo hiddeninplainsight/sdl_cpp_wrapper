@@ -1,0 +1,26 @@
+@startuml
+
+!include class-diagram.umlconfig
+
+!include include/sdl_cpp_context.h
+!include include/sdl_cpp_collision_detection.h
+!include include/sdl_cpp_event_key_state.h
+!include include/sdl_cpp_event_quit.h
+!include include/sdl_cpp_events.h
+!include include/sdl_cpp_exception.h
+!include include/sdl_cpp_maths.h
+!include include/sdl_cpp_point_transforms.h
+!include include/sdl_cpp_renderer_forward_declaration.h
+!include include/sdl_cpp_surface.h
+!include include/sdl_cpp_texture.h
+!include include/sdl_cpp_window.h
+
+point_transforms -[hidden]-> sdl::point_transforms
+sdl::point_transforms -[hidden]-> sdl::collision_detection
+sdl::collision_detection -[hidden]-> sdl::maths
+
+title
+sdl_cpp class diagram
+end title
+
+@enduml

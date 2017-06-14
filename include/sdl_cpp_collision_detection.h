@@ -17,4 +17,16 @@ namespace sdl
     bool circle_collision(SDL_Point const& circle_center, int radius, SDL_Point const& point);
 }
 
+/*
+@startuml
+namespace sdl {
+    class "Collision detection functions" as collision_detection <<global>> {
+        bool tri_point_collision(SDL_Point const& p0, SDL_Point const& p1, SDL_Point const& p2, SDL_Point const& toCheck)
+        bool tri_point_collision(SDL_Point const* points, SDL_Point const& toCheck)
+        bool circle_collision(SDL_Point const& circle_center, int radius, SDL_Point const& point)
+    }
+}
+@enduml
+*/
+
 #endif // SDL_CPP_COLLISION_DETECTION_H

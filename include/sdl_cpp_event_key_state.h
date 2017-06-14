@@ -30,4 +30,19 @@ namespace sdl
     };
 }
 
+/*
+@startuml
+namespace sdl {
+    class key_state {
+        + operator bool() const
+        + void clear_down()
+        + void change_key(SDL_Keycode new_key);
+    }
+
+    key_down_event_handler <|.. key_state
+    key_up_event_handler <|.. key_state
+}
+@enduml
+*/
+
 #endif // SDL_CPP_EVENT_KEY_STATE_H

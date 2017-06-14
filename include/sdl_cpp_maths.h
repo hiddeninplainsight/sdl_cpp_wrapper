@@ -9,4 +9,18 @@ namespace sdl
     double degrees_to_radians(double degrees);
 }
 
+/*
+@startuml
+namespace sdl {
+    class "Maths functions" as maths <<global>> {
+        double const pi
+        double const tau
+        double degrees_to_radians(double degrees)
+    }
+
+    show maths fields
+}
+@enduml
+*/
+
 #endif // SDL_CPP_MATHS_H

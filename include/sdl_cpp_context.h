@@ -22,4 +22,21 @@ namespace sdl
     };
 }
 
+/*
+@startuml
+namespace sdl {
+    class context
+
+    note as context_note
+    Initialises SDL when constructed,
+    cleans up SDL when destroyed
+    end note
+    context_note .. context
+
+    hide context methods
+    hide context fields
+}
+@enduml
+*/
+
 #endif //SDL_CPP_CONTEXT_H
