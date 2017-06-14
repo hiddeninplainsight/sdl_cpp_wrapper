@@ -81,7 +81,7 @@ namespace sdl {
     class surface {
         + {static} surface create_from_bitmap(const std::string& path)
         + {static} surface create_from_image(const std::string& path)
-        + operator SDL_Surface*() const { return surface_ptr; }
+        + operator SDL_Surface*() const
         + operator bool() const
     }
 

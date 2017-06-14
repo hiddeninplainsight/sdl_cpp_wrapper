@@ -46,8 +46,8 @@ namespace sdl {
     key_down_event_handler <|.. event_keys
     key_up_event_handler <|.. event_keys
 
-    key_down_event_handler <--o event_keys
-    key_up_event_handler <--o event_keys
+    key_down_event_handler "*" <--o "1" event_keys
+    key_up_event_handler "*" <--o "1" event_keys
 }
 @enduml
 */
