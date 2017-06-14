@@ -34,6 +34,7 @@ namespace sdl
 @startuml
 namespace sdl {
     class key_state {
+        + key_state(events& events_system, SDL_Keycode key)
         + operator bool() const
         + void clear_down()
         + void change_key(SDL_Keycode new_key);

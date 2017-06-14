@@ -25,6 +25,7 @@ namespace sdl
 @startuml
 namespace sdl {
     class sdl_exception {
+        + sdl_exception(const char *method, const char *message)
         + const char * source_method() const noexcept
         + const char * what() const noexcept override
     }

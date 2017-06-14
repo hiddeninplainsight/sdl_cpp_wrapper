@@ -23,6 +23,8 @@ namespace sdl
 @startuml
 namespace sdl {
     class quit_event_bool {
+        + quit_event_bool()
+        + quit_event_bool(events& events_system)
         + operator bool() const
     }
 
