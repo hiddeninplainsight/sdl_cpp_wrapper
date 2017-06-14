@@ -43,12 +43,13 @@ int main(int argc, char** argv)
 
         sdl::events events;
         sdl::quit_event_bool quit{events};
-        sdl::key_state w_key{events, SDLK_w};
-        sdl::key_state s_key{events, SDLK_s};
-        sdl::key_state a_key{events, SDLK_a};
-        sdl::key_state d_key{events, SDLK_d};
-        sdl::key_state q_key{events, SDLK_q};
-        sdl::key_state e_key{events, SDLK_SPACE};
+        sdl::event_keys keys{events};
+        sdl::key_state w_key{keys, SDLK_w};
+        sdl::key_state s_key{keys, SDLK_s};
+        sdl::key_state a_key{keys, SDLK_a};
+        sdl::key_state d_key{keys, SDLK_d};
+        sdl::key_state q_key{keys, SDLK_q};
+        sdl::key_state e_key{keys, SDLK_SPACE};
         e_key.change_key(SDLK_e);
 
         SDL_Point location{10, 10};

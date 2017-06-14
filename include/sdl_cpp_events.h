@@ -14,19 +14,19 @@ namespace sdl
     {
     private:
         quit_event_handler* quit_handler{nullptr};
-        std::map<SDL_Keycode, key_down_event_handler*> key_down_handlers;
-        std::map<SDL_Keycode, key_up_event_handler*> key_up_handlers;
+        key_down_event_handler* key_down_handler{nullptr};
+        key_up_event_handler* key_up_handler{nullptr};
     public:
         void poll() const;
 
         void set_quit_event_handler(quit_event_handler& handler);
         void clear_quit_event_handler();
 
-        void add_key_down_event_handler(SDL_Keycode key, key_down_event_handler& handler);
-        void remove_key_down_event_handler(SDL_Keycode key);
+        void set_key_down_event_handler(key_down_event_handler& handler);
+        void clear_key_down_event_handler();
 
-        void add_key_up_event_handler(SDL_Keycode key, key_up_event_handler& handler);
-        void remove_key_up_event_handler(SDL_Keycode key);
+        void set_key_up_event_handler(key_up_event_handler& handler);
+        void clear_key_up_event_handler();
     };
 
     class quit_event_handler
@@ -58,10 +58,10 @@ namespace sdl {
         + void poll() const
         + void set_quit_event_handler(quit_event_handler& handler)
         + void clear_quit_event_handler()
-        + void add_key_down_event_handler(SDL_Keycode key, key_down_event_handler& handler)
-        + void remove_key_down_event_handler(SDL_Keycode key)
-        + void add_key_up_event_handler(SDL_Keycode key, key_up_event_handler& handler)
-        + void remove_key_up_event_handler(SDL_Keycode key)
+        + void set_key_down_event_handler(key_down_event_handler& handler)
+        + void clear_key_down_event_handler()
+        + void set_key_up_event_handler(key_up_event_handler& handler)
+        + void clear_key_up_event_handler()
     }
 
     interface quit_event_handler {

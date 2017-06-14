@@ -1,9 +1,9 @@
-#include "sdl_cpp_event_key_state.h"
+#include "sdl_cpp_key_state.h"
 
 namespace sdl
 {
-    key_state::key_state(events& events_system, SDL_Keycode key)
-        : events_system{events_system}
+    key_state::key_state(event_keys& events_system, SDL_Keycode key)
+        : events{events_system}
         , key{key}
     {
         add_to_events_system();
@@ -16,14 +16,14 @@ namespace sdl
 
     void key_state::add_to_events_system()
     {
-        events_system.add_key_up_event_handler(key, *this);
-        events_system.add_key_down_event_handler(key, *this);
+        events.add_key_up_event_handler(key, *this);
+        events.add_key_down_event_handler(key, *this);
     }
 
     void key_state::remove_from_events_system()
     {
-        events_system.remove_key_up_event_handler(key);
-        events_system.remove_key_down_event_handler(key);
+        events.remove_key_up_event_handler(key);
+        events.remove_key_down_event_handler(key);
     }
 
     void key_state::key_down_event(SDL_Keycode, Uint16)

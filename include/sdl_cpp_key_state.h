@@ -1,7 +1,7 @@
-#ifndef SDL_CPP_EVENT_KEY_STATE_H
-#define SDL_CPP_EVENT_KEY_STATE_H
+#ifndef SDL_CPP_KEY_STATE_H
+#define SDL_CPP_KEY_STATE_H
 
-#include "sdl_cpp_events.h"
+#include "sdl_cpp_event_keys.h"
 
 namespace sdl
 {
@@ -9,13 +9,13 @@ namespace sdl
     {
     private:
         bool down{false};
-        events& events_system;
+        event_keys& events;
         SDL_Keycode key;
 
         void add_to_events_system();
         void remove_from_events_system();
     public:
-        key_state(events& events_system, SDL_Keycode key);
+        key_state(event_keys& events_system, SDL_Keycode key);
         virtual ~key_state();
         key_state(key_state const&) = delete;
         key_state& operator=(key_state const&) = delete;
@@ -34,10 +34,10 @@ namespace sdl
 @startuml
 namespace sdl {
     class key_state {
-        + key_state(events& events_system, SDL_Keycode key)
+        + key_state(event_keys& events_system, SDL_Keycode key)
         + operator bool() const
         + void clear_down()
-        + void change_key(SDL_Keycode new_key);
+        + void change_key(SDL_Keycode new_key)
     }
 
     key_down_event_handler <|.. key_state
@@ -46,4 +46,4 @@ namespace sdl {
 @enduml
 */
 
-#endif // SDL_CPP_EVENT_KEY_STATE_H
+#endif // SDL_CPP_KEY_STATE_H

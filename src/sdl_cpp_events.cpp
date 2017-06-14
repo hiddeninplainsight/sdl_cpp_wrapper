@@ -17,24 +17,16 @@ namespace sdl
                     break;
 
                 case SDL_KEYDOWN:
-                    if(event.key.repeat == 0)
+                    if(event.key.repeat == 0 && key_down_handler)
                     {
-                        auto sym = event.key.keysym.sym;
-                        if(key_down_handlers.count(sym) && key_down_handlers.at(sym))
-                        {
-                            key_down_handlers.at(sym)->key_down_event(sym, event.key.keysym.mod);
-                        }
+                        key_down_handler->key_down_event(event.key.keysym.sym, event.key.keysym.mod);
                     }
                     break;
 
                 case SDL_KEYUP:
-                    if(event.key.repeat == 0)
+                    if(event.key.repeat == 0 && key_up_handler)
                     {
-                        auto sym = event.key.keysym.sym;
-                        if(key_up_handlers.count(sym) && key_up_handlers.at(sym))
-                        {
-                            key_up_handlers.at(sym)->key_up_event(sym, event.key.keysym.mod);
-                        }
+                        key_up_handler->key_up_event(event.key.keysym.sym, event.key.keysym.mod);
                     }
                     break;
 
@@ -54,23 +46,23 @@ namespace sdl
         quit_handler = nullptr;
     }
 
-    void events::add_key_down_event_handler(SDL_Keycode key, key_down_event_handler& handler)
+    void events::set_key_down_event_handler(key_down_event_handler& handler)
     {
-        key_down_handlers[key] = &handler;
+        key_down_handler = &handler;
     }
 
-    void events::remove_key_down_event_handler(SDL_Keycode key)
+    void events::clear_key_down_event_handler()
     {
-        key_down_handlers[key] = nullptr;
+        key_down_handler = nullptr;
     }
 
-    void events::add_key_up_event_handler(SDL_Keycode key, key_up_event_handler& handler)
+    void events::set_key_up_event_handler(key_up_event_handler& handler)
     {
-        key_up_handlers[key] = &handler;
+        key_up_handler = &handler;
     }
 
-    void events::remove_key_up_event_handler(SDL_Keycode key)
+    void events::clear_key_up_event_handler()
     {
-        key_up_handlers[key] = nullptr;
+        key_up_handler = nullptr;
     }
 }
