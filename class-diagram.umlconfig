@@ -10,4 +10,6 @@ hide <<global>> stereotype
 
 set namespaceSeparator ::
 
+skinparam classAttributeIconSize 0
+
 @enduml

@@ -36,11 +36,11 @@ namespace sdl
 @startuml
 namespace sdl {
     class event_keys {
-        event_keys(events& events_system)
-        void add_key_down_event_handler(SDL_Keycode key, key_down_event_handler& handler)
-        void remove_key_down_event_handler(SDL_Keycode key)
-        void add_key_up_event_handler(SDL_Keycode key, key_up_event_handler& handler)
-        void remove_key_up_event_handler(SDL_Keycode key)
+        + event_keys(events& events_system)
+        + void add_key_down_event_handler(SDL_Keycode key, key_down_event_handler& handler)
+        + void remove_key_down_event_handler(SDL_Keycode key)
+        + void add_key_up_event_handler(SDL_Keycode key, key_up_event_handler& handler)
+        + void remove_key_up_event_handler(SDL_Keycode key)
     }
 
     key_down_event_handler <|.. event_keys
