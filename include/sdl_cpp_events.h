@@ -79,7 +79,7 @@ namespace sdl {
     events o--> quit_event_handler
     events o--> key_down_event_handler
     events o--> key_up_event_handler
-    context .. events : boo <
+    context .. events : <<must exist>> <
 }
 @enduml
 */
