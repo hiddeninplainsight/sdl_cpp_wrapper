@@ -12,7 +12,7 @@
 !include include/sdl_cpp_mouse_state.h
 
 title
-sdl_cpp class diagram
+sdl_cpp events class diagram
 end title
 
 @enduml
