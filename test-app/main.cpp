@@ -4,6 +4,7 @@
 #include <string>
 #include <algorithm>
 #include <iostream>
+#include <sstream>
 
 struct exit_code
 {
@@ -41,7 +42,7 @@ int main(int argc, char** argv)
         sdl::ttf_font_context ttf_context;
         sdl::ttf_font press_start_2p_font{application_path + "/PressStart2P-Regular.ttf", 36};
 
-        sdl::window window{"test-app", 100, 100, 640, 480};
+        sdl::window window{"test-app", 100, 100, 800, 480};
         sdl::renderer renderer{window};
         sdl::texture circleTexture{renderer, sdl::surface::create_from_image(application_path + "/circle.png")};
 
@@ -108,6 +109,20 @@ int main(int argc, char** argv)
                 std::to_string(mouse.wheel_x()) + ", " + std::to_string(mouse.wheel_y());
             sdl::texture mouse_location_texture = press_start_2p_font.create_texture(renderer, mouse_location, {0x00, 0x00, 0x00});
             renderer.copy(mouse_location_texture, 10, 10);
+
+            std::stringstream mouse_clicks;
+            mouse_clicks << static_cast<unsigned int>(mouse.button_press(sdl::mouse_button::left).clicks) << "," ;
+            mouse_clicks << mouse.button_press(sdl::mouse_button::left).x << ",";
+            mouse_clicks << mouse.button_press(sdl::mouse_button::left).y;
+            auto mouse_clicks_texture = press_start_2p_font.create_texture(renderer, mouse_clicks.str(), {0x00, 0x00, 0x00});
+            renderer.copy(mouse_clicks_texture, 10, 100);
+
+            mouse_clicks = std::stringstream();
+            mouse_clicks << static_cast<unsigned int>(mouse.button_release(sdl::mouse_button::left).clicks) << "," ;
+            mouse_clicks << mouse.button_release(sdl::mouse_button::left).x << ",";
+            mouse_clicks << mouse.button_release(sdl::mouse_button::left).y;
+            mouse_clicks_texture = press_start_2p_font.create_texture(renderer, mouse_clicks.str(), {0x00, 0x00, 0x00});
+            renderer.copy(mouse_clicks_texture, 10, 200);
 
             renderer.present();
         }
