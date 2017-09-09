@@ -2,6 +2,8 @@
 #define SDL_CPP_WIDGETS_APPLICATION_H
 
 #include "sdl_cpp.h"
+#include "sdl_cpp_ttf_font_context.h"
+#include "sdl_cpp_widgets_widget.h"
 
 namespace sdl
 {
@@ -21,6 +23,7 @@ namespace sdl
         {
         private:
             sdl::context context;
+            sdl::ttf_font_context ttf_context;
 
         protected:
             sdl::events events;
@@ -28,7 +31,6 @@ namespace sdl
             sdl::event_keys keys{events};
 
             sdl::event_mouse_dispatch mouse_events{events};
-            sdl::mouse_state mouse{mouse_events};
 
             std::string const application_path{};
 
@@ -42,6 +44,7 @@ namespace sdl
         protected:
             virtual void process_events();
             virtual void process_graphics();
+            virtual widget_creation_parameters widget_parameters() = 0;
         };
     }
 }

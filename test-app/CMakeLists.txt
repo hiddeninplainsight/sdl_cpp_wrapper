@@ -6,8 +6,6 @@ add_executable(test-app
         )
 
 target_link_libraries(test-app
-        sdl-cpp
-        sdl-cpp-ttf-font
         sdl-cpp-widgets
         )
 

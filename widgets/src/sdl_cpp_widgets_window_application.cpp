@@ -44,6 +44,11 @@ namespace sdl
             renderer.clear();
         }
 
+        widget_creation_parameters window_application::widget_parameters()
+        {
+            return {renderer};
+        }
+
         void window_application::exit(int code)
         {
             application_exit_code = code;

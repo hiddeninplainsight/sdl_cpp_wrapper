@@ -3,6 +3,7 @@
 
 #include "sdl_cpp_widgets_application.h"
 #include "sdl_cpp.h"
+#include "sdl_cpp_widgets_widget.h"
 
 #include <string>
 
@@ -27,6 +28,7 @@ namespace sdl
 
         protected:
             virtual void process_graphics() override;
+            virtual widget_creation_parameters widget_parameters() override;
             void exit(int code);
         };
     }

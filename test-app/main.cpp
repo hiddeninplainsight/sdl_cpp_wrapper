@@ -1,4 +1,5 @@
 #include <sdl_cpp_widgets_window_application.h>
+#include <sdl_cpp_widgets_resizable_widget.h>
 #include <sdl_cpp.h>
 #include <sdl_cpp_ttf_font_context.h>
 #include <sdl_cpp_ttf_font.h>
@@ -22,10 +23,10 @@ private:
 
     collider_t collider;
 
-    sdl::ttf_font_context ttf_context;
     sdl::ttf_font press_start_2p_font{application_path + "/PressStart2P-Regular.ttf", 36};
 
     sdl::texture circleTexture{renderer, sdl::surface::create_from_image(application_path + "/circle.png")};
+    sdl::widgets::resizable_widget button{widget_parameters()};
 
     sdl::key_state w_key{keys, SDLK_w};
     sdl::key_state s_key{keys, SDLK_s};
@@ -70,6 +71,13 @@ protected:
         if(s_key) attempt_move({0, 1});
         if(a_key) attempt_move({-1, 0});
         if(d_key) attempt_move({1, 0});
+
+        auto right_click = mouse.button_press(sdl::mouse_button::right, true);
+        if(right_click.clicks)
+        {
+            location.x = right_click.x;
+            location.y = right_click.y;
+        }
     }
 
     void process_graphics() override
@@ -100,6 +108,8 @@ protected:
         mouse_clicks << mouse.button_release(sdl::mouse_button::left).y;
         mouse_clicks_texture = press_start_2p_font.create_texture(renderer, mouse_clicks.str(), {0x00, 0x00, 0x00});
         renderer.copy(mouse_clicks_texture, 10, 200);
+
+        button.draw();
     }
 
 public:
