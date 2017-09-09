@@ -40,5 +40,7 @@ target_link_libraries(sdl-cpp
         SDL2_image
         )
 
+add_subdirectory(ttf-font)
+
 add_subdirectory(test-app)
 add_subdirectory(tests)

@@ -1,4 +1,6 @@
 #include <sdl_cpp.h>
+#include <sdl_cpp_ttf_font_context.h>
+#include <sdl_cpp_ttf_font.h>
 #include <string>
 #include <algorithm>
 #include <iostream>
@@ -36,10 +38,14 @@ int main(int argc, char** argv)
     try
     {
         sdl::context context;
+        sdl::ttf_font_context ttf_context;
+        sdl::ttf_font press_start_2p_font{application_path + "/PressStart2P-Regular.ttf", 36};
 
         sdl::window window{"test-app", 100, 100, 640, 480};
         sdl::renderer renderer{window};
         sdl::texture circleTexture{renderer, sdl::surface::create_from_image(application_path + "/circle.png")};
+
+        sdl::texture text_texture = press_start_2p_font.create_texture(renderer, "Hello World!", {0x00, 0x00, 0x00});
 
         sdl::events events;
         sdl::quit_event_bool quit{events};
@@ -97,6 +103,8 @@ int main(int argc, char** argv)
 
             renderer.set_draw_colour(0xFF, 0x00, 0x00);
             renderer.draw_lines(collider);
+
+            renderer.copy(text_texture, 10, 10);
 
             renderer.present();
         }

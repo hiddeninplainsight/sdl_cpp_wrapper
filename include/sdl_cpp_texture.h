@@ -20,10 +20,32 @@ namespace sdl
                 throw sdl_exception("texture::texture", SDL_GetError());
         }
 
-        ~texture() { SDL_DestroyTexture(texture_ptr); }
+        ~texture()
+        {
+            if(texture_ptr != nullptr)
+                SDL_DestroyTexture(texture_ptr);
+        }
 
         texture(const texture&) = delete;
         texture& operator=(const texture&) = delete;
+
+        texture(texture&& other)
+        {
+            texture_ptr = other.texture_ptr;
+            other.texture_ptr = nullptr;
+        }
+
+        texture& operator=(texture&& other)
+        {
+            if(texture_ptr != nullptr)
+                SDL_DestroyTexture(texture_ptr);
+
+            texture_ptr = other.texture_ptr;
+            other.texture_ptr = nullptr;
+
+            return *this;
+        }
+
 
         operator SDL_Texture*() const { return texture_ptr; }
 
