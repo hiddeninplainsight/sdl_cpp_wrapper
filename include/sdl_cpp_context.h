@@ -35,6 +35,7 @@ namespace sdl {
 
     hide context methods
     hide context fields
+    context --> sdl_exception
 }
 @enduml
 */

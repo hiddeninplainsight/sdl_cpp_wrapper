@@ -27,4 +27,25 @@ namespace sdl
     };
 }
 
+/*
+@startuml
+namespace sdl {
+    class ttf_font_context
+
+    note as ttf_font_context_note
+    Initialises SDL TTF support when constructed,
+    cleans up SDL TTF support when destroyed
+    end note
+    ttf_font_context_note .. ttf_font_context
+
+    hide ttf_font_context methods
+    hide ttf_font_context fields
+
+    ttf_font_context --> sdl_exception
+    context .. ttf_font_context : <<must exist>> <
+
+}
+@enduml
+*/
+
 #endif //SDL_CPP_TTF_FONT_CONTEXT_H
