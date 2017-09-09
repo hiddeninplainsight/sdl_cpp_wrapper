@@ -47,6 +47,7 @@ target_link_libraries(sdl-cpp
         )
 
 add_subdirectory(ttf-font)
+add_subdirectory(widgets)
 
 add_subdirectory(test-app)
 add_subdirectory(tests)

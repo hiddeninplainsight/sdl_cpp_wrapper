@@ -7,7 +7,9 @@ add_executable(test-app
 
 target_link_libraries(test-app
         sdl-cpp
-        sdl-cpp-ttf-font)
+        sdl-cpp-ttf-font
+        sdl-cpp-widgets
+        )
 
 file(COPY circle.png
         DESTINATION ${sdl-cpp-wrapper-test-app_BINARY_DIR})
