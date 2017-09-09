@@ -16,7 +16,7 @@ namespace sdl
         void remove_from_events_system();
     public:
         key_state(event_keys& events_system, SDL_Keycode key);
-        virtual ~key_state();
+        virtual ~key_state() override;
         key_state(key_state const&) = delete;
         key_state& operator=(key_state const&) = delete;
 

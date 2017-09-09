@@ -6,7 +6,7 @@
 
 namespace sdl
 {
-    class context
+    class context final
     {
     public:
         context()

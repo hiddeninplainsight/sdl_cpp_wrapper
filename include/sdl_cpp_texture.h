@@ -29,13 +29,13 @@ namespace sdl
         texture(const texture&) = delete;
         texture& operator=(const texture&) = delete;
 
-        texture(texture&& other)
+        texture(texture&& other) noexcept
         {
             texture_ptr = other.texture_ptr;
             other.texture_ptr = nullptr;
         }
 
-        texture& operator=(texture&& other)
+        texture& operator=(texture&& other) noexcept
         {
             if(texture_ptr != nullptr)
                 SDL_DestroyTexture(texture_ptr);
@@ -45,7 +45,6 @@ namespace sdl
 
             return *this;
         }
-
 
         operator SDL_Texture*() const { return texture_ptr; }
 

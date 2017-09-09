@@ -55,13 +55,13 @@ namespace sdl
         surface(const surface&) = delete;
         surface& operator=(const surface&) = delete;
 
-        surface(surface&& other)
+        surface(surface&& other) noexcept
         {
             surface_ptr = other.surface_ptr;
             other.surface_ptr = nullptr;
         }
 
-        surface& operator=(surface&& other)
+        surface& operator=(surface&& other) noexcept
         {
             if(surface_ptr != nullptr)
                 SDL_FreeSurface(surface_ptr);
