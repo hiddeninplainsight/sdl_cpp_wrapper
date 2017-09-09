@@ -10,6 +10,8 @@
 #include "sdl_cpp_events.h"
 #include "sdl_cpp_event_quit.h"
 #include "sdl_cpp_key_state.h"
+#include "sdl_cpp_maths.h"
+#include "sdl_cpp_mouse_state.h"
 #include "sdl_cpp_collision_detection.h"
 #include "sdl_cpp_point_transforms.h"
 #include "sdl_cpp_event_keys.h"

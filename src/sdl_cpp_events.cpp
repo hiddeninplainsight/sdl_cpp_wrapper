@@ -29,6 +29,30 @@ namespace sdl
                         key_up_handler->key_up_event(event.key.keysym.sym, event.key.keysym.mod);
                     }
                     break;
+                case SDL_MOUSEMOTION:
+                    if(mouse_motion_handler)
+                    {
+                        mouse_motion_handler->mouse_motion_event(event.motion.which, event.motion.state, event.motion.x, event.motion.y, event.motion.xrel, event.motion.yrel);
+                    }
+                    break;
+                case SDL_MOUSEBUTTONDOWN:
+                    if(mouse_button_handler)
+                    {
+                        mouse_button_handler->mouse_button_pressed_event(event.button.which, event.button.button, event.button.clicks, event.button.x, event.button.y);
+                    }
+                    break;
+                case SDL_MOUSEBUTTONUP:
+                    if(mouse_button_handler)
+                    {
+                        mouse_button_handler->mouse_button_released_event(event.button.which, event.button.button, event.button.clicks, event.button.x, event.button.y);
+                    }
+                    break;
+                case SDL_MOUSEWHEEL:
+                    if(mouse_wheel_handler)
+                    {
+                        mouse_wheel_handler->mouse_wheel_event(event.wheel.which, event.wheel.x, event.wheel.y, event.wheel.direction);
+                    }
+                    break;
 
                 default:
                     break;
@@ -65,4 +89,35 @@ namespace sdl
     {
         key_up_handler = nullptr;
     }
+
+    void events::set_mouse_motion_event_handler(mouse_motion_event_handler& handler)
+    {
+        mouse_motion_handler = &handler;
+    }
+
+    void events::clear_mouse_motion_event_handler()
+    {
+        mouse_motion_handler = nullptr;
+    }
+
+    void events::set_mouse_button_event_handler(mouse_button_event_handler& handler)
+    {
+        mouse_button_handler = &handler;
+    }
+
+    void events::clear_mouse_button_event_handler()
+    {
+        mouse_button_handler = nullptr;
+    }
+
+    void events::set_mouse_wheel_event_handler(mouse_wheel_event_handler& handler)
+    {
+        mouse_wheel_handler = &handler;
+    }
+
+    void events::clear_mouse_wheel_event_handler()
+    {
+        mouse_wheel_handler = nullptr;
+    }
+
 }

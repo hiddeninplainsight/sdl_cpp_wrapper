@@ -1,0 +1,17 @@
+@startuml
+
+!include class-diagram.umlconfig
+
+!include include/sdl_cpp_context.h
+!include include/sdl_cpp_event_quit.h
+!include include/sdl_cpp_event_keys.h
+!include include/sdl_cpp_events.h
+!include include/sdl_cpp_exception.h
+!include include/sdl_cpp_key_state.h
+!include include/sdl_cpp_mouse_state.h
+
+title
+sdl_cpp class diagram
+end title
+
+@enduml

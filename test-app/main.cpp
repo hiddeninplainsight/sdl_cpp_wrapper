@@ -45,8 +45,6 @@ int main(int argc, char** argv)
         sdl::renderer renderer{window};
         sdl::texture circleTexture{renderer, sdl::surface::create_from_image(application_path + "/circle.png")};
 
-        sdl::texture text_texture = press_start_2p_font.create_texture(renderer, "Hello World!", {0x00, 0x00, 0x00});
-
         sdl::events events;
         sdl::quit_event_bool quit{events};
         sdl::event_keys keys{events};
@@ -57,6 +55,8 @@ int main(int argc, char** argv)
         sdl::key_state q_key{keys, SDLK_q};
         sdl::key_state e_key{keys, SDLK_SPACE};
         e_key.change_key(SDLK_e);
+
+        sdl::mouse_state mouse{events};
 
         SDL_Point location{10, 10};
         double angle = 0.0;
@@ -104,7 +104,10 @@ int main(int argc, char** argv)
             renderer.set_draw_colour(0xFF, 0x00, 0x00);
             renderer.draw_lines(collider);
 
-            renderer.copy(text_texture, 10, 10);
+            std::string mouse_location = std::to_string(mouse.x()) + ", " + std::to_string(mouse.y()) + " : " +
+                std::to_string(mouse.wheel_x()) + ", " + std::to_string(mouse.wheel_y());
+            sdl::texture mouse_location_texture = press_start_2p_font.create_texture(renderer, mouse_location, {0x00, 0x00, 0x00});
+            renderer.copy(mouse_location_texture, 10, 10);
 
             renderer.present();
         }
