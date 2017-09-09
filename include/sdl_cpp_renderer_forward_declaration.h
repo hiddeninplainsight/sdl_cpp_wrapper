@@ -7,19 +7,14 @@
 namespace sdl
 {
     class texture;
+    class window;
 
     class renderer
     {
     private:
         SDL_Renderer *renderer_ptr;
     public:
-        explicit renderer(const window& window)
-        {
-            renderer_ptr = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
-
-            if(renderer_ptr == nullptr)
-                throw sdl_exception("renderer::renderer", SDL_GetError());
-        }
+        explicit renderer(const window& window);
 
         ~renderer() { SDL_DestroyRenderer(renderer_ptr); }
 

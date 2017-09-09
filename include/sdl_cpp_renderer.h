@@ -4,9 +4,18 @@
 #include <SDL2/SDL.h>
 #include "sdl_cpp_renderer_forward_declaration.h"
 #include "sdl_cpp_texture.h"
+#include "sdl_cpp_window.h"
 
 namespace sdl
 {
+    inline renderer::renderer(const window& window)
+    {
+        renderer_ptr = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+
+        if(renderer_ptr == nullptr)
+            throw sdl_exception("renderer::renderer", SDL_GetError());
+    }
+
     inline void renderer::copy(const texture& texture)
     {
         SDL_RenderCopy(renderer_ptr, texture, NULL, NULL);
