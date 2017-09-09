@@ -4,7 +4,7 @@ project(sdl-cpp-ttf-font)
 add_library(sdl-cpp-ttf-font INTERFACE
         )
 
-target_include_directories(sdl-cpp SYSTEM INTERFACE
+target_include_directories(sdl-cpp-ttf-font SYSTEM INTERFACE
         "${CMAKE_CURRENT_LIST_DIR}/include"
         )
 
