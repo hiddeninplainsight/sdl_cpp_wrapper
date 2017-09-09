@@ -14,8 +14,8 @@ namespace sdl
         Sint32 x_wheel{0};
         Sint32 y_wheel{0};
     public:
-        mouse_state(events& events_system);
-        ~mouse_state();
+        explicit mouse_state(events& events_system);
+        ~mouse_state() override;
 
         mouse_state(const mouse_state&) = delete;
         mouse_state& operator=(const mouse_state&) = delete;

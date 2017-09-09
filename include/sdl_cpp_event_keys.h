@@ -16,7 +16,7 @@ namespace sdl
         std::map<SDL_Keycode, key_up_event_handler*> key_up_handlers;
     public:
         explicit event_keys(events& events_system);
-        ~event_keys();
+        ~event_keys() override;
 
         event_keys(event_keys const&) = delete;
         event_keys& operator=(event_keys const&) = delete;
@@ -27,8 +27,8 @@ namespace sdl
         void add_key_up_event_handler(SDL_Keycode key, key_up_event_handler& handler);
         void remove_key_up_event_handler(SDL_Keycode key);
 
-        virtual void key_down_event(SDL_Keycode key, Uint16 modifier);
-        virtual void key_up_event(SDL_Keycode key, Uint16 modifier);
+        virtual void key_down_event(SDL_Keycode key, Uint16 modifier) override;
+        virtual void key_up_event(SDL_Keycode key, Uint16 modifier) override;
     };
 }
 
