@@ -2,19 +2,19 @@
 
 namespace sdl
 {
-    mouse_state::mouse_state(events &events_system)
-            : events_system{events_system}
+    mouse_state::mouse_state(event_mouse_dispatch& mouse_events)
+            : mouse_events{mouse_events}
     {
-        events_system.set_mouse_button_event_handler(*this);
-        events_system.set_mouse_motion_event_handler(*this);
-        events_system.set_mouse_wheel_event_handler(*this);
+        mouse_events.add_mouse_button_event_handler(*this);
+        mouse_events.add_mouse_motion_event_handler(*this);
+        mouse_events.add_mouse_wheel_event_handler(*this);
     }
 
     mouse_state::~mouse_state()
     {
-        events_system.clear_mouse_button_event_handler();
-        events_system.clear_mouse_motion_event_handler();
-        events_system.clear_mouse_wheel_event_handler();
+        mouse_events.remove_mouse_button_event_handler(*this);
+        mouse_events.remove_mouse_motion_event_handler(*this);
+        mouse_events.remove_mouse_wheel_event_handler(*this);
     }
 
     void mouse_state::mouse_motion_event(Uint32 mouse_id, Uint32 button_state, Sint32 x, Sint32 y,
@@ -28,7 +28,7 @@ namespace sdl
         y_coordinate = y;
     }
 
-    void mouse_state::mouse_button_pressed_event(Uint32 mouse_id, Uint8 button,
+    void mouse_state::mouse_button_pressed_event(Uint32 mouse_id, mouse_button button,
                                             Uint8 clicks, Sint32 x, Sint32 y)
     {
         (void)mouse_id;
@@ -37,7 +37,7 @@ namespace sdl
         button_state_pressed[button].y = y;
     }
 
-    void mouse_state::mouse_button_released_event(Uint32 mouse_id, Uint8 button,
+    void mouse_state::mouse_button_released_event(Uint32 mouse_id, mouse_button button,
                                              Uint8 clicks, Sint32 x, Sint32 y)
     {
         (void)mouse_id;
@@ -55,26 +55,13 @@ namespace sdl
         y_wheel += y;
     }
 
-    namespace
-    {
-        Uint8 const buttom_map[] =
-        {
-            SDL_BUTTON_LEFT,
-            SDL_BUTTON_MIDDLE,
-            SDL_BUTTON_RIGHT,
-            SDL_BUTTON_X1,
-            SDL_BUTTON_X2
-        };
-    }
-
     mouse_button_state mouse_state::button_press(mouse_button button, bool clear)
     {
-        auto index = buttom_map[static_cast<size_t>(button)];
-        auto button_state = button_state_pressed[index];
+        auto button_state = button_state_pressed[button];
 
         if(clear)
         {
-            button_state_pressed[index] = mouse_button_state{};
+            button_state_pressed[button] = mouse_button_state{};
         }
 
         return button_state;
@@ -82,12 +69,11 @@ namespace sdl
 
     mouse_button_state mouse_state::button_release(mouse_button button, bool clear)
     {
-        auto index = buttom_map[static_cast<size_t>(button)];
-        auto button_state = button_state_released[index];
+        auto button_state = button_state_released[button];
 
         if(clear)
         {
-            button_state_released[index] = mouse_button_state{};
+            button_state_released[button] = mouse_button_state{};
         }
 
         return button_state;

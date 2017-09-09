@@ -10,6 +10,7 @@ add_library(sdl-cpp
         include/sdl_cpp_collision_detection.h
         include/sdl_cpp_context.h
         include/sdl_cpp_event_keys.h
+        include/sdl_cpp_event_mouse_dispatch.h
         include/sdl_cpp_event_quit.h
         include/sdl_cpp_events.h
         include/sdl_cpp_exception.h
@@ -24,6 +25,7 @@ add_library(sdl-cpp
         include/sdl_cpp_window.h
         src/sdl_cpp_collision_detection.cpp
         src/sdl_cpp_event_keys.cpp
+        src/sdl_cpp_event_mouse_dispatch.cpp
         src/sdl_cpp_event_quit.cpp
         src/sdl_cpp_events.cpp
         src/sdl_cpp_key_state.cpp

@@ -2,20 +2,12 @@
 #define SDL_CPP_MOUSE_STATE_H
 
 #include "sdl_cpp_events.h"
+#include "sdl_cpp_event_mouse_dispatch.h"
 
 #include <map>
 
 namespace sdl
 {
-    enum class mouse_button
-    {
-        left,
-        middle,
-        right,
-        x1,
-        x2
-    };
-
     struct mouse_button_state
     {
         Uint8 clicks{0};
@@ -26,15 +18,15 @@ namespace sdl
     class mouse_state : public mouse_motion_event_handler, public mouse_button_event_handler, public mouse_wheel_event_handler
     {
     private:
-        events& events_system;
+        event_mouse_dispatch& mouse_events;
         Sint32 x_coordinate{0};
         Sint32 y_coordinate{0};
         Sint32 x_wheel{0};
         Sint32 y_wheel{0};
-        std::map<Uint8, mouse_button_state> button_state_pressed;
-        std::map<Uint8, mouse_button_state> button_state_released;
+        std::map<mouse_button, mouse_button_state> button_state_pressed;
+        std::map<mouse_button, mouse_button_state> button_state_released;
     public:
-        explicit mouse_state(events& events_system);
+        explicit mouse_state(event_mouse_dispatch& mouse_events);
         ~mouse_state() override;
 
         mouse_state(const mouse_state&) = delete;
@@ -42,9 +34,9 @@ namespace sdl
 
         virtual void mouse_motion_event(Uint32 mouse_id, Uint32 button_state, Sint32 x, Sint32 y,
                                         Sint32 x_relative, Sint32 y_relative) override;
-        virtual void mouse_button_pressed_event(Uint32 mouse_id, Uint8 button,
+        virtual void mouse_button_pressed_event(Uint32 mouse_id, mouse_button button,
                                                 Uint8 clicks, Sint32 x, Sint32 y) override;
-        virtual void mouse_button_released_event(Uint32 mouse_id, Uint8 button,
+        virtual void mouse_button_released_event(Uint32 mouse_id, mouse_button button,
                                                  Uint8 clicks, Sint32 x, Sint32 y) override;
         virtual void mouse_wheel_event(Uint32 mouse_id, Sint32 x, Sint32 y,
                                        Uint32 direction) override;
@@ -76,15 +68,6 @@ namespace sdl {
         + Sint32 wheel_y() const
     }
 
-    enum mouse_button {
-        left
-        middle
-        right
-        x1
-        x2
-    }
-    hide mouse_button methods
-
     class mouse_button_state << (S,#FF7700) struct >> {
         Uint8 clicks
         Sint32 x
@@ -95,6 +78,7 @@ namespace sdl {
     mouse_button <-- mouse_state
     mouse_button_state <-- mouse_state
 
+    event_mouse_dispatch <..o mouse_state
     mouse_motion_event_handler <|.. mouse_state
     mouse_button_event_handler <|.. mouse_state
     mouse_wheel_event_handler <|.. mouse_state

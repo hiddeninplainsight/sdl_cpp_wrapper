@@ -15,5 +15,6 @@
 #include "sdl_cpp_collision_detection.h"
 #include "sdl_cpp_point_transforms.h"
 #include "sdl_cpp_event_keys.h"
+#include "sdl_cpp_event_mouse_dispatch.h"
 
 #endif //SDL_CPP_H

@@ -5,6 +5,7 @@
 !include include/sdl_cpp_context.h
 !include include/sdl_cpp_event_quit.h
 !include include/sdl_cpp_event_keys.h
+!include include/sdl_cpp_event_mouse_dispatch.h
 !include include/sdl_cpp_events.h
 !include include/sdl_cpp_exception.h
 !include include/sdl_cpp_key_state.h

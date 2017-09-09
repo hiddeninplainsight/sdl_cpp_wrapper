@@ -57,7 +57,8 @@ int main(int argc, char** argv)
         sdl::key_state e_key{keys, SDLK_SPACE};
         e_key.change_key(SDLK_e);
 
-        sdl::mouse_state mouse{events};
+        sdl::event_mouse_dispatch mouse_events{events};
+        sdl::mouse_state mouse{mouse_events};
 
         SDL_Point location{10, 10};
         double angle = 0.0;

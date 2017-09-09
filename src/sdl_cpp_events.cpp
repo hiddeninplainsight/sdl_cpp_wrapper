@@ -2,6 +2,28 @@
 
 namespace sdl
 {
+    namespace
+    {
+        mouse_button SDL_BUTTON_to_mouse_button(Uint8 button)
+        {
+            switch(button)
+            {
+                case SDL_BUTTON_LEFT:
+                    return mouse_button::left;
+                case SDL_BUTTON_MIDDLE:
+                    return mouse_button::middle;
+                case SDL_BUTTON_RIGHT:
+                    return mouse_button::right;
+                case SDL_BUTTON_X1:
+                    return mouse_button::x1;
+                case SDL_BUTTON_X2:
+                    return mouse_button::x2;
+                default:
+                    return mouse_button::unknown;
+            }
+        }
+    }
+
     void events::poll() const
     {
         SDL_Event event;
@@ -38,13 +60,13 @@ namespace sdl
                 case SDL_MOUSEBUTTONDOWN:
                     if(mouse_button_handler)
                     {
-                        mouse_button_handler->mouse_button_pressed_event(event.button.which, event.button.button, event.button.clicks, event.button.x, event.button.y);
+                        mouse_button_handler->mouse_button_pressed_event(event.button.which, SDL_BUTTON_to_mouse_button(event.button.button), event.button.clicks, event.button.x, event.button.y);
                     }
                     break;
                 case SDL_MOUSEBUTTONUP:
                     if(mouse_button_handler)
                     {
-                        mouse_button_handler->mouse_button_released_event(event.button.which, event.button.button, event.button.clicks, event.button.x, event.button.y);
+                        mouse_button_handler->mouse_button_released_event(event.button.which, SDL_BUTTON_to_mouse_button(event.button.button), event.button.clicks, event.button.x, event.button.y);
                     }
                     break;
                 case SDL_MOUSEWHEEL:
