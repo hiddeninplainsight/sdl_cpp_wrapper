@@ -46,7 +46,7 @@ namespace sdl
 
         widget_creation_parameters window_application::widget_parameters()
         {
-            return {renderer};
+            return {renderer, font};
         }
 
         void window_application::exit(int code)

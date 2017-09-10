@@ -1,10 +1,14 @@
 
 add_library(sdl-cpp-widgets
+        include/default_font.h
         include/sdl_cpp_widgets_application.h
+        include/sdl_cpp_widgets_label.h
         include/sdl_cpp_widgets_resizable_widget.h
         include/sdl_cpp_widgets_widget.h
         include/sdl_cpp_widgets_window_application.h
+        src/default_font.cpp
         src/sdl_cpp_widgets_application.cpp
+        src/sdl_cpp_widgets_label.cpp
         src/sdl_cpp_widgets_widget.cpp
         src/sdl_cpp_widgets_window_application.cpp
         )

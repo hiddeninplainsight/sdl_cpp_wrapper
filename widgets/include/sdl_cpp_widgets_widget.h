@@ -3,6 +3,7 @@
 
 #include "sdl_cpp.h"
 #include "sdl_cpp_ttf_font_context.h"
+#include "sdl_cpp_ttf_font.h"
 
 namespace sdl
 {
@@ -11,6 +12,7 @@ namespace sdl
         struct widget_creation_parameters
         {
             sdl::renderer& renderer;
+            sdl::ttf_font& font;
         };
 
         class widget
@@ -37,6 +39,7 @@ namespace sdl
             int height() const { return dimensions.h; }
 
             virtual void draw();
+            virtual void refresh();
         };
     }
 }

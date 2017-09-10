@@ -8,6 +8,7 @@
 #include <sdl_cpp_exception.h>
 
 #include <string>
+#include <cstddef>
 
 namespace sdl
 {
@@ -30,15 +31,42 @@ namespace sdl
             }
         }
 
+        ttf_font(void const* memory, size_t size, int point_size)
+        {
+            font = TTF_OpenFontRW(SDL_RWFromConstMem(memory, size), 1, point_size);
+            if(font == nullptr)
+            {
+                throw sdl_exception{"ttf_font::ttf_font (from memory)", TTF_GetError()};
+            }
+        }
+
         ~ttf_font()
         {
-            TTF_CloseFont(font);
+            if(font != nullptr)
+                TTF_CloseFont(font);
+        }
+
+        ttf_font(ttf_font&& other) noexcept
+            : font{other.font}
+        {
+            other.font = nullptr;
+        }
+
+        ttf_font& operator=(ttf_font&& other) noexcept
+        {
+            if(font != nullptr)
+                TTF_CloseFont(font);
+
+            font = other.font;
+            other.font = nullptr;
+
+            return *this;
         }
 
         ttf_font(const ttf_font&) = delete;
         ttf_font& operator=(const ttf_font&) = delete;
 
-        ttf_font_text_size text_size(char const* text)
+        ttf_font_text_size text_size(char const* text) const
         {
             ttf_font_text_size size;
             if(!TTF_SizeText(font, text, &size.width, &size.height))
@@ -47,12 +75,12 @@ namespace sdl
             }
         }
 
-        ttf_font_text_size text_size(std::string const& text)
+        ttf_font_text_size text_size(std::string const& text) const
         {
             return text_size(text.c_str());
         }
 
-        surface create_surface(char const* text, SDL_Color colour)
+        surface create_surface(char const* text, SDL_Color colour) const
         {
             auto text_surface = TTF_RenderText_Solid(font, text, colour);
 
@@ -64,17 +92,17 @@ namespace sdl
             return surface{text_surface};
         }
 
-        surface create_surface(std::string const& text, SDL_Color colour)
+        surface create_surface(std::string const& text, SDL_Color colour) const
         {
             return create_surface(text.c_str(), colour);
         }
 
-        texture create_texture(const renderer& renderer, char const* text, SDL_Color colour)
+        texture create_texture(const renderer& renderer, char const* text, SDL_Color colour) const
         {
             return texture{renderer, create_surface(text, colour)};
         }
 
-        texture create_texture(const renderer& renderer, std::string const& text, SDL_Color colour)
+        texture create_texture(const renderer& renderer, std::string const& text, SDL_Color colour) const
         {
             return texture{renderer, create_surface(text.c_str(), colour)};
         }
@@ -91,12 +119,13 @@ namespace sdl {
 
     class ttf_font {
         + ttf_font(std::string const& file_path, int point_size)
-        + ttf_font_text_size text_size(char const* text)
-        + ttf_font_text_size text_size(std::string const& text)
-        + surface create_surface(char const* text, SDL_Color colour)
-        + surface create_surface(std::string const& text, SDL_Color colour)
-        + texture create_texture(const renderer& renderer, char const* text, SDL_Color colour)
-        + texture create_texture(const renderer& renderer, std::string const& text, SDL_Color colour)
+        + ttf_font(void* memory, size_t size, int point_size)
+        + ttf_font_text_size text_size(char const* text) const
+        + ttf_font_text_size text_size(std::string const& text) const
+        + surface create_surface(char const* text, SDL_Color colour) const
+        + surface create_surface(std::string const& text, SDL_Color colour) const
+        + texture create_texture(const renderer& renderer, char const* text, SDL_Color colour) const
+        + texture create_texture(const renderer& renderer, std::string const& text, SDL_Color colour) const
     }
 
     ttf_font --> ttf_font_text_size

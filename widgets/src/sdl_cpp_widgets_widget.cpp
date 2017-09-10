@@ -34,5 +34,9 @@ namespace sdl
             renderer.set_draw_colour(0x00, 0x00, 0x00);
             renderer.draw_lines(outline);
         }
+
+        void widget::refresh()
+        {
+        }
     }
 }

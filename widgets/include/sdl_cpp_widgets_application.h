@@ -3,6 +3,7 @@
 
 #include "sdl_cpp.h"
 #include "sdl_cpp_ttf_font_context.h"
+#include "sdl_cpp_ttf_font.h"
 #include "sdl_cpp_widgets_widget.h"
 
 namespace sdl
@@ -34,6 +35,8 @@ namespace sdl
 
             std::string const application_path{};
 
+            sdl::ttf_font font;
+
         public:
             application(int argc, char** argv);
             virtual ~application() {}
@@ -42,9 +45,12 @@ namespace sdl
             application& operator=(application const&) = delete;
 
         protected:
+            virtual widget_creation_parameters widget_parameters() = 0;
+
             virtual void process_events();
             virtual void process_graphics();
-            virtual widget_creation_parameters widget_parameters() = 0;
+
+            void resize_font(int point_size);
         };
     }
 }

@@ -1,5 +1,5 @@
 #include <sdl_cpp_widgets_window_application.h>
-#include <sdl_cpp_widgets_resizable_widget.h>
+#include <sdl_cpp_widgets_label.h>
 #include <sdl_cpp.h>
 #include <sdl_cpp_ttf_font_context.h>
 #include <sdl_cpp_ttf_font.h>
@@ -23,10 +23,11 @@ private:
 
     collider_t collider;
 
-    sdl::ttf_font press_start_2p_font{application_path + "/PressStart2P-Regular.ttf", 36};
-
     sdl::texture circleTexture{renderer, sdl::surface::create_from_image(application_path + "/circle.png")};
-    sdl::widgets::resizable_widget button{widget_parameters()};
+
+    sdl::widgets::label position_label{widget_parameters()};
+    sdl::widgets::label pressed_label{widget_parameters()};
+    sdl::widgets::label released_label{widget_parameters()};
 
     sdl::key_state w_key{keys, SDLK_w};
     sdl::key_state s_key{keys, SDLK_s};
@@ -78,6 +79,25 @@ protected:
             location.x = right_click.x;
             location.y = right_click.y;
         }
+
+        std::stringstream  mouse_location;
+        mouse_location << std::to_string(mouse.x()) + ", ";
+        mouse_location <<std::to_string(mouse.y()) + " : ";
+        mouse_location << std::to_string(mouse.wheel_x()) + ", ";
+        mouse_location << std::to_string(mouse.wheel_y());
+        position_label.text(mouse_location.str());
+
+        std::stringstream pressed_clicks;
+        pressed_clicks << static_cast<unsigned int>(mouse.button_press(sdl::mouse_button::left).clicks) << "," ;
+        pressed_clicks << mouse.button_press(sdl::mouse_button::left).x << ",";
+        pressed_clicks << mouse.button_press(sdl::mouse_button::left).y;
+        pressed_label.text(pressed_clicks.str());
+
+        std::stringstream released_clicks;
+        released_clicks << static_cast<unsigned int>(mouse.button_release(sdl::mouse_button::left).clicks) << "," ;
+        released_clicks << mouse.button_release(sdl::mouse_button::left).x << ",";
+        released_clicks << mouse.button_release(sdl::mouse_button::left).y;
+        released_label.text(released_clicks.str());
     }
 
     void process_graphics() override
@@ -90,26 +110,10 @@ protected:
         renderer.set_draw_colour(0xFF, 0x00, 0x00);
         renderer.draw_lines(collider);
 
-        std::string mouse_location = std::to_string(mouse.x()) + ", " + std::to_string(mouse.y()) + " : " +
-                                     std::to_string(mouse.wheel_x()) + ", " + std::to_string(mouse.wheel_y());
-        sdl::texture mouse_location_texture = press_start_2p_font.create_texture(renderer, mouse_location, {0x00, 0x00, 0x00});
-        renderer.copy(mouse_location_texture, 10, 10);
+        position_label.draw();
+        pressed_label.draw();
+        released_label.draw();
 
-        std::stringstream mouse_clicks;
-        mouse_clicks << static_cast<unsigned int>(mouse.button_press(sdl::mouse_button::left).clicks) << "," ;
-        mouse_clicks << mouse.button_press(sdl::mouse_button::left).x << ",";
-        mouse_clicks << mouse.button_press(sdl::mouse_button::left).y;
-        auto mouse_clicks_texture = press_start_2p_font.create_texture(renderer, mouse_clicks.str(), {0x00, 0x00, 0x00});
-        renderer.copy(mouse_clicks_texture, 10, 100);
-
-        mouse_clicks = std::stringstream();
-        mouse_clicks << static_cast<unsigned int>(mouse.button_release(sdl::mouse_button::left).clicks) << "," ;
-        mouse_clicks << mouse.button_release(sdl::mouse_button::left).x << ",";
-        mouse_clicks << mouse.button_release(sdl::mouse_button::left).y;
-        mouse_clicks_texture = press_start_2p_font.create_texture(renderer, mouse_clicks.str(), {0x00, 0x00, 0x00});
-        renderer.copy(mouse_clicks_texture, 10, 200);
-
-        button.draw();
     }
 
 public:
@@ -117,6 +121,16 @@ public:
         : window_application(argc, argv, title, x, y, width, height)
     {
         rotate_collider(0.0);
+
+        resize_font(36);
+
+        position_label.location({10, 0});
+        pressed_label.location({10, 100});
+        released_label.location({10, 200});
+
+        position_label.refresh();
+        pressed_label.refresh();
+        released_label.refresh();
     }
 };
 
