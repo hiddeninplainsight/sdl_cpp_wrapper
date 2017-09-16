@@ -53,7 +53,7 @@ add_library(sdl-cpp
         src/widgets/window_application.cpp
         )
 
-target_include_directories(sdl-cpp PUBLIC
+target_include_directories(sdl-cpp PRIVATE
         "${CMAKE_CURRENT_LIST_DIR}/include"
         )
 
