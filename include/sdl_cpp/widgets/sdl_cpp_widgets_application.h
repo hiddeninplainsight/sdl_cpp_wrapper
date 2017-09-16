@@ -1,10 +1,10 @@
 #ifndef SDL_CPP_WIDGETS_APPLICATION_H
 #define SDL_CPP_WIDGETS_APPLICATION_H
 
-#include "sdl_cpp.h"
-#include "sdl_cpp_ttf_font_context.h"
-#include "sdl_cpp_ttf_font.h"
-#include "sdl_cpp_widgets_widget.h"
+#include "../sdl_cpp.h"
+#include "../ttf_font/sdl_cpp_ttf_font_context.h"
+#include "../ttf_font/sdl_cpp_ttf_font.h"
+#include "../widgets/sdl_cpp_widgets_widget.h"
 
 namespace sdl
 {

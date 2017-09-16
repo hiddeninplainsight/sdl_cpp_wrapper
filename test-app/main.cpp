@@ -1,8 +1,8 @@
-#include <sdl_cpp_widgets_window_application.h>
-#include <sdl_cpp_widgets_label.h>
-#include <sdl_cpp.h>
-#include <sdl_cpp_ttf_font_context.h>
-#include <sdl_cpp_ttf_font.h>
+#include <sdl_cpp/widgets/sdl_cpp_widgets_window_application.h>
+#include <sdl_cpp/widgets/sdl_cpp_widgets_label.h>
+#include <sdl_cpp/sdl_cpp.h>
+#include <sdl_cpp/ttf_font/sdl_cpp_ttf_font_context.h>
+#include <sdl_cpp/ttf_font/sdl_cpp_ttf_font.h>
 #include <string>
 #include <algorithm>
 #include <iostream>

@@ -1,4 +1,4 @@
-#include "sdl_cpp_widgets_widget.h"
+#include "sdl_cpp/widgets/sdl_cpp_widgets_widget.h"
 
 namespace sdl
 {

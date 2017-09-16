@@ -1,5 +1,5 @@
-#include "sdl_cpp_point_transforms.h"
-#include "sdl_cpp_maths.h"
+#include "sdl_cpp/sdl_cpp_point_transforms.h"
+#include "sdl_cpp/sdl_cpp_maths.h"
 
 #include <cmath>
 

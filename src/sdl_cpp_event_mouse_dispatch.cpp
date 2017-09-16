@@ -1,4 +1,4 @@
-#include "sdl_cpp_event_mouse_dispatch.h"
+#include "sdl_cpp/sdl_cpp_event_mouse_dispatch.h"
 
 #include <algorithm>
 

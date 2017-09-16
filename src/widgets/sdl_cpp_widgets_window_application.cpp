@@ -1,4 +1,4 @@
-#include "sdl_cpp_widgets_window_application.h"
+#include "sdl_cpp/widgets/sdl_cpp_widgets_window_application.h"
 
 #include <iostream>
 

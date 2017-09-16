@@ -1,5 +1,5 @@
-#include "sdl_cpp_widgets_application.h"
-#include "default_font.h"
+#include "sdl_cpp/widgets/sdl_cpp_widgets_application.h"
+#include "sdl_cpp/widgets/default_font.h"
 
 namespace
 {

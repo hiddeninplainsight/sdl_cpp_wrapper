@@ -1,11 +1,11 @@
 #ifndef SDL_CPP_TTF_FONT_H
 #define SDL_CPP_TTF_FONT_H
 
-#include <sdl_cpp_surface.h>
-#include <sdl_cpp_texture.h>
+#include "../sdl_cpp_surface.h"
+#include "../sdl_cpp_texture.h"
 
 #include <SDL2/SDL_ttf.h>
-#include <sdl_cpp_exception.h>
+#include "../sdl_cpp_exception.h"
 
 #include <string>
 #include <cstddef>

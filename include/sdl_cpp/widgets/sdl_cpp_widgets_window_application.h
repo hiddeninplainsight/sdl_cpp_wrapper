@@ -2,7 +2,7 @@
 #define SDL_CPP_WIDGETS_WINDOW_APPLICATION_H
 
 #include "sdl_cpp_widgets_application.h"
-#include "sdl_cpp.h"
+#include "../sdl_cpp.h"
 #include "sdl_cpp_widgets_widget.h"
 
 #include <string>

@@ -1,4 +1,4 @@
-#include "sdl_cpp_collision_detection.h"
+#include "sdl_cpp/sdl_cpp_collision_detection.h"
 
 namespace sdl
 {

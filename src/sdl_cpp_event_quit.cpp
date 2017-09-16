@@ -1,4 +1,4 @@
-#include "sdl_cpp_event_quit.h"
+#include "sdl_cpp/sdl_cpp_event_quit.h"
 
 namespace sdl
 {

@@ -2,7 +2,7 @@
 #define SDL_CPP_TTF_FONT_CONTEXT_H
 
 #include <SDL2/SDL_ttf.h>
-#include <sdl_cpp_exception.h>
+#include "../sdl_cpp_exception.h"
 
 namespace sdl
 {

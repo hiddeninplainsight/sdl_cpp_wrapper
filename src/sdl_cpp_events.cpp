@@ -1,4 +1,4 @@
-#include "sdl_cpp_events.h"
+#include "sdl_cpp/sdl_cpp_events.h"
 
 namespace sdl
 {

@@ -2,7 +2,7 @@
 #define SDL_CPP_WIDGETS_LABEL_H
 
 #include "sdl_cpp_widgets_widget.h"
-#include "sdl_cpp_ttf_font.h"
+#include "../ttf_font/sdl_cpp_ttf_font.h"
 
 namespace sdl
 {

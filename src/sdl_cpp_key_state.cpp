@@ -1,4 +1,4 @@
-#include "sdl_cpp_key_state.h"
+#include "sdl_cpp/sdl_cpp_key_state.h"
 
 namespace sdl
 {
