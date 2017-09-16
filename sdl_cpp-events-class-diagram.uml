@@ -2,14 +2,14 @@
 
 !include class-diagram.umlconfig
 
-!include include/sdl_cpp/sdl_cpp_context.h
-!include include/sdl_cpp/sdl_cpp_event_quit.h
-!include include/sdl_cpp/sdl_cpp_event_keys.h
-!include include/sdl_cpp/sdl_cpp_event_mouse_dispatch.h
-!include include/sdl_cpp/sdl_cpp_events.h
-!include include/sdl_cpp/sdl_cpp_exception.h
-!include include/sdl_cpp/sdl_cpp_key_state.h
-!include include/sdl_cpp/sdl_cpp_mouse_state.h
+!include include/sdl_cpp/context.h
+!include include/sdl_cpp/event_quit.h
+!include include/sdl_cpp/event_keys.h
+!include include/sdl_cpp/event_mouse_dispatch.h
+!include include/sdl_cpp/events.h
+!include include/sdl_cpp/sdl_exception.h
+!include include/sdl_cpp/key_state.h
+!include include/sdl_cpp/mouse_state.h
 
 title
 sdl_cpp events class diagram

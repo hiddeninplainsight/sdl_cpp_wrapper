@@ -11,7 +11,7 @@
 !include include/sdl_cpp/fonts/ttf_font.h
 
 title
-sdl_cpp ttf-font class diagram
+sdl_cpp fonts class diagram
 end title
 
 @enduml
