@@ -6,4 +6,4 @@ TODO: Write some documentation
 
 ![events class diagram](sdl_cpp-events-class-diagram.png)
 
-![ttf-font class diagram](sdl_cpp-ttf-font-class-diagram.png)
+![font class diagram](sdl_cpp-fonts-class-diagram.png)

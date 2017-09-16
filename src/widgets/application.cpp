@@ -32,7 +32,7 @@ namespace sdl
 
         void application::resize_font(int point_size)
         {
-            font = ttf_font{default_font, default_font_size, point_size};
+            font = fonts::ttf_font{default_font, default_font_size, point_size};
         }
     }
 }

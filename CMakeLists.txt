@@ -35,9 +35,9 @@ add_library(sdl-cpp
         src/point_transforms.cpp
         src/rectangle_collider.cpp
 
-        # ttf_font
-        include/sdl_cpp/ttf_font/ttf_font.h
-        include/sdl_cpp/ttf_font/ttf_font_context.h
+        # fonts
+        include/sdl_cpp/fonts/ttf_font.h
+        include/sdl_cpp/fonts/ttf_font_context.h
 
         # widgets
         include/sdl_cpp/widgets/default_font.h

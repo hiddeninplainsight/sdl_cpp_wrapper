@@ -8,11 +8,14 @@
 
 namespace sdl
 {
-    class ttf_font;
+    namespace fonts
+    {
+        class ttf_font;
+    }
 
     class surface
     {
-        friend ttf_font;
+        friend fonts::ttf_font;
     private:
         SDL_Surface *surface_ptr;
 

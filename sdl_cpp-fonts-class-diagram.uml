@@ -1,0 +1,17 @@
+@startuml
+
+!include class-diagram.umlconfig
+
+!include include/sdl_cpp/context.h
+!include include/sdl_cpp/sdl_exception.h
+!include include/sdl_cpp/surface.h
+!include include/sdl_cpp/texture.h
+
+!include include/sdl_cpp/fonts/ttf_font_context.h
+!include include/sdl_cpp/fonts/ttf_font.h
+
+title
+sdl_cpp ttf-font class diagram
+end title
+
+@enduml

@@ -2,7 +2,7 @@
 
 namespace
 {
-    sdl::texture create_text_texture(sdl::renderer& renderer, sdl::ttf_font const& font, std::string const& text)
+    sdl::texture create_text_texture(sdl::renderer& renderer, sdl::fonts::ttf_font const& font, std::string const& text)
     {
         if(text.length())
         {

@@ -2,8 +2,8 @@
 #define SDL_CPP_WIDGETS_WIDGET_H
 
 #include "../sdl_cpp.h"
-#include "sdl_cpp/ttf_font/ttf_font_context.h"
-#include "sdl_cpp/ttf_font/ttf_font.h"
+#include "sdl_cpp/fonts/ttf_font_context.h"
+#include "sdl_cpp/fonts/ttf_font.h"
 
 namespace sdl
 {
@@ -12,7 +12,7 @@ namespace sdl
         struct widget_creation_parameters
         {
             sdl::renderer& renderer;
-            sdl::ttf_font& font;
+            sdl::fonts::ttf_font& font;
         };
 
         class widget

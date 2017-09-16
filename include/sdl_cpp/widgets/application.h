@@ -2,8 +2,8 @@
 #define SDL_CPP_WIDGETS_APPLICATION_H
 
 #include "../sdl_cpp.h"
-#include "sdl_cpp/ttf_font/ttf_font_context.h"
-#include "sdl_cpp/ttf_font/ttf_font.h"
+#include "sdl_cpp/fonts/ttf_font_context.h"
+#include "sdl_cpp/fonts/ttf_font.h"
 #include "widget.h"
 
 namespace sdl
@@ -24,7 +24,7 @@ namespace sdl
         {
         private:
             sdl::context context;
-            sdl::ttf_font_context ttf_context;
+            sdl::fonts::ttf_font_context ttf_context;
 
         protected:
             sdl::events events;
@@ -35,7 +35,7 @@ namespace sdl
 
             std::string const application_path{};
 
-            sdl::ttf_font font;
+            sdl::fonts::ttf_font font;
 
         public:
             application(int argc, char** argv);

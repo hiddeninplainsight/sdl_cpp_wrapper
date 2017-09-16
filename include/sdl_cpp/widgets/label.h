@@ -2,7 +2,7 @@
 #define SDL_CPP_WIDGETS_LABEL_H
 
 #include "widget.h"
-#include "sdl_cpp/ttf_font/ttf_font.h"
+#include "sdl_cpp/fonts/ttf_font.h"
 
 namespace sdl
 {
@@ -12,7 +12,7 @@ namespace sdl
         {
         private:
             std::string displayed_text;
-            sdl::ttf_font& font;
+            sdl::fonts::ttf_font& font;
 
             sdl::texture text_texture;
         public:
