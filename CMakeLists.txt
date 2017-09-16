@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5)
-project(sdl-cpp-wrapper)
+project(sdl-cpp-wrapper VERSION 0.0.2)
 
 set(CMAKE_CXX_STANDARD 14)
 
@@ -70,3 +70,23 @@ target_link_libraries(sdl-cpp
 
 add_subdirectory(test-app)
 add_subdirectory(tests)
+
+install(TARGETS sdl-cpp ARCHIVE DESTINATION lib)
+install(DIRECTORY include/ DESTINATION include
+        FILES_MATCHING PATTERN "*.h")
+
+set(CPACK_GENERATOR "DEB")
+
+set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "A object-oriented wrapper for libSDL")
+set(CPACK_PACKAGE_DESCRIPTION_FILE "${CMAKE_CURRENT_LIST_DIR}/install/description.txt")
+SET(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_LIST_DIR}/install/license.txt")
+
+set(CPACK_PACKAGE_VERSION_MAJOR ${sdl-cpp-wrapper_VERSION_MAJOR})
+set(CPACK_PACKAGE_VERSION_MINOR ${sdl-cpp-wrapper_VERSION_MINOR})
+set(CPACK_PACKAGE_VERSION_PATCH ${sdl-cpp-wrapper_VERSION_PATCH})
+
+set(CPACK_DEBIAN_PACKAGE_MAINTAINER "Byran Wills-Heath <byran@adgico.co.uk>")
+set(CPACK_DEBIAN_PACKAGE_DEPENDS "libsdl2-dev (>=2.0.0), libsdl2-image-dev (>=2.0.1), libsdl2-ttf-dev (>=2.0.14)")
+set(CPACK_DEBIAN_PACKAGE_SECTION "Development")
+
+include(CPack)
