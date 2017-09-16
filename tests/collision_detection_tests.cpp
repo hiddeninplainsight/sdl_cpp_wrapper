@@ -1,6 +1,6 @@
 #include <iostream>
 #include <cassert>
-#include <sdl_cpp/sdl_cpp_collision_detection.h>
+#include <sdl_cpp/collision_detection.h>
 
 using namespace ::std;
 
