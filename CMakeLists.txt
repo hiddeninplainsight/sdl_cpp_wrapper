@@ -51,12 +51,14 @@ add_library(sdl-cpp
         include/sdl_cpp/widgets/resizable_widget.h
         include/sdl_cpp/widgets/widget.h
         include/sdl_cpp/widgets/window_application.h
+        include/sdl_cpp/widgets/lines_no_storage.h
         src/widgets/default_font.cpp
         src/widgets/image.cpp
         src/widgets/application.cpp
         src/widgets/label.cpp
         src/widgets/widget.cpp
         src/widgets/window_application.cpp
+        src/widgets/lines_no_storage.cpp
         )
 
 target_include_directories(sdl-cpp PRIVATE

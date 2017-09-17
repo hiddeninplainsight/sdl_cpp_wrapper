@@ -1,6 +1,7 @@
 #include <sdl_cpp/widgets/window_application.h>
 #include <sdl_cpp/widgets/label.h>
 #include <sdl_cpp/widgets/image.h>
+#include <sdl_cpp/widgets/lines_no_storage.h>
 #include <sdl_cpp/sdl_cpp.h>
 #include <sdl_cpp/fonts/ttf_font_context.h>
 #include <sdl_cpp/fonts/ttf_font.h>
@@ -26,6 +27,7 @@ private:
 
     sdl::widgets::window_application app;
 
+    sdl::widgets::lines_no_storage collider_lines{collider};
     sdl::widgets::image circle{app.application_path + "/circle.png"};
 
     sdl::widgets::label position_label;
@@ -120,6 +122,8 @@ public:
         rotate_collider(0.0);
 
         circle.location({10, 10});
+
+        collider_lines.colour({0xFF, 0x00, 0x00, 0xFF});
 
         app.resize_font(36);
 
