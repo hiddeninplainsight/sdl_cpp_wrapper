@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5)
-project(sdl-cpp-wrapper VERSION 0.0.2)
+project(sdl-cpp-wrapper VERSION 0.0.1)
 
 set(CMAKE_CXX_STANDARD 14)
 
