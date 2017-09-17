@@ -1,5 +1,6 @@
 #include <sdl_cpp/widgets/window_application.h>
 #include <sdl_cpp/widgets/label.h>
+#include <sdl_cpp/widgets/image.h>
 #include <sdl_cpp/sdl_cpp.h>
 #include <sdl_cpp/fonts/ttf_font_context.h>
 #include <sdl_cpp/fonts/ttf_font.h>
@@ -25,7 +26,7 @@ private:
 
     sdl::widgets::window_application app;
 
-    sdl::texture circleTexture{app.get_renderer(), sdl::surface::create_from_image(app.application_path + "/circle.png")};
+    sdl::widgets::image circle{app.application_path + "/circle.png"};
 
     sdl::widgets::label position_label;
     sdl::widgets::label pressed_label;
@@ -40,7 +41,6 @@ private:
 
     sdl::mouse_state mouse{app.mouse_events};
 
-    SDL_Point location{10, 10};
     double angle = 0.0;
 
     void rotate_collider(double change)
@@ -57,10 +57,10 @@ private:
 
     void attempt_move(SDL_Point const& transform)
     {
-        SDL_Point new_location = location + transform;
+        SDL_Point new_location = circle.location() + transform;
         if(!sdl::tri_point_collision(collider, new_location))
         {
-            location = new_location;
+            circle.location(new_location);
         }
     };
 
@@ -78,8 +78,8 @@ protected:
         auto right_click = mouse.button_press(sdl::mouse_button::right, true);
         if(right_click.clicks)
         {
-            location.x = right_click.x;
-            location.y = right_click.y;
+            circle.x(right_click.x);
+            circle.y(right_click.y);
         }
 
         std::stringstream  mouse_location;
@@ -118,6 +118,8 @@ public:
         : app(argc, argv, title, x, y, width, height)
     {
         rotate_collider(0.0);
+
+        circle.location({10, 10});
 
         app.resize_font(36);
 

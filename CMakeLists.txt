@@ -45,12 +45,14 @@ add_library(sdl-cpp
 
         # widgets
         include/sdl_cpp/widgets/default_font.h
+        include/sdl_cpp/widgets/image.h
         include/sdl_cpp/widgets/application.h
         include/sdl_cpp/widgets/label.h
         include/sdl_cpp/widgets/resizable_widget.h
         include/sdl_cpp/widgets/widget.h
         include/sdl_cpp/widgets/window_application.h
         src/widgets/default_font.cpp
+        src/widgets/image.cpp
         src/widgets/application.cpp
         src/widgets/label.cpp
         src/widgets/widget.cpp
