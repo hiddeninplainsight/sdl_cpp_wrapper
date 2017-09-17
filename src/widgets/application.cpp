@@ -1,5 +1,8 @@
 #include "sdl_cpp/widgets/application.h"
 #include "sdl_cpp/widgets/default_font.h"
+#include "sdl_cpp/widgets/widget.h"
+
+#include <algorithm>
 
 namespace
 {
@@ -16,19 +19,30 @@ namespace sdl
 {
     namespace widgets
     {
+        application* application::current{nullptr};
+
         application::application(int /*argc*/, char** argv)
             : application_path{executable_path_to_application_path(argv[0])}
             , font{default_font, default_font_size, 14}
         {
+            current = this;
         }
 
-        void application::process_events()
+        application::~application()
         {
+            current = nullptr;
         }
 
-        void application::process_graphics()
+        void application::add_widget(widget* w)
         {
+            widgets.push_back(w);
         }
+
+        void application::remove_widget(widget* w)
+        {
+            widgets.erase(std::remove(widgets.begin(), widgets.end(), w), widgets.end());
+        }
+
 
         void application::resize_font(int point_size)
         {

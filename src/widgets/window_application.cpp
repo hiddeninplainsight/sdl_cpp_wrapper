@@ -15,44 +15,23 @@ namespace sdl
         {
         }
 
-        int window_application::run()
+        sdl::renderer& window_application::get_renderer()
         {
-            try
-            {
-                while(!quit && keep_running)
-                {
-                    events.poll();
-
-                    process_events();
-                    process_graphics();
-
-                    renderer.present();
-                }
-            }
-            catch(sdl::sdl_exception const& error)
-            {
-                std::cerr << "SDL Exception : " << error.what() << std::endl;
-                return exit_code::sdl_exception;
-            }
-
-            return application_exit_code;
+            return renderer;
         }
 
-        void window_application::process_graphics()
+        void window_application::draw()
         {
             renderer.set_draw_colour(0xAA, 0xAA, 0xAA);
             renderer.clear();
+
+            for(auto w : widgets)
+            {
+                w->draw();
+            }
+
+            renderer.present();
         }
 
-        widget_creation_parameters window_application::widget_parameters()
-        {
-            return {renderer, font};
-        }
-
-        void window_application::exit(int code)
-        {
-            application_exit_code = code;
-            keep_running = false;
-        }
     }
 }

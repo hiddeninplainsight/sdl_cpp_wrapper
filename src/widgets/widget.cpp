@@ -4,9 +4,20 @@ namespace sdl
 {
     namespace widgets
     {
-        widget::widget(widget_creation_parameters const& parameters)
-            : renderer{parameters.renderer}
+        application* widget::current_application()
         {
+            return application::current;
+        }
+
+        widget::widget()
+            : renderer{current_application()->get_renderer()}
+        {
+            current_application()->add_widget(this);
+        }
+
+        widget::~widget()
+        {
+            current_application()->remove_widget(this);
         }
 
         SDL_Point widget::location() const

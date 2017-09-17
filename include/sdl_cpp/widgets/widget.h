@@ -4,6 +4,7 @@
 #include "../sdl_cpp.h"
 #include "sdl_cpp/fonts/ttf_font_context.h"
 #include "sdl_cpp/fonts/ttf_font.h"
+#include "application.h"
 
 namespace sdl
 {
@@ -22,9 +23,10 @@ namespace sdl
 
             SDL_Rect dimensions{0, 0, 20, 20};
 
+            static application* current_application();
         public:
-            explicit widget(widget_creation_parameters const& parameters);
-            virtual ~widget() {}
+            widget();
+            virtual ~widget();
 
             SDL_Point location() const;
             void location(SDL_Point const& new_location);

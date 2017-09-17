@@ -16,7 +16,7 @@ namespace sdl
 
             sdl::texture text_texture;
         public:
-            explicit label(widget_creation_parameters const& parameters, std::string const& text = " ");
+            explicit label(std::string const& text = " ");
 
             std::string const& text() const;
             void text(std::string const& text);

@@ -8,7 +8,7 @@
 #include <iostream>
 #include <sstream>
 
-class test_application : public sdl::widgets::window_application
+class test_application
 {
 private:
     using collider_t = SDL_Point[4];
@@ -23,20 +23,22 @@ private:
 
     collider_t collider;
 
-    sdl::texture circleTexture{renderer, sdl::surface::create_from_image(application_path + "/circle.png")};
+    sdl::widgets::window_application app;
 
-    sdl::widgets::label position_label{widget_parameters()};
-    sdl::widgets::label pressed_label{widget_parameters()};
-    sdl::widgets::label released_label{widget_parameters()};
+    sdl::texture circleTexture{app.get_renderer(), sdl::surface::create_from_image(app.application_path + "/circle.png")};
 
-    sdl::key_state w_key{keys, SDLK_w};
-    sdl::key_state s_key{keys, SDLK_s};
-    sdl::key_state a_key{keys, SDLK_a};
-    sdl::key_state d_key{keys, SDLK_d};
-    sdl::key_state q_key{keys, SDLK_q};
-    sdl::key_state e_key{keys, SDLK_e};
+    sdl::widgets::label position_label;
+    sdl::widgets::label pressed_label;
+    sdl::widgets::label released_label;
 
-    sdl::mouse_state mouse{mouse_events};
+    sdl::key_state w_key{app.keys, SDLK_w};
+    sdl::key_state s_key{app.keys, SDLK_s};
+    sdl::key_state a_key{app.keys, SDLK_a};
+    sdl::key_state d_key{app.keys, SDLK_d};
+    sdl::key_state q_key{app.keys, SDLK_q};
+    sdl::key_state e_key{app.keys, SDLK_e};
+
+    sdl::mouse_state mouse{app.mouse_events};
 
     SDL_Point location{10, 10};
     double angle = 0.0;
@@ -63,7 +65,7 @@ private:
     };
 
 protected:
-    void process_events() override
+    void process_events()
     {
         if(q_key) rotate_collider(-1.0);
         if(e_key) rotate_collider(1.0);
@@ -100,29 +102,24 @@ protected:
         released_label.text(released_clicks.str());
     }
 
-    void process_graphics() override
+    void process_graphics()
     {
-        renderer.set_draw_colour(0xAA, 0xAA, 0xAA);
-        renderer.clear();
+        app.draw();
 
-        renderer.copy(circleTexture, location.x, location.y);
+//        renderer.copy(circleTexture, location.x, location.y);
 
-        renderer.set_draw_colour(0xFF, 0x00, 0x00);
-        renderer.draw_lines(collider);
-
-        position_label.draw();
-        pressed_label.draw();
-        released_label.draw();
+//        renderer.set_draw_colour(0xFF, 0x00, 0x00);
+//        renderer.draw_lines(collider);
 
     }
 
 public:
     test_application(int argc, char** argv, std::string const& title, int x, int y, int width, int height)
-        : window_application(argc, argv, title, x, y, width, height)
+        : app(argc, argv, title, x, y, width, height)
     {
         rotate_collider(0.0);
 
-        resize_font(36);
+        app.resize_font(36);
 
         position_label.location({10, 0});
         pressed_label.location({10, 100});
@@ -131,6 +128,17 @@ public:
         position_label.refresh();
         pressed_label.refresh();
         released_label.refresh();
+    }
+
+    int run()
+    {
+        while(!app.quit)
+        {
+            app.events.poll();
+            process_events();
+            process_graphics();
+        }
+        return 0;
     }
 };
 
@@ -144,6 +152,6 @@ int main(int argc, char** argv)
     catch(sdl::sdl_exception const& error)
     {
         std::cerr << "SDL Exception : " << error.what() << std::endl;
-        return sdl::widgets::exit_code::sdl_exception;
+        return -1;
     }
 }
