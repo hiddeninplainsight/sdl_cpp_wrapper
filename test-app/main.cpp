@@ -2,6 +2,7 @@
 #include <sdl_cpp/widgets/label.h>
 #include <sdl_cpp/widgets/image.h>
 #include <sdl_cpp/widgets/lines_no_storage.h>
+#include <sdl_cpp/widgets/button.h>
 #include <sdl_cpp/sdl_cpp.h>
 #include <sdl_cpp/fonts/ttf_font_context.h>
 #include <sdl_cpp/fonts/ttf_font.h>
@@ -33,6 +34,8 @@ private:
     sdl::widgets::label position_label{10, 0};
     sdl::widgets::label pressed_label{10, 100};
     sdl::widgets::label released_label{10, 200};
+
+    sdl::widgets::button reset_button{400, 100, "Reset"};
 
     sdl::key_state w_key{app.keys, SDLK_w};
     sdl::key_state s_key{app.keys, SDLK_s};
@@ -117,6 +120,14 @@ public:
         position_label.refresh();
         pressed_label.refresh();
         released_label.refresh();
+
+        reset_button.refresh();
+
+        reset_button.click_handler([this](sdl::widgets::button&) {
+            this->circle.location({10, 10});
+            this->angle = 0.0;
+            this->rotate_collider(0.0);
+        });
     }
 
     int run()

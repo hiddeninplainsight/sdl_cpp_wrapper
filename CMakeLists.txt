@@ -44,21 +44,23 @@ add_library(sdl-cpp
         include/sdl_cpp/fonts/ttf_font_context.h
 
         # widgets
+        include/sdl_cpp/widgets/application.h
+        include/sdl_cpp/widgets/button.h
         include/sdl_cpp/widgets/default_font.h
         include/sdl_cpp/widgets/image.h
-        include/sdl_cpp/widgets/application.h
         include/sdl_cpp/widgets/label.h
+        include/sdl_cpp/widgets/lines_no_storage.h
         include/sdl_cpp/widgets/resizable_widget.h
         include/sdl_cpp/widgets/widget.h
         include/sdl_cpp/widgets/window_application.h
-        include/sdl_cpp/widgets/lines_no_storage.h
+        src/widgets/application.cpp
+        src/widgets/button.cpp
         src/widgets/default_font.cpp
         src/widgets/image.cpp
-        src/widgets/application.cpp
         src/widgets/label.cpp
+        src/widgets/lines_no_storage.cpp
         src/widgets/widget.cpp
         src/widgets/window_application.cpp
-        src/widgets/lines_no_storage.cpp
         )
 
 target_include_directories(sdl-cpp PRIVATE

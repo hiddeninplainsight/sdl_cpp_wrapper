@@ -24,6 +24,9 @@ namespace sdl
 
             virtual void draw() override;
             virtual void refresh() override;
+
+        private:
+            void recalculate_size();
         };
     }
 }

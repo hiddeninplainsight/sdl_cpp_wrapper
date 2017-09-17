@@ -10,18 +10,13 @@ namespace sdl
         class resizable_widget : public widget
         {
         public:
-            resizable_widget(SDL_Point location)
-                : widget{location}
-            {
-            }
-
             resizable_widget(int x, int y)
                 : widget{x, y}
             {
             }
 
-            void width(int value) { dimensions.w = value; }
-            void height(int value) { dimensions.h = value; }
+            virtual void width(int value) { dimensions.w = value; }
+            virtual void height(int value) { dimensions.h = value; }
         };
     }
 }

@@ -35,10 +35,10 @@ namespace sdl
             void location(SDL_Point const& new_location);
 
             int x() const { return dimensions.x; }
-            void x(int value) { dimensions.x = value; }
+            virtual void x(int value) { dimensions.x = value; }
 
             int y() const { return dimensions.y; }
-            void y(int value) { dimensions.y = value; }
+            virtual void y(int value) { dimensions.y = value; }
 
             int width() const { return dimensions.w; }
             int height() const { return dimensions.h; }

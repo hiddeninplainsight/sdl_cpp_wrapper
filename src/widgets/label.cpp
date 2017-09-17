@@ -22,6 +22,7 @@ namespace sdl
             , font{current_application()->font}
             , text_texture{create_text_texture(renderer, font, displayed_text)}
         {
+            recalculate_size();
         }
 
         label::label(int x, int y, std::string const& text)
@@ -30,6 +31,7 @@ namespace sdl
             , font{current_application()->font}
             , text_texture{create_text_texture(renderer, font, displayed_text)}
         {
+            recalculate_size();
         }
 
         std::string const& label::text() const
@@ -51,6 +53,14 @@ namespace sdl
         void label::refresh()
         {
             text_texture = create_text_texture(renderer, font, displayed_text);
+            recalculate_size();
+        }
+
+        void label::recalculate_size()
+        {
+            auto text_size = text_texture.dimensions();
+            dimensions.w = text_size.w;
+            dimensions.h = text_size.h;
         }
     }
 }
