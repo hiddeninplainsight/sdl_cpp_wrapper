@@ -37,6 +37,16 @@ namespace sdl
             dimensions.y = new_location.y;
         }
 
+        void widget::show()
+        {
+            is_visible = true;
+        }
+
+        void widget::hide()
+        {
+            is_visible = false;
+        }
+
         void widget::draw()
         {
             SDL_Point outline[5] =

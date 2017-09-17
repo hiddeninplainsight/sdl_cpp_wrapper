@@ -22,6 +22,7 @@ namespace sdl
             sdl::renderer& renderer;
 
             SDL_Rect dimensions{0, 0, 20, 20};
+            bool is_visible{true};
 
             static application* current_application();
         public:
@@ -42,6 +43,10 @@ namespace sdl
 
             int width() const { return dimensions.w; }
             int height() const { return dimensions.h; }
+
+            bool visible() const { return is_visible; }
+            virtual void show();
+            virtual void hide();
 
             virtual void draw();
             virtual void refresh();

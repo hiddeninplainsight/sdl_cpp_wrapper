@@ -50,8 +50,6 @@ namespace sdl
 
         void button::draw()
         {
-            outline.draw();
-            text_widget.draw();
         }
 
         void button::refresh()
@@ -84,6 +82,20 @@ namespace sdl
         {
             resizable_widget::height(value);
             set_outline_points();
+        }
+
+        void button::show()
+        {
+            widget::show();
+            text_widget.show();
+            outline.show();
+        }
+
+        void button::hide()
+        {
+            widget::hide();
+            text_widget.hide();
+            outline.hide();
         }
 
         void button::set_size_based_on_text()
@@ -119,7 +131,7 @@ namespace sdl
         {
             (void)mouse_id;
             (void)clicks;
-            if(button == mouse_button::left)
+            if(is_visible && button == mouse_button::left)
             {
                 SDL_Point mouse_point{x, y};
                 bool hit = tri_point_collision(&outline_points[0], mouse_point) ||

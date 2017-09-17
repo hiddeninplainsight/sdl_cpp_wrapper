@@ -25,7 +25,10 @@ namespace sdl
 
         void image::draw()
         {
-            renderer.copy(image_texture, dimensions.x, dimensions.y);
+            if(is_visible)
+            {
+                renderer.copy(image_texture, dimensions.x, dimensions.y);
+            }
         }
     }
 }

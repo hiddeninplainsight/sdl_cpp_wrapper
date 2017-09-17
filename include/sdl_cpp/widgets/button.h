@@ -45,6 +45,9 @@ namespace sdl
             virtual void width(int value) override;
             virtual void height(int value) override;
 
+            virtual void show() override;
+            virtual void hide() override;
+
             void set_size_based_on_text();
 
         private:

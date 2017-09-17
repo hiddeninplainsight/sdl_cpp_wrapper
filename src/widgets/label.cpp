@@ -47,7 +47,10 @@ namespace sdl
 
         void label::draw()
         {
-            renderer.copy(text_texture, x(), y());
+            if(is_visible)
+            {
+                renderer.copy(text_texture, x(), y());
+            }
         }
 
         void label::refresh()
