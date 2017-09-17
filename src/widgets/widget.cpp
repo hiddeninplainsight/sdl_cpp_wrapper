@@ -1,4 +1,5 @@
 #include "sdl_cpp/widgets/widget.h"
+#include "sdl_cpp/sdl_exception.h"
 
 namespace sdl
 {
@@ -6,6 +7,10 @@ namespace sdl
     {
         application* widget::current_application()
         {
+            if(application::current == nullptr)
+            {
+                throw sdl_exception{"widget::current_application", "Attempted to create widget with no active application"};
+            }
             return application::current;
         }
 
