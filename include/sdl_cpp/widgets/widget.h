@@ -28,6 +28,9 @@ namespace sdl
             widget();
             virtual ~widget();
 
+            widget(widget const&) = delete;
+            widget& operator=(widget const&) = delete;
+
             SDL_Point location() const;
             void location(SDL_Point const& new_location);
 
