@@ -42,6 +42,7 @@ add_library(sdl-cpp
         # fonts
         include/sdl_cpp/fonts/ttf_font.h
         include/sdl_cpp/fonts/ttf_font_context.h
+        src/fonts/ttf_font.cpp
 
         # widgets
         include/sdl_cpp/widgets/application.h
