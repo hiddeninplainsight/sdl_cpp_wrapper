@@ -16,7 +16,7 @@ namespace sdl
 {
     namespace widgets
     {
-        application::application(int argc, char** argv)
+        application::application(int /*argc*/, char** argv)
             : application_path{executable_path_to_application_path(argv[0])}
             , font{default_font, default_font_size, 14}
         {

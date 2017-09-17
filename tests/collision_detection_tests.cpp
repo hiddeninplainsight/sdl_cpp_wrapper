@@ -39,7 +39,7 @@ void test_collision_detection_circle_collision()
     assert(sdl::circle_collision({10, 10}, 5, {7, 9}));
 }
 
-int main(int argc, char ** argv)
+int main(int /*argc*/, char ** /*argv*/)
 {
     test_collision_detection_tri_point_collision();
     test_collision_detection_circle_collision();

@@ -77,6 +77,8 @@ namespace sdl
                 {
                     throw sdl_exception{"fonts::text_size", TTF_GetError()};
                 }
+
+                return size;
             }
 
             ttf_font_text_size text_size(std::string const &text) const

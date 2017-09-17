@@ -34,4 +34,4 @@ namespace sdl
 
         return (radius * radius) > ((dx * dx) + (dy * dy));
     }
-};
+}

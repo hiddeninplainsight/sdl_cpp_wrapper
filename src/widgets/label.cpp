@@ -6,9 +6,9 @@ namespace
     {
         if(text.length())
         {
-            return font.create_texture(renderer, text, {0x00, 0x00, 0x00});
+            return font.create_texture(renderer, text, {0x00, 0x00, 0x00, 0xFF});
         }
-        return font.create_texture(renderer, " ", {0x00, 0x00, 0x00});
+        return font.create_texture(renderer, " ", {0x00, 0x00, 0x00, 0xFF});
     }
 }
 
