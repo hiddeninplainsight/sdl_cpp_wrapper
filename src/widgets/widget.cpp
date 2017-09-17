@@ -9,8 +9,9 @@ namespace sdl
             return application::current;
         }
 
-        widget::widget()
+        widget::widget(int x, int y)
             : renderer{current_application()->get_renderer()}
+            , dimensions{x, y, 20, 20}
         {
             current_application()->add_widget(this);
         }

@@ -25,7 +25,7 @@ namespace sdl
 
             static application* current_application();
         public:
-            widget();
+            widget(int x, int y);
             virtual ~widget();
 
             widget(widget const&) = delete;

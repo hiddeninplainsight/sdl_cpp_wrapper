@@ -28,11 +28,11 @@ private:
     sdl::widgets::window_application app;
 
     sdl::widgets::lines_no_storage collider_lines{collider};
-    sdl::widgets::image circle{app.application_path + "/circle.png"};
+    sdl::widgets::image circle{10, 10, app.application_path + "/circle.png"};
 
-    sdl::widgets::label position_label;
-    sdl::widgets::label pressed_label;
-    sdl::widgets::label released_label;
+    sdl::widgets::label position_label{10, 0};
+    sdl::widgets::label pressed_label{10, 100};
+    sdl::widgets::label released_label{10, 200};
 
     sdl::key_state w_key{app.keys, SDLK_w};
     sdl::key_state s_key{app.keys, SDLK_s};
@@ -104,32 +104,15 @@ protected:
         released_label.text(released_clicks.str());
     }
 
-    void process_graphics()
-    {
-        app.draw();
-
-//        renderer.copy(circleTexture, location.x, location.y);
-
-//        renderer.set_draw_colour(0xFF, 0x00, 0x00);
-//        renderer.draw_lines(collider);
-
-    }
-
 public:
     test_application(int argc, char** argv, std::string const& title, int x, int y, int width, int height)
         : app(argc, argv, title, x, y, width, height)
     {
         rotate_collider(0.0);
 
-        circle.location({10, 10});
-
         collider_lines.colour({0xFF, 0x00, 0x00, 0xFF});
 
         app.resize_font(36);
-
-        position_label.location({10, 0});
-        pressed_label.location({10, 100});
-        released_label.location({10, 200});
 
         position_label.refresh();
         pressed_label.refresh();
@@ -142,7 +125,7 @@ public:
         {
             app.events.poll();
             process_events();
-            process_graphics();
+            app.draw();
         }
         return 0;
     }

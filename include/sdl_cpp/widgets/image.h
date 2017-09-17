@@ -17,6 +17,7 @@ namespace sdl
 
         public:
             explicit image(std::string const& image_path);
+            image(int x, int y, std::string const& image_path);
 
             void draw() override;
         };

@@ -10,8 +10,13 @@ namespace sdl
         class resizable_widget : public widget
         {
         public:
-            explicit resizable_widget(widget_creation_parameters const& parameters)
-                : widget(parameters)
+            resizable_widget(SDL_Point location)
+                : widget{location}
+            {
+            }
+
+            resizable_widget(int x, int y)
+                : widget{x, y}
             {
             }
 

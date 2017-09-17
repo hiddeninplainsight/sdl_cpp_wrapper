@@ -17,6 +17,7 @@ namespace sdl
             sdl::texture text_texture;
         public:
             explicit label(std::string const& text = " ");
+            label(int x, int y, std::string const& text = " ");
 
             std::string const& text() const;
             void text(std::string const& text);

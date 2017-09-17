@@ -17,7 +17,16 @@ namespace sdl
     namespace widgets
     {
         label::label(std::string const& text)
-            : displayed_text{text}
+            : widget{0, 0}
+            , displayed_text{text}
+            , font{current_application()->font}
+            , text_texture{create_text_texture(renderer, font, displayed_text)}
+        {
+        }
+
+        label::label(int x, int y, std::string const& text)
+            : widget{x, y}
+            , displayed_text{text}
             , font{current_application()->font}
             , text_texture{create_text_texture(renderer, font, displayed_text)}
         {

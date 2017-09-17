@@ -20,7 +20,8 @@ namespace sdl
         public:
             template<size_t N>
             explicit lines_no_storage(SDL_Point (&p)[N])
-                : points{p}
+                : widget{0, 0}
+                , points{p}
                 , number_of_points{N}
                 , line_colour{0x00, 0x00, 0x00, 0xFF}
             {
