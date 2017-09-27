@@ -50,26 +50,15 @@ namespace sdl
 
         void button::draw()
         {
+            text_widget.location.x = location.x;
+            text_widget.location.y = location.y;
+            set_outline_points();
         }
 
         void button::refresh()
         {
             text_widget.refresh();
             set_size_based_on_text();
-        }
-
-        void button::x(int value)
-        {
-            widget::x(value);
-            text_widget.x(value);
-            set_outline_points();
-        }
-
-        void button::y(int value)
-        {
-            widget::y(value);
-            text_widget.y(value);
-            set_outline_points();
         }
 
         void button::width(int value)
@@ -100,8 +89,8 @@ namespace sdl
 
         void button::set_size_based_on_text()
         {
-            dimensions.w = text_widget.width();
-            dimensions.h = text_widget.height();
+            dimensions.width = text_widget.width();
+            dimensions.height = text_widget.height();
 
             set_outline_points();
         }
@@ -111,19 +100,19 @@ namespace sdl
             outline_points[0].x = 0;
             outline_points[0].y = 0;
 
-            outline_points[1].x = dimensions.w;
+            outline_points[1].x = dimensions.width;
             outline_points[1].y = 0;
 
-            outline_points[2].x = dimensions.w;
-            outline_points[2].y = dimensions.h;
+            outline_points[2].x = dimensions.width;
+            outline_points[2].y = dimensions.height;
 
             outline_points[3].x = 0;
-            outline_points[3].y = dimensions.h;
+            outline_points[3].y = dimensions.height;
 
             outline_points[4].x = 0;
             outline_points[4].y = 0;
 
-            translate_points(outline_points, outline_points, number_of_outline_points, dimensions.x, dimensions.y);
+            translate_points(outline_points, outline_points, number_of_outline_points, location.x, location.y);
         }
 
         void button::mouse_button_pressed_event(Uint32 mouse_id, mouse_button button,

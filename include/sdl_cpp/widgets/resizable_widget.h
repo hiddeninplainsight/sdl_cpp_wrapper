@@ -15,8 +15,8 @@ namespace sdl
             {
             }
 
-            virtual void width(int value) { dimensions.w = value; }
-            virtual void height(int value) { dimensions.h = value; }
+            virtual void width(int value) { dimensions.width = value; }
+            virtual void height(int value) { dimensions.height = value; }
         };
     }
 }

@@ -40,8 +40,6 @@ namespace sdl
             virtual void draw() override;
             virtual void refresh() override;
 
-            virtual void x(int value) override;
-            virtual void y(int value) override;
             virtual void width(int value) override;
             virtual void height(int value) override;
 

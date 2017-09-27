@@ -62,10 +62,10 @@ private:
 
     void attempt_move(SDL_Point const& transform)
     {
-        SDL_Point new_location = circle.location() + transform;
+        SDL_Point new_location = circle.location + transform;
         if(!sdl::tri_point_collision(collider, new_location))
         {
-            circle.location(new_location);
+            circle.location = new_location;
         }
     };
 
@@ -83,8 +83,8 @@ protected:
         auto right_click = mouse.button_press(sdl::mouse_button::right, true);
         if(right_click.clicks)
         {
-            circle.x(right_click.x);
-            circle.y(right_click.y);
+            circle.location.x = right_click.x;
+            circle.location.y = right_click.y;
         }
 
         std::stringstream  mouse_location;
@@ -124,7 +124,7 @@ public:
         reset_button.refresh();
 
         reset_button.click_handler([this](sdl::widgets::button&) {
-            this->circle.location({10, 10});
+            this->circle.location = {10, 10};
             this->angle = 0.0;
             this->rotate_collider(0.0);
         });

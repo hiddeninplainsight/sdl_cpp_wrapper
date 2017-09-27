@@ -16,12 +16,22 @@ namespace sdl
             sdl::fonts::ttf_font& font;
         };
 
+        struct widget_dimensions
+        {
+            int width;
+            int height;
+        };
+
         class widget
         {
         protected:
             sdl::renderer& renderer;
 
-            SDL_Rect dimensions{0, 0, 20, 20};
+        public:
+            SDL_Point location{0, 0};
+
+        protected:
+            widget_dimensions dimensions{20, 20};
             bool is_visible{true};
 
             static application* current_application();
@@ -32,17 +42,8 @@ namespace sdl
             widget(widget const&) = delete;
             widget& operator=(widget const&) = delete;
 
-            SDL_Point location() const;
-            void location(SDL_Point const& new_location);
-
-            int x() const { return dimensions.x; }
-            virtual void x(int value) { dimensions.x = value; }
-
-            int y() const { return dimensions.y; }
-            virtual void y(int value) { dimensions.y = value; }
-
-            int width() const { return dimensions.w; }
-            int height() const { return dimensions.h; }
+            int width() const { return dimensions.width; }
+            int height() const { return dimensions.height; }
 
             bool visible() const { return is_visible; }
             virtual void show();

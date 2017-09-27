@@ -49,7 +49,7 @@ namespace sdl
         {
             if(is_visible)
             {
-                renderer.copy(text_texture, x(), y());
+                renderer.copy(text_texture, location.x, location.y);
             }
         }
 
@@ -62,8 +62,8 @@ namespace sdl
         void label::recalculate_size()
         {
             auto text_size = text_texture.dimensions();
-            dimensions.w = text_size.w;
-            dimensions.h = text_size.h;
+            dimensions.width = text_size.w;
+            dimensions.height = text_size.h;
         }
     }
 }

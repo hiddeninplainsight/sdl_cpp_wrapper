@@ -10,8 +10,8 @@ namespace sdl
             , image_texture{current_application()->get_renderer(), sdl::surface::create_from_image(image_path)}
         {
             auto image_dimensions = image_texture.dimensions();
-            dimensions.w = image_dimensions.w;
-            dimensions.h = image_dimensions.h;
+            dimensions.width = image_dimensions.w;
+            dimensions.height = image_dimensions.h;
         }
 
         image::image(int x, int y, std::string const& image_path)
@@ -19,15 +19,15 @@ namespace sdl
             , image_texture{current_application()->get_renderer(), sdl::surface::create_from_image(image_path)}
         {
             auto image_dimensions = image_texture.dimensions();
-            dimensions.w = image_dimensions.w;
-            dimensions.h = image_dimensions.h;
+            dimensions.width = image_dimensions.w;
+            dimensions.height = image_dimensions.h;
         }
 
         void image::draw()
         {
             if(is_visible)
             {
-                renderer.copy(image_texture, dimensions.x, dimensions.y);
+                renderer.copy(image_texture, location.x, location.y);
             }
         }
     }
