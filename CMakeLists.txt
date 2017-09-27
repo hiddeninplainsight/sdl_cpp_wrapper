@@ -49,6 +49,7 @@ add_library(sdl-cpp
         include/sdl_cpp/widgets/button.h
         include/sdl_cpp/widgets/default_font.h
         include/sdl_cpp/widgets/image.h
+        include/sdl_cpp/widgets/key.h
         include/sdl_cpp/widgets/label.h
         include/sdl_cpp/widgets/lines_no_storage.h
         include/sdl_cpp/widgets/resizable_widget.h
@@ -58,6 +59,7 @@ add_library(sdl-cpp
         src/widgets/button.cpp
         src/widgets/default_font.cpp
         src/widgets/image.cpp
+        src/widgets/key.cpp
         src/widgets/label.cpp
         src/widgets/lines_no_storage.cpp
         src/widgets/widget.cpp

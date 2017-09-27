@@ -3,6 +3,7 @@
 #include <sdl_cpp/widgets/image.h>
 #include <sdl_cpp/widgets/lines_no_storage.h>
 #include <sdl_cpp/widgets/button.h>
+#include <sdl_cpp/widgets/key.h>
 #include <sdl_cpp/sdl_cpp.h>
 #include <sdl_cpp/fonts/ttf_font_context.h>
 #include <sdl_cpp/fonts/ttf_font.h>
@@ -37,12 +38,12 @@ private:
 
     sdl::widgets::button reset_button{400, 100, "Reset"};
 
-    sdl::key_state w_key{app.keys, SDLK_w};
-    sdl::key_state s_key{app.keys, SDLK_s};
-    sdl::key_state a_key{app.keys, SDLK_a};
-    sdl::key_state d_key{app.keys, SDLK_d};
-    sdl::key_state q_key{app.keys, SDLK_q};
-    sdl::key_state e_key{app.keys, SDLK_e};
+    sdl::widgets::key w_key{SDLK_w};
+    sdl::widgets::key s_key{SDLK_s};
+    sdl::widgets::key a_key{SDLK_a};
+    sdl::widgets::key d_key{SDLK_d};
+    sdl::widgets::key q_key{SDLK_q};
+    sdl::widgets::key e_key{SDLK_e};
 
     sdl::mouse_state mouse{app.mouse_events};
 

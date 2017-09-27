@@ -11,10 +11,12 @@ namespace sdl
     namespace widgets
     {
         class widget;
+        class key;
 
         class application
         {
             friend widget;
+            friend key;
         private:
             sdl::context context;
             sdl::fonts::ttf_font_context ttf_context;
