@@ -54,6 +54,7 @@ add_library(sdl-cpp
         include/sdl_cpp/widgets/lines_no_storage.h
         include/sdl_cpp/widgets/resizable_widget.h
         include/sdl_cpp/widgets/widget.h
+        include/sdl_cpp/widgets/widgets.h
         include/sdl_cpp/widgets/window_application.h
         src/widgets/application.cpp
         src/widgets/button.cpp

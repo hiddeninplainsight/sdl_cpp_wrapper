@@ -1,9 +1,4 @@
-#include <sdl_cpp/widgets/window_application.h>
-#include <sdl_cpp/widgets/label.h>
-#include <sdl_cpp/widgets/image.h>
-#include <sdl_cpp/widgets/lines_no_storage.h>
-#include <sdl_cpp/widgets/button.h>
-#include <sdl_cpp/widgets/key.h>
+#include <sdl_cpp/widgets/widgets.h>
 #include <sdl_cpp/sdl_cpp.h>
 #include <sdl_cpp/fonts/ttf_font_context.h>
 #include <sdl_cpp/fonts/ttf_font.h>
