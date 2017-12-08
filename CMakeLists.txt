@@ -11,12 +11,17 @@ if(${WIN32})
     set(SDL2 "${CMAKE_CURRENT_LIST_DIR}/sdl2windows/lib/x64")
     set(SDL2_INCLUDE_DIR "${CMAKE_CURRENT_LIST_DIR}/sdl2windows/include")
     link_directories("${CMAKE_CURRENT_LIST_DIR}/sdl2windows/lib/x64/")
-
-    file(GLOB dll_files "${CMAKE_CURRENT_LIST_DIR}/sdl2windows/lib/x64/*.dll")
-    foreach(dll_file ${dll_files})
-        file(COPY "${dll_file}" DESTINATION "${sdl-cpp-wrapper_BINARY_DIR}/test-app")
-    endforeach()
 endif()
+
+function(copy_sdl2_windows_dlls target_path)
+    if(${WIN32})
+        message(STATUS "Copying SDL2 DLLs to '${target_path}'")
+        file(GLOB dll_files "${sdl-cpp-wrapper_SOURCE_DIR}/sdl2windows/lib/x64/*.dll")
+        foreach(dll_file ${dll_files})
+            file(COPY "${dll_file}" DESTINATION "${target_path}")
+        endforeach()
+    endif()
+endfunction()
 
 include(cmake/FindSDL2.cmake)
 
