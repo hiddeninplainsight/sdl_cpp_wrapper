@@ -6,12 +6,18 @@
 
 namespace
 {
+#ifdef WIN32
+	char const path_seperator = '\\';
+#else
+	char const path_seperator = '/';
+#endif
+
     std::string
     executable_path_to_application_path(std::string const &executable_path)
     {
         return std::string{executable_path.cbegin(), executable_path.cbegin() +
                                                      executable_path.find_last_of(
-                                                             '/')};
+                                                             path_seperator) };
     }
 }
 
