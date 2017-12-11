@@ -7,23 +7,42 @@ if(${UNIX})
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -pedantic")
 endif()
 
-if(${WIN32})
-    set(SDL2 "${CMAKE_CURRENT_LIST_DIR}/sdl2windows/lib/x64")
-    set(SDL2_INCLUDE_DIR "${CMAKE_CURRENT_LIST_DIR}/sdl2windows/include")
-    link_directories("${CMAKE_CURRENT_LIST_DIR}/sdl2windows/lib/x64/")
-endif()
+macro(set_SDL2_Windows_variables)
+    if(${WIN32})
+        if(CMAKE_SIZEOF_VOID_P EQUAL 8) # 64-bit build
+            set(SDL2_WINDOWS_LIBRARY_DIRECTORY "${sdl-cpp-wrapper_SOURCE_DIR}/sdl2windows/lib/x64")
+        else(CMAKE_SIZEOF_VOID_P EQUAL 8) # 32-bit build
+            set(SDL2_WINDOWS_LIBRARY_DIRECTORY "${sdl-cpp-wrapper_SOURCE_DIR}/sdl2windows/lib/x86")
+        endif(CMAKE_SIZEOF_VOID_P EQUAL 8)
+
+        set(SDL2_INCLUDE_DIR "${CMAKE_CURRENT_LIST_DIR}/sdl2windows/include")
+
+        set(SDL2 "${SDL2_WINDOWS_LIBRARY_DIRECTORY}")
+        link_directories("${SDL2_WINDOWS_LIBRARY_DIRECTORY}/")
+    endif()
+endmacro()
 
 function(copy_sdl2_windows_dlls target_path)
     if(${WIN32})
-        message(STATUS "Copying SDL2 DLLs to '${target_path}'")
-        file(GLOB dll_files "${sdl-cpp-wrapper_SOURCE_DIR}/sdl2windows/lib/x64/*.dll")
+        set_SDL2_Windows_variables()
+        message(STATUS "Copying SDL2 DLLs to '${target_path}' from '${SDL2_WINDOWS_LIBRARY_DIRECTORY}/*.dll'")
+        file(GLOB dll_files "${SDL2_WINDOWS_LIBRARY_DIRECTORY}/*.dll")
         foreach(dll_file ${dll_files})
             file(COPY "${dll_file}" DESTINATION "${target_path}")
         endforeach()
     endif()
 endfunction()
 
+set_SDL2_Windows_variables()
 include(cmake/FindSDL2.cmake)
+
+find_library(SDL2_IMAGE_LIBRARY SDL2_image
+    HINTS
+    ${SDL2})
+
+find_library(SDL2_TTF_LIBRARY SDL2_ttf
+    HINTS
+    ${SDL2})
 
 add_library(sdl-cpp
         include/sdl_cpp/sdl_cpp.h
@@ -94,8 +113,8 @@ target_include_directories(sdl-cpp SYSTEM PUBLIC
 
 target_link_libraries(sdl-cpp
         ${SDL2_LIBRARY}
-        SDL2_image
-        SDL2_ttf
+        ${SDL2_IMAGE_LIBRARY}
+        ${SDL2_TTF_LIBRARY}
         )
 
 add_subdirectory(test-app)
