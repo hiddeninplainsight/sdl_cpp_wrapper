@@ -14,3 +14,5 @@ file(COPY circle.png
 
 file(COPY Press_Start_2P/PressStart2P-Regular.ttf
         DESTINATION ${sdl-cpp-wrapper-test-app_BINARY_DIR})
+
+copy_sdl2_windows_dlls("${sdl-cpp-wrapper_BINARY_DIR}/test-app")
