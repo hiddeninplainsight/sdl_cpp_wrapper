@@ -33,6 +33,12 @@ namespace sdl
         destination.y = y;
         SDL_RenderCopy(renderer_ptr, texture, NULL, &destination);
     }
+
+	inline void renderer::set_target(texture& texture)
+	{
+		SDL_SetRenderTarget(renderer_ptr, texture);
+	}
+
 }
 
 #endif //SDL_CPP_RENDERER_H

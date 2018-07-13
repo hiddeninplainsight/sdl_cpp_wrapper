@@ -20,6 +20,13 @@ namespace sdl
                 throw sdl_exception("texture::texture", SDL_GetError());
         }
 
+        texture(const renderer& renderer, int width, int height)
+		{
+			texture_ptr = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, width, height);
+			if(texture_ptr == nullptr)
+				throw sdl_exception("texture::texture", SDL_GetError());
+		}
+
         ~texture()
         {
             if(texture_ptr != nullptr)
@@ -64,6 +71,7 @@ namespace sdl
 namespace sdl {
     class texture {
         + texture(const renderer& renderer, const surface& surface)
+        + texture(const renderer& renderer, int width, int height)
         + operator SDL_Texture*() const
         + SDL_Rect dimensions() const
     }

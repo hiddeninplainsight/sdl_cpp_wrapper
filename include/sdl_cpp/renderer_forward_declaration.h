@@ -45,6 +45,12 @@ namespace sdl
         {
             SDL_SetRenderDrawColor(renderer_ptr, r, g, b, a);
         }
+
+		inline void set_target(texture& texture);
+		inline void clear_target()
+		{
+			SDL_SetRenderTarget(renderer_ptr, nullptr);
+		}
     };
 }
 
@@ -62,6 +68,8 @@ namespace sdl {
         + int draw_lines(SDL_Point const* points, int numberOfPoints)
         + int draw_lines(SDL_Point const (&points)[number_of_points])
         + void set_draw_colour(unsigned char r, unsigned char g, unsigned char b, unsigned char a = 0xFF)
+        + void set_target(texture& texture)
+        + void clear_target()
     }
 
     renderer --> window

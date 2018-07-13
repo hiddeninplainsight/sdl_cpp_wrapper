@@ -58,6 +58,7 @@ add_library(sdl-cpp
         include/sdl_cpp/mouse_state.h
         include/sdl_cpp/point_transforms.h
         include/sdl_cpp/rectangle_collider.h
+        include/sdl_cpp/render_to_texture.h
         include/sdl_cpp/renderer.h
         include/sdl_cpp/renderer_forward_declaration.h
         include/sdl_cpp/surface.h
