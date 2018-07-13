@@ -6,32 +6,34 @@
 
 namespace sdl
 {
-    void rotate_points(SDL_Point const *source, SDL_Point *destination,
-                       std::size_t numberOfPoints, double angle);
+	void rotate_points(SDL_Point const* source, SDL_Point* destination,
+					   std::size_t numberOfPoints, double angle);
 
-    void translate_points(SDL_Point const *source, SDL_Point *destination,
-                          std::size_t numberOfPoints, int x, int y);
+	void translate_points(SDL_Point const* source, SDL_Point* destination,
+						  std::size_t numberOfPoints, int x, int y);
 
-    void scale_points(SDL_Point const *source, SDL_Point *destination,
-                      std::size_t numberOfPoints, double scale);
+	void scale_points(SDL_Point const* source, SDL_Point* destination,
+					  std::size_t numberOfPoints, double scale);
 }
 
-SDL_Point operator+(SDL_Point const& a, SDL_Point const & b);
+SDL_Point operator+(SDL_Point const& a, SDL_Point const& b);
 
+// clang-format off
 /*
 @startuml
 namespace sdl {
-    class "Point transforms functions" as point_transforms <<global>> {
-        void rotate_points(SDL_Point const *source, SDL_Point *destination, std::size_t numberOfPoints, double angle)
-        void translate_points(SDL_Point const *source, SDL_Point *destination, std::size_t numberOfPoints, int x, int y)
-        void scale_points(SDL_Point const *source, SDL_Point *destination, std::size_t numberOfPoints, double scale)
-    }
+	class "Point transforms functions" as point_transforms <<global>> {
+		void rotate_points(SDL_Point const *source, SDL_Point *destination, std::size_t numberOfPoints, double angle)
+		void translate_points(SDL_Point const *source, SDL_Point *destination, std::size_t numberOfPoints, int x, int y)
+		void scale_points(SDL_Point const *source, SDL_Point *destination, std::size_t numberOfPoints, double scale)
+	}
 }
 
 class "Point transforms functions" as point_transforms <<global>> {
-    SDL_Point operator+(SDL_Point const& a, SDL_Point const & b)
+	SDL_Point operator+(SDL_Point const& a, SDL_Point const & b)
 }
 @enduml
 */
+// clang-format on
 
-#endif // SDL_CPP_POINT_TRANSFORMS_H
+#endif  // SDL_CPP_POINT_TRANSFORMS_H

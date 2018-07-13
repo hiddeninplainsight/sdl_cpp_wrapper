@@ -2,8 +2,8 @@
 
 namespace sdl
 {
-    double degrees_to_radians(double degrees)
-    {
-        return (degrees * tau) / 360.0;
-    }
+	double degrees_to_radians(double degrees)
+	{
+		return (degrees * tau) / 360.0;
+	}
 }

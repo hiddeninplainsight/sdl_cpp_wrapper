@@ -11,4 +11,4 @@
 #include "widget.h"
 #include "window_application.h"
 
-#endif //SDL_CPP_WIDGETS_WIDGETS_H
+#endif  // SDL_CPP_WIDGETS_WIDGETS_H

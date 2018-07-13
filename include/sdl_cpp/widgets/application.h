@@ -1,58 +1,58 @@
 #ifndef SDL_CPP_WIDGETS_APPLICATION_H
 #define SDL_CPP_WIDGETS_APPLICATION_H
 
-#include "../sdl_cpp.h"
-#include "sdl_cpp/fonts/ttf_font_context.h"
-#include "sdl_cpp/fonts/ttf_font.h"
 #include <vector>
+#include "../sdl_cpp.h"
+#include "sdl_cpp/fonts/ttf_font.h"
+#include "sdl_cpp/fonts/ttf_font_context.h"
 
 namespace sdl
 {
-    namespace widgets
-    {
-        class widget;
-        class key;
+	namespace widgets
+	{
+		class widget;
+		class key;
 
-        class application
-        {
-            friend widget;
-            friend key;
-        private:
-            sdl::context context;
-            sdl::fonts::ttf_font_context ttf_context;
+		class application
+		{
+			friend widget;
+			friend key;
 
-            static application* current;
+		private:
+			sdl::context context;
+			sdl::fonts::ttf_font_context ttf_context;
 
-        protected:
-            std::vector<widget*> widgets;
-            void add_widget(widget* w);
-            void remove_widget(widget* w);
+			static application* current;
 
-        public:
-            sdl::events events;
-            sdl::quit_event_bool quit{events};
-            sdl::event_keys keys{events};
+		protected:
+			std::vector<widget*> widgets;
+			void add_widget(widget* w);
+			void remove_widget(widget* w);
 
-            sdl::event_mouse_dispatch mouse_events{events};
+		public:
+			sdl::events events;
+			sdl::quit_event_bool quit{events};
+			sdl::event_keys keys{events};
 
-            std::string const application_path;
+			sdl::event_mouse_dispatch mouse_events{events};
 
-            sdl::fonts::ttf_font font;
+			std::string const application_path;
 
-        public:
-            application(int argc, char** argv);
-            virtual ~application();
+			sdl::fonts::ttf_font font;
 
-            application(application const&) = delete;
-            application& operator=(application const&) = delete;
+		public:
+			application(int argc, char** argv);
+			virtual ~application();
 
-            void resize_font(int point_size);
+			application(application const&) = delete;
+			application& operator=(application const&) = delete;
 
-            virtual sdl::renderer& get_renderer() = 0;
-            virtual void draw() = 0;
+			void resize_font(int point_size);
 
-        };
-    }
+			virtual sdl::renderer& get_renderer() = 0;
+			virtual void draw() = 0;
+		};
+	}
 }
 
-#endif // SDL_CPP_WIDGETS_APPLICATION_H
+#endif  // SDL_CPP_WIDGETS_APPLICATION_H

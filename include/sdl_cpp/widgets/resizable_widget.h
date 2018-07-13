@@ -5,20 +5,20 @@
 
 namespace sdl
 {
-    namespace widgets
-    {
-        class resizable_widget : public widget
-        {
-        public:
-            resizable_widget(int x, int y)
-                : widget{x, y}
-            {
-            }
+	namespace widgets
+	{
+		class resizable_widget : public widget
+		{
+		public:
+			resizable_widget(int x, int y)
+				: widget{x, y}
+			{
+			}
 
-            virtual void width(int value) { dimensions.width = value; }
-            virtual void height(int value) { dimensions.height = value; }
-        };
-    }
+			virtual void width(int value) { dimensions.width = value; }
+			virtual void height(int value) { dimensions.height = value; }
+		};
+	}
 }
 
-#endif //SDL_CPP_WIDGETS_RESIZABLE_WIDGET_H
+#endif  // SDL_CPP_WIDGETS_RESIZABLE_WIDGET_H
