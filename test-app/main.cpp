@@ -2,6 +2,7 @@
 #include <sdl_cpp/fonts/ttf_font_context.h>
 #include <sdl_cpp/sdl_cpp.h>
 #include <sdl_cpp/widgets/widgets.h>
+#include <sdl_cpp/bezier.h>
 #include <algorithm>
 #include <iostream>
 #include <sstream>
@@ -10,6 +11,16 @@
 class test_application
 {
 private:
+	sdl::BezierCurve curveCoordinates{
+		{
+			{ 200, 300 },
+			{ 200, 590 },
+			{ 950, 590 },
+			{ 950, 300 },
+		}
+	};
+	SDL_Point curve[50];
+
 	using collider_t = SDL_Point[4];
 
 	collider_t const collider_shape{{-50, -25}, {50, -25}, {0, 25}, {-50, -25}};
@@ -17,6 +28,10 @@ private:
 	collider_t collider;
 
 	sdl::widgets::window_application app;
+
+	sdl::widgets::lines_no_storage curve_lines{curve};
+	sdl::widgets::lines_no_storage curve_coordinates_lines{curveCoordinates.points};
+
 
 	sdl::widgets::lines_no_storage collider_lines{collider};
 	sdl::widgets::image circle{10, 10, app.application_path + "/circle.png"};
@@ -117,6 +132,7 @@ public:
 					 int y, int width, int height)
 		: app(argc, argv, title, x, y, width, height)
 	{
+		CalculateBezierCurvePoints(curveCoordinates, curve);
 		rotate_collider(0.0);
 
 		collider_lines.colour({0xFF, 0x00, 0x00, 0xFF});
@@ -153,7 +169,7 @@ int main(int argc, char** argv)
 	try
 	{
 		test_application application{argc, argv, "test-app", 100,
-									 100,  800,  480};
+									 100,  1000,  680};
 		return application.run();
 	}
 	catch (sdl::sdl_exception const& error)
