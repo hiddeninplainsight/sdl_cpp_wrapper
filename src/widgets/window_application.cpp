@@ -14,10 +14,15 @@ namespace sdl
 		{
 		}
 
+		void window_application::colour(SDL_Color colour)
+		{
+			backgroundColour = colour;
+		}
+
 		sdl::renderer& window_application::get_renderer() { return renderer; }
 		void window_application::draw()
 		{
-			renderer.set_draw_colour(0xAA, 0xAA, 0xAA);
+			renderer.set_draw_colour(backgroundColour.r, backgroundColour.g, backgroundColour.b);
 			renderer.clear();
 
 			for (auto w : widgets)

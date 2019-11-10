@@ -13,6 +13,7 @@ namespace sdl
 		private:
 			std::string displayed_text;
 			sdl::fonts::ttf_font& font;
+			SDL_Color textColour{ 0x00, 0x00, 0x00, 0xFF };
 
 			sdl::texture text_texture;
 
@@ -22,6 +23,8 @@ namespace sdl
 
 			std::string const& text() const;
 			void text(std::string const& text);
+			void colour(SDL_Color colour);
+			void text_and_colour(std::string const& text, SDL_Color colour);
 
 			virtual void draw() override;
 			virtual void refresh() override;

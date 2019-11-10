@@ -16,10 +16,13 @@ namespace sdl
 		private:
 			sdl::window window;
 			sdl::renderer renderer{window};
+			SDL_Color backgroundColour{ 0xFF, 0xFF, 0xFF, 0xFF };
 
 		public:
 			window_application(int argc, char** argv, std::string const& title,
 							   int x, int y, int width, int height);
+
+			void colour(SDL_Color colour);
 
 			virtual sdl::renderer& get_renderer() override;
 			virtual void draw() override;

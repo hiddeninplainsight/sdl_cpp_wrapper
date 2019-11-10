@@ -4,14 +4,14 @@ namespace
 {
 	sdl::texture create_text_texture(sdl::renderer& renderer,
 									 sdl::fonts::ttf_font const& font,
+									 SDL_Color& colour,
 									 std::string const& text)
 	{
 		if (text.length())
 		{
-			return font.create_texture(renderer, text,
-									   {0x00, 0x00, 0x00, 0xFF});
+			return font.create_texture(renderer, text, colour);
 		}
-		return font.create_texture(renderer, " ", {0x00, 0x00, 0x00, 0xFF});
+		return font.create_texture(renderer, " ", colour);
 	}
 }
 
@@ -23,7 +23,7 @@ namespace sdl
 			: widget{0, 0}
 			, displayed_text{text}
 			, font{current_application()->font}
-			, text_texture{create_text_texture(renderer, font, displayed_text)}
+			, text_texture{create_text_texture(renderer, font, textColour, displayed_text)}
 		{
 			recalculate_size();
 		}
@@ -32,7 +32,7 @@ namespace sdl
 			: widget{x, y}
 			, displayed_text{text}
 			, font{current_application()->font}
-			, text_texture{create_text_texture(renderer, font, displayed_text)}
+			, text_texture{create_text_texture(renderer, font, textColour, displayed_text)}
 		{
 			recalculate_size();
 		}
@@ -40,6 +40,19 @@ namespace sdl
 		std::string const& label::text() const { return displayed_text; }
 		void label::text(std::string const& text)
 		{
+			displayed_text = text;
+			refresh();
+		}
+
+		void label::colour(SDL_Color colour)
+		{
+			textColour = colour;
+			refresh();
+		}
+
+		void label::text_and_colour(std::string const& text, SDL_Color colour)
+		{
+			textColour = colour;
 			displayed_text = text;
 			refresh();
 		}
@@ -54,7 +67,7 @@ namespace sdl
 
 		void label::refresh()
 		{
-			text_texture = create_text_texture(renderer, font, displayed_text);
+			text_texture = create_text_texture(renderer, font, textColour, displayed_text);
 			recalculate_size();
 		}
 
