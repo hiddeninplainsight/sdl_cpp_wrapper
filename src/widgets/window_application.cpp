@@ -8,9 +8,11 @@ namespace sdl
 	{
 		window_application::window_application(int argc, char** argv,
 											   std::string const& title, int x,
-											   int y, int width, int height)
+											   int y, int width, int height,
+											   bool vSync)
 			: application{argc, argv}
 			, window{title, x, y, width, height}
+			, renderer{window, vSync}
 		{
 		}
 

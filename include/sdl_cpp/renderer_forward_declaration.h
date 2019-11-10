@@ -15,7 +15,7 @@ namespace sdl
 		SDL_Renderer* renderer_ptr;
 
 	public:
-		explicit renderer(const window& window);
+		explicit renderer(const window& window, bool vSync = true);
 
 		~renderer() { SDL_DestroyRenderer(renderer_ptr); }
 		renderer(const renderer&) = delete;

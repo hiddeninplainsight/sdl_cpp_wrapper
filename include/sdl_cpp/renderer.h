@@ -8,10 +8,11 @@
 
 namespace sdl
 {
-	inline renderer::renderer(const window& window)
+	inline renderer::renderer(const window& window, bool vSync)
 	{
 		renderer_ptr = SDL_CreateRenderer(
-			window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+			window, -1, SDL_RENDERER_ACCELERATED |
+				(vSync ? SDL_RENDERER_PRESENTVSYNC : 0));
 
 		if (renderer_ptr == nullptr)
 			throw sdl_exception("renderer::renderer", SDL_GetError());

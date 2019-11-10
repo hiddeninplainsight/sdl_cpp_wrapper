@@ -15,12 +15,12 @@ namespace sdl
 		{
 		private:
 			sdl::window window;
-			sdl::renderer renderer{window};
+			sdl::renderer renderer;
 			SDL_Color backgroundColour{ 0xFF, 0xFF, 0xFF, 0xFF };
 
 		public:
 			window_application(int argc, char** argv, std::string const& title,
-							   int x, int y, int width, int height);
+							   int x, int y, int width, int height, bool vSync = true);
 
 			void colour(SDL_Color colour);
 
