@@ -2,6 +2,8 @@
 #include "sdl_cpp/widgets/default_font.h"
 #include "sdl_cpp/widgets/widget.h"
 
+#include "sdl_cpp/widgets/executable_path.h"
+
 #include <algorithm>
 
 namespace
@@ -29,6 +31,13 @@ namespace sdl
 
 		application::application(int /*argc*/, char** argv)
 			: application_path{executable_path_to_application_path(argv[0])}
+			, font{default_font, default_font_size, 14}
+		{
+			current = this;
+		}
+
+		application::application()
+			: application_path{executable_path()}
 			, font{default_font, default_font_size, 14}
 		{
 			current = this;

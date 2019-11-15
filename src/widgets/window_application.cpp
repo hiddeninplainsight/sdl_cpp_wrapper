@@ -16,6 +16,15 @@ namespace sdl
 		{
 		}
 
+		window_application::window_application(std::string const& title,
+											   int x, int y,
+											   int width, int height,
+											   bool vSync)
+			: window{title, x, y, width, height}
+			, renderer{window, vSync}
+		{
+		}
+
 		void window_application::colour(SDL_Color colour)
 		{
 			backgroundColour = colour;

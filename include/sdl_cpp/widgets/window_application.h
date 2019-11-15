@@ -22,6 +22,9 @@ namespace sdl
 			window_application(int argc, char** argv, std::string const& title,
 							   int x, int y, int width, int height, bool vSync = true);
 
+			window_application(std::string const& title,
+							   int x, int y, int width, int height, bool vSync = true);
+
 			void colour(SDL_Color colour);
 
 			virtual sdl::renderer& get_renderer() override;

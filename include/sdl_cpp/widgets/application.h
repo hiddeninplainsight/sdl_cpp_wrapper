@@ -42,6 +42,7 @@ namespace sdl
 
 		public:
 			application(int argc, char** argv);
+			application();
 			virtual ~application();
 
 			application(application const&) = delete;

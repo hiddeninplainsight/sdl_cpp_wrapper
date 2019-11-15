@@ -44,6 +44,14 @@ find_library(SDL2_TTF_LIBRARY SDL2_ttf
 	HINTS
 	${SDL2})
 
+if(${WIN32})
+	set(WIDGETS_EXECUTABLE_PATH_SOURCE_FILE src/widgets/executable_path_windows.cpp)
+endif(${WIN32})
+
+if(${UNIX})
+	set(WIDGETS_EXECUTABLE_PATH_SOURCE_FILE src/widgets/executable_path_linux.cpp)
+endif(${UNIX})
+
 add_library(sdl-cpp
 	include/sdl_cpp/sdl_cpp.h
 	include/sdl_cpp/bezier.h
@@ -88,6 +96,7 @@ add_library(sdl-cpp
 	include/sdl_cpp/widgets/application.h
 	include/sdl_cpp/widgets/button.h
 	include/sdl_cpp/widgets/default_font.h
+	include/sdl_cpp/widgets/executable_path.h
 	include/sdl_cpp/widgets/image.h
 	include/sdl_cpp/widgets/key.h
 	include/sdl_cpp/widgets/label.h
@@ -99,6 +108,7 @@ add_library(sdl-cpp
 	src/widgets/application.cpp
 	src/widgets/button.cpp
 	src/widgets/default_font.cpp
+	${WIDGETS_EXECUTABLE_PATH_SOURCE_FILE}
 	src/widgets/image.cpp
 	src/widgets/key.cpp
 	src/widgets/label.cpp
