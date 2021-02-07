@@ -1,10 +1,18 @@
 cmake_minimum_required(VERSION 3.5)
+
+# detect if sdl_cpp_wrapper is being included as a sub project
+if(NOT DEFINED PROJECT_NAME)
+	set(NOT_SUB_PROJECT ON)
+endif()
+
 project(sdl-cpp-wrapper VERSION 0.0.1)
 
-set(CMAKE_CXX_STANDARD 14)
+if(NOT_SUB_PROJECT)
+	set(CMAKE_CXX_STANDARD 14)
 
-if(${UNIX})
-	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -pedantic")
+	if(${UNIX})
+		set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -pedantic")
+	endif()
 endif()
 
 macro(set_SDL2_Windows_variables)
@@ -132,7 +140,9 @@ target_link_libraries(sdl-cpp
 	${SDL2_TTF_LIBRARY}
 	)
 
-add_subdirectory(test-app)
+if(NOT_SUB_PROJECT)
+	add_subdirectory(test-app)
+endif()
 add_subdirectory(tests)
 
 install(TARGETS sdl-cpp ARCHIVE DESTINATION lib)
