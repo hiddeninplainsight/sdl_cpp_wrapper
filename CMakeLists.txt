@@ -52,14 +52,6 @@ find_library(SDL2_TTF_LIBRARY SDL2_ttf
 	HINTS
 	${SDL2})
 
-if(${WIN32})
-	set(WIDGETS_EXECUTABLE_PATH_SOURCE_FILE src/widgets/executable_path_windows.cpp)
-endif(${WIN32})
-
-if(${UNIX})
-	set(WIDGETS_EXECUTABLE_PATH_SOURCE_FILE src/widgets/executable_path_linux.cpp)
-endif(${UNIX})
-
 add_library(sdl-cpp
 	include/sdl_cpp/sdl_cpp.h
 	include/sdl_cpp/bezier.h
@@ -100,29 +92,6 @@ add_library(sdl-cpp
 	include/sdl_cpp/fonts/ttf_font_context.h
 	src/fonts/ttf_font.cpp
 
-	# widgets
-	include/sdl_cpp/widgets/application.h
-	include/sdl_cpp/widgets/button.h
-	include/sdl_cpp/widgets/default_font.h
-	include/sdl_cpp/widgets/executable_path.h
-	include/sdl_cpp/widgets/image.h
-	include/sdl_cpp/widgets/key.h
-	include/sdl_cpp/widgets/label.h
-	include/sdl_cpp/widgets/lines_no_storage.h
-	include/sdl_cpp/widgets/resizable_widget.h
-	include/sdl_cpp/widgets/widget.h
-	include/sdl_cpp/widgets/widgets.h
-	include/sdl_cpp/widgets/window_application.h
-	src/widgets/application.cpp
-	src/widgets/button.cpp
-	src/widgets/default_font.cpp
-	${WIDGETS_EXECUTABLE_PATH_SOURCE_FILE}
-	src/widgets/image.cpp
-	src/widgets/key.cpp
-	src/widgets/label.cpp
-	src/widgets/lines_no_storage.cpp
-	src/widgets/widget.cpp
-	src/widgets/window_application.cpp
 	)
 
 target_include_directories(sdl-cpp PRIVATE
@@ -139,6 +108,8 @@ target_link_libraries(sdl-cpp
 	${SDL2_IMAGE_LIBRARY}
 	${SDL2_TTF_LIBRARY}
 	)
+
+add_subdirectory(widgets)
 
 if(NOT_SUB_PROJECT)
 	add_subdirectory(test-app)

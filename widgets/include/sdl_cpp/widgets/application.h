@@ -2,7 +2,7 @@
 #define SDL_CPP_WIDGETS_APPLICATION_H
 
 #include <vector>
-#include "../sdl_cpp.h"
+#include "sdl_cpp/sdl_cpp.h"
 #include "sdl_cpp/fonts/ttf_font.h"
 #include "sdl_cpp/fonts/ttf_font_context.h"
 

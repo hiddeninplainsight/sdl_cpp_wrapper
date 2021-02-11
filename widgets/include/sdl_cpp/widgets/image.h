@@ -1,7 +1,7 @@
 #ifndef SDL_CPP_WIDGETS_IMAGE_H
 #define SDL_CPP_WIDGETS_IMAGE_H
 
-#include "../texture.h"
+#include "sdl_cpp/texture.h"
 #include "widget.h"
 
 #include <string>

@@ -1,7 +1,7 @@
 #ifndef SDL_CPP_WIDGETS_WINDOW_APPLICATION_H
 #define SDL_CPP_WIDGETS_WINDOW_APPLICATION_H
 
-#include "../sdl_cpp.h"
+#include "sdl_cpp/sdl_cpp.h"
 #include "application.h"
 #include "widget.h"
 

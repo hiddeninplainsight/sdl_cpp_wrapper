@@ -1,7 +1,7 @@
 #ifndef SDL_CPP_WIDGETS_KEY_H
 #define SDL_CPP_WIDGETS_KEY_H
 
-#include "../key_state.h"
+#include "sdl_cpp/key_state.h"
 #include "application.h"
 
 namespace sdl

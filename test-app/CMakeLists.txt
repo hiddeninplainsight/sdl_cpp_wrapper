@@ -7,6 +7,7 @@ add_executable(test-app
 
 target_link_libraries(test-app
         sdl-cpp
+		widgets
         )
 
 file(COPY circle.png

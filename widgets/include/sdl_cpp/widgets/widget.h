@@ -1,7 +1,7 @@
 #ifndef SDL_CPP_WIDGETS_WIDGET_H
 #define SDL_CPP_WIDGETS_WIDGET_H
 
-#include "../sdl_cpp.h"
+#include "sdl_cpp/sdl_cpp.h"
 #include "application.h"
 #include "sdl_cpp/fonts/ttf_font.h"
 #include "sdl_cpp/fonts/ttf_font_context.h"

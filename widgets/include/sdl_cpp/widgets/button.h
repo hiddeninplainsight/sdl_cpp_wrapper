@@ -1,8 +1,8 @@
 #ifndef SDL_CPP_WIDGETS_BUTTON_H
 #define SDL_CPP_WIDGETS_BUTTON_H
 
-#include "../event_mouse_dispatch.h"
-#include "../fonts/ttf_font.h"
+#include "sdl_cpp/event_mouse_dispatch.h"
+#include "sdl_cpp/fonts/ttf_font.h"
 #include "label.h"
 #include "lines_no_storage.h"
 #include "resizable_widget.h"
