@@ -13,10 +13,11 @@ namespace sdl
 		SDL_Window* window_ptr;
 
 	public:
-		window(const std::string& title, int x, int y, int width, int height)
+		window(const std::string& title, int x, int y, int width, int height,
+			   SDL_WindowFlags flags = SDL_WINDOW_SHOWN)
 		{
 			window_ptr = SDL_CreateWindow(title.c_str(), x, y, width, height,
-										  SDL_WINDOW_SHOWN);
+										  flags);
 
 			if (window_ptr == nullptr)
 				throw sdl_exception("window::window", SDL_GetError());
@@ -27,6 +28,8 @@ namespace sdl
 		window& operator=(const window&) = delete;
 
 		operator SDL_Window*() const { return window_ptr; }
+
+		Uint32 ID() const { return SDL_GetWindowID(window_ptr); }
 	};
 }
 

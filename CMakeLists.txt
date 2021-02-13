@@ -54,6 +54,8 @@ find_library(SDL2_TTF_LIBRARY SDL2_ttf
 
 add_subdirectory(sdl-cpp)
 add_subdirectory(widgets)
+add_subdirectory(widgets2)
+add_subdirectory(widgets2-demo-app)
 
 if(NOT_SUB_PROJECT)
 	add_subdirectory(test-app)
