@@ -16,6 +16,7 @@ add_library(sdl-cpp
 		include/sdl_cpp/rectangle_collider.h
 		include/sdl_cpp/render_to_texture.h
 		include/sdl_cpp/renderer.h
+		include/sdl_cpp/renderer_clip_region.h
 		include/sdl_cpp/renderer_forward_declaration.h
 		include/sdl_cpp/surface.h
 		include/sdl_cpp/texture.h
@@ -32,6 +33,7 @@ add_library(sdl-cpp
 		src/mouse_state.cpp
 		src/point_transforms.cpp
 		src/rectangle_collider.cpp
+		src/renderer_clip_region.cpp
 
 		# fonts
 		include/sdl_cpp/fonts/ttf_font.h

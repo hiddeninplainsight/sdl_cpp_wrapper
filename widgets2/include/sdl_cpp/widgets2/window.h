@@ -26,11 +26,7 @@ namespace sdl
 
 			window(std::string const& title, int x, int y, int width, int height, window_flags flags = window_flags::none);
 
-			void set_root_widget(std::shared_ptr<widget_container> widget)
-			{
-				root_widget = widget;
-			}
-
+			void set_root_widget(std::shared_ptr<widget_container> widget);
 			void draw();
 			void handle_event(SDL_Event const& event);
 		};

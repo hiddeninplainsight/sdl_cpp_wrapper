@@ -39,10 +39,29 @@ namespace sdl
 		{
 		}
 
+		void window::set_root_widget(std::shared_ptr<widget_container> widget)
+		{
+			if(root_widget)
+			{
+				root_widget->set_renderer(nullptr);
+			}
+			root_widget = widget;
+			root_widget->set_renderer(&sdl_renderer);
+			int w, h;
+			if(SDL_GetRendererOutputSize(sdl_renderer, &w, &h) == 0)
+			{
+				root_widget->screen_position.x = 0;
+				root_widget->screen_position.y = 0;
+				root_widget->screen_position.w = w;
+				root_widget->screen_position.h = h;
+				root_widget->screen_position_updated();
+			}
+		}
+
 		void window::draw()
 		{
-			sdl_renderer.clear();
 			sdl_renderer.set_draw_colour(0x00, 0x00, 0x00);
+			sdl_renderer.clear();
 
 			if(root_widget)
 			{
@@ -56,9 +75,18 @@ namespace sdl
 		{
 			if(event.type == SDL_WINDOWEVENT)
 			{
-				std::cout << static_cast<uint32_t>(event.window.event) << " : "
-						  << event.window.data1 << " x "
-						  << event.window.data2 << std::endl;
+				if(event.window.event == SDL_WINDOWEVENT_RESIZED && root_widget)
+				{
+					root_widget->screen_position.w = event.window.data1;
+					root_widget->screen_position.h = event.window.data2;
+					root_widget->screen_position_updated();
+				}
+				else
+				{
+					std::cout << static_cast<uint32_t>(event.window.event) << " : "
+							  << event.window.data1 << " x "
+							  << event.window.data2 << std::endl;
+				}
 			}
 		}
 	}

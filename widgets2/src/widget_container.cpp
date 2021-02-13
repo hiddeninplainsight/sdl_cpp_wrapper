@@ -1,5 +1,8 @@
 #include "sdl_cpp/widgets2/widget_container.h"
 #include <algorithm>
+#include <utility>
+
+using namespace ::std;
 
 namespace sdl
 {
@@ -16,14 +19,16 @@ namespace sdl
 
 		void widget_container::add_widget(widget_ptr w)
 		{
-			children.push_back(w);
+			w->set_renderer(sdl_renderer);
+			children.push_back(move(w));
 		}
 
-		bool widget_container::remove_widget(widget_ptr w)
+		bool widget_container::remove_widget(widget_ptr const& w)
 		{
-			auto const it = std::find(children.begin(), children.end(), w);
+			auto const it = find(children.begin(), children.end(), w);
 			if(it != children.end())
 			{
+				(*it)->set_renderer(nullptr);
 				children.erase(it);
 				return true;
 			}

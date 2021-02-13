@@ -1,11 +1,13 @@
 add_library(widgets2
 		include/sdl_cpp/widgets2/application.h
+		include/sdl_cpp/widgets2/panel.h
 		include/sdl_cpp/widgets2/widget.h
 		include/sdl_cpp/widgets2/widget_container.h
 		include/sdl_cpp/widgets2/window.h
 		include/sdl_cpp/widgets2/window_flags.h
 
 		src/application.cpp
+		src/panel.cpp
 		src/widget.cpp
 		src/widget_container.cpp
 		src/window.cpp

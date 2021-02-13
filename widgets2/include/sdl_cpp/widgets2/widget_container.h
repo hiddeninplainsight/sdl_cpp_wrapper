@@ -9,17 +9,32 @@ namespace sdl
 {
 	namespace widgets2
 	{
+		class window;
+
 		class widget_container : public widget
 		{
+			friend class window;
 		public:
 			using widget_ptr = std::shared_ptr<widget>;
-		private:
-			std::vector<widget_ptr> children;
+
 		protected:
+			static inline SDL_Rect& widget_screen_position(widget_ptr const& w)
+			{
+				return w->screen_position;
+			}
+
+			static inline SDL_Rect& widget_requested_position(widget_ptr const& w)
+			{
+				return w->requested_position;
+			}
+
+		protected:
+			std::vector<widget_ptr> children;
+
 			void set_renderer(renderer *r) override;
 		public:
-			void add_widget(widget_ptr w);
-			bool remove_widget(widget_ptr w);
+			virtual void add_widget(widget_ptr w);
+			bool remove_widget(widget_ptr const& w);
 		};
 	}
 }
