@@ -5,6 +5,7 @@
 #include <sdl_cpp/renderer.h>
 #include <sdl_cpp/texture.h>
 #include <sdl_cpp/texture_pixel_buffer.h>
+#include <sdl_cpp/pixel_buffer_painter.h>
 #include <memory>
 
 #include <memory>
@@ -21,15 +22,25 @@ private:
 	void update_texture()
 	{
 		sdl::texture_pixel_buffer pixels{texture_ptr.get()};
-		pixels.clear(0x003300FF);
+		pixels.clear(0x009900FF);
+
+		auto painter =
+			sdl::pixel_buffer_painter::from_texture_pixel_buffer(pixels);
+		int const radius = (requested_position.w / 2) - 10;
+		int const x_and_y = requested_position.w / 2;
+
+		painter.filled_circle(x_and_y, x_and_y, radius, 0xFFFFFFFF);
+
+		painter.filled_rectangle(50, 50, requested_position.w - 100,
+								 requested_position.h - 100, 0x000099FF);
 
 		Uint32 colour1 = 0xFF0000FF;
 		auto b = pixels.buffer;
-		for(int y = 0; y < pixels.size.height; ++y)
+		for (int y = 0; y < pixels.size.height; ++y)
 		{
-			for(int x = 0 ;x < pixels.size.width; ++x)
+			for (int x = 0; x < pixels.size.width; ++x)
 			{
-				if((x / 20) % 2 == 0 && (y / 20) % 2 == 0)
+				if ((x / 20) % 2 == 0 && (y / 20) % 2 == 0)
 				{
 					*b = colour1;
 				}
@@ -67,7 +78,7 @@ public:
 
 		widget1 = make_shared<pixel_buffer_widget>();
 		widget1->position(10, 10);
-		widget1->dimensions(100, 100);
+		widget1->dimensions(500, 500);
 		root_container->add_widget(widget1);
 	}
 };

@@ -12,6 +12,7 @@ add_library(sdl-cpp
 		include/sdl_cpp/lerp.h
 		include/sdl_cpp/maths.h
 		include/sdl_cpp/mouse_state.h
+		include/sdl_cpp/pixel_buffer_painter.h
 		include/sdl_cpp/point_transforms.h
 		include/sdl_cpp/rectangle_collider.h
 		include/sdl_cpp/render_to_texture.h
@@ -33,6 +34,7 @@ add_library(sdl-cpp
 		src/lerp.cpp
 		src/maths.cpp
 		src/mouse_state.cpp
+		src/pixel_buffer_painter.cpp
 		src/point_transforms.cpp
 		src/rectangle_collider.cpp
 		src/renderer_clip_region.cpp
