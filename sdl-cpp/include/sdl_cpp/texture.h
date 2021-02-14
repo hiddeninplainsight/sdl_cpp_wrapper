@@ -5,6 +5,7 @@
 #include "renderer_forward_declaration.h"
 #include "sdl_exception.h"
 #include "surface.h"
+#include "sdl_size.h"
 
 namespace sdl
 {
@@ -65,6 +66,14 @@ namespace sdl
 			SDL_QueryTexture(texture_ptr, nullptr, nullptr, &rectangle.w,
 							 &rectangle.h);
 			return rectangle;
+		}
+
+		sdl_size size() const
+		{
+			sdl_size s;
+			SDL_QueryTexture(texture_ptr, nullptr, nullptr, &s.width,
+							 &s.height);
+			return s;
 		}
 	};
 }

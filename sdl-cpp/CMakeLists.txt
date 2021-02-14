@@ -18,8 +18,10 @@ add_library(sdl-cpp
 		include/sdl_cpp/renderer.h
 		include/sdl_cpp/renderer_clip_region.h
 		include/sdl_cpp/renderer_forward_declaration.h
+		include/sdl_cpp/sdl_size.h
 		include/sdl_cpp/surface.h
 		include/sdl_cpp/texture.h
+		include/sdl_cpp/texture_pixel_buffer.h
 		include/sdl_cpp/window.h
 		src/bezier.cpp
 		src/collision_detection.cpp
@@ -34,6 +36,7 @@ add_library(sdl-cpp
 		src/point_transforms.cpp
 		src/rectangle_collider.cpp
 		src/renderer_clip_region.cpp
+		src/texture_pixel_buffer.cpp
 
 		# fonts
 		include/sdl_cpp/fonts/ttf_font.h

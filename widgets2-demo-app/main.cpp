@@ -2,12 +2,56 @@
 #include <sdl_cpp/widgets2/window.h>
 #include <sdl_cpp/widgets2/widget.h>
 #include <sdl_cpp/widgets2/panel.h>
+#include <sdl_cpp/renderer.h>
+#include <sdl_cpp/texture.h>
+#include <sdl_cpp/texture_pixel_buffer.h>
+#include <memory>
 
 #include <memory>
 #include <string>
 
 using namespace std;
 using namespace sdl::widgets2;
+
+class pixel_buffer_widget : public widget
+{
+private:
+	unique_ptr<sdl::texture> texture_ptr;
+
+	void update_texture()
+	{
+		sdl::texture_pixel_buffer pixels{texture_ptr.get()};
+		pixels.clear(0x003300FF);
+
+		Uint32 colour1 = 0xFF0000FF;
+		auto b = pixels.buffer;
+		for(int y = 0; y < pixels.size.height; ++y)
+		{
+			for(int x = 0 ;x < pixels.size.width; ++x)
+			{
+				if((x / 20) % 2 == 0 && (y / 20) % 2 == 0)
+				{
+					*b = colour1;
+				}
+				++b;
+			}
+		}
+
+		pixels.update_texture();
+	}
+
+public:
+	void set_renderer(sdl::renderer* r) override
+	{
+		texture_ptr = nullptr;
+		widget::set_renderer(r);
+		texture_ptr = make_unique<sdl::texture>(
+			*sdl_renderer, requested_position.w, requested_position.h);
+		update_texture();
+	}
+
+	void draw() override { sdl_renderer->copy(*texture_ptr, screen_position); }
+};
 
 class main_window : public window
 {
@@ -21,9 +65,9 @@ public:
 	{
 		set_root_widget(root_container);
 
-		widget1 = make_shared<widget>();
+		widget1 = make_shared<pixel_buffer_widget>();
 		widget1->position(10, 10);
-		widget1->dimensions(100, 20);
+		widget1->dimensions(100, 100);
 		root_container->add_widget(widget1);
 	}
 };

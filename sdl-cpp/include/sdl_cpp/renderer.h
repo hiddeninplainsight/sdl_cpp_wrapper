@@ -26,7 +26,10 @@ namespace sdl
 	inline void renderer::copy(const texture& texture,
 							   const SDL_Rect& destination)
 	{
-		SDL_RenderCopy(renderer_ptr, texture, NULL, &destination);
+		SDL_Rect source = destination;
+		source.x = 0;
+		source.y = 0;
+		SDL_RenderCopy(renderer_ptr, texture, &source, &destination);
 	}
 
 	inline void renderer::copy(const texture& texture, int x, int y)
