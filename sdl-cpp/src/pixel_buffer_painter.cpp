@@ -1,5 +1,6 @@
 #include "sdl_cpp/pixel_buffer_painter.h"
 #include <algorithm>
+#include <cmath>
 
 namespace sdl
 {
@@ -53,6 +54,16 @@ namespace sdl
 
 			std::fill(pixel, pixel + width, colour);
 		}
+	}
+
+	void pixel_buffer_painter::rectangle(int x, int y, int width, int height,
+				   buffer_type colour) const
+	{
+		line(x, y, x, y + height, colour);
+		line(x + width, y, x + width, y + height, colour);
+
+		line(x, y, x + width, y, colour);
+		line(x, y + height, x + width, y + height, colour);
 	}
 
 	void pixel_buffer_painter::filled_circle(int center_x, int center_y,
@@ -114,6 +125,43 @@ namespace sdl
 				if ((d >= radius2_inner) && (d <= radius2))
 				{
 					buffer[(y * size.width) + x] = colour;
+				}
+			}
+		}
+	}
+
+	void pixel_buffer_painter::line(int x1, int y1, int x2, int y2,
+									buffer_type colour) const
+	{
+		int const dx = x2 - x1;
+		int const dy = y2 - y1;
+
+		int const abs_dx = abs(dx);
+		int const abs_dy = abs(dy);
+
+		if(abs_dx > abs_dy)
+		{
+			for(int x = 0; x < abs_dx; ++x)
+			{
+				int const px = ((x * dx) / abs_dx) + x1;
+				int const py = ((x * dy) / abs_dx) + y1;
+
+				if((px >= 0) && (px < size.width) && (py >= 0) && (py < size.height))
+				{
+					buffer[(py * size.width) + px] = colour;
+				}
+			}
+		}
+		else
+		{
+			for(int y = 0; y < abs_dy; ++y)
+			{
+				int const px = ((y * dx) / abs_dy) + x1;
+				int const py = ((y * dy) / abs_dy) + y1;
+
+				if((px >= 0) && (px < size.width) && (py >= 0) && (py < size.height))
+				{
+					buffer[(py * size.width) + px] = colour;
 				}
 			}
 		}

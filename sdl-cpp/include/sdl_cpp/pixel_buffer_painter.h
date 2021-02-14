@@ -32,11 +32,13 @@ namespace sdl
 	public:
 		void filled_rectangle(int x, int y, int width, int height,
 							  buffer_type colour) const;
-
+		void rectangle(int x, int y, int width, int height,
+							  buffer_type colour) const;
 		void filled_circle(int center_x, int center_y, int radius,
 						   buffer_type colour) const;
 		void circle(int center_x, int center_y, int radius, buffer_type colour,
 					int line_width = 1) const;
+		void line(int x1, int y1, int x2, int y2, buffer_type colour) const;
 	};
 }
 

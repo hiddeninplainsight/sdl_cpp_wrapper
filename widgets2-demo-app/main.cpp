@@ -26,6 +26,9 @@ private:
 
 		auto painter =
 			sdl::pixel_buffer_painter::from_texture_pixel_buffer(pixels);
+
+		painter.line(10,5,300,200, 0xFFFFFFFF);
+
 		int const radius = (requested_position.w / 2) - 10;
 		int const x_and_y = requested_position.w / 2;
 
