@@ -29,7 +29,9 @@ private:
 		int const radius = (requested_position.w / 2) - 10;
 		int const x_and_y = requested_position.w / 2;
 
-		painter.filled_circle(x_and_y, x_and_y, radius, 0xFFFFFFFF);
+		painter.circle(x_and_y, x_and_y, radius, 0xFFFFFFFF, 2);
+
+		painter.filled_circle(x_and_y, x_and_y, radius - 10, 0xFFFFFFFF);
 
 		painter.filled_rectangle(50, 50, requested_position.w - 100,
 								 requested_position.h - 100, 0x000099FF);

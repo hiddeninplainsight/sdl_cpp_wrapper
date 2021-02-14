@@ -55,7 +55,8 @@ namespace sdl
 		}
 	}
 
-	void pixel_buffer_painter::filled_circle(int center_x, int center_y, int radius,
+	void pixel_buffer_painter::filled_circle(int center_x, int center_y,
+											 int radius,
 											 buffer_type colour) const
 	{
 		int x = center_x - radius;
@@ -71,14 +72,46 @@ namespace sdl
 		int const max_y = y + height;
 		int const radius2 = radius * radius;
 
-		for(;y < max_y; ++y)
+		for (; y < max_y; ++y)
 		{
-			for(x = min_x; x < max_x; ++x)
+			for (x = min_x; x < max_x; ++x)
 			{
 				int const dx = center_x - x;
 				int const dy = center_y - y;
 				int const d = (dx * dx) + (dy * dy);
-				if(d <= radius2)
+				if (d <= radius2)
+				{
+					buffer[(y * size.width) + x] = colour;
+				}
+			}
+		}
+	}
+
+	void pixel_buffer_painter::circle(int center_x, int center_y, int radius,
+									  buffer_type colour, int line_width) const
+	{
+		int x = center_x - radius;
+		int y = center_y - radius;
+		int width = radius * 2;
+		int height = radius * 2;
+
+		if (!range_check(x, y, width, height))
+			return;
+
+		int const min_x = x;
+		int const max_x = x + width;
+		int const max_y = y + height;
+		int const radius2 = radius * radius;
+		int const radius2_inner = (radius - line_width) * (radius - line_width);
+
+		for (; y < max_y; ++y)
+		{
+			for (x = min_x; x < max_x; ++x)
+			{
+				int const dx = center_x - x;
+				int const dy = center_y - y;
+				int const d = (dx * dx) + (dy * dy);
+				if ((d >= radius2_inner) && (d <= radius2))
 				{
 					buffer[(y * size.width) + x] = colour;
 				}
