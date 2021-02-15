@@ -3,7 +3,7 @@
 
 #include "sdl_cpp/window.h"
 #include "sdl_cpp/renderer.h"
-#include "sdl_cpp/widgets2/widget_container.h"
+#include "sdl_cpp/widgets2/widget.h"
 #include "window_flags.h"
 #include <memory>
 #include <string>
@@ -19,14 +19,14 @@ namespace sdl
 		private:
 			sdl::window sdl_window;
 			sdl::renderer sdl_renderer;
-			std::shared_ptr<widget_container> root_widget;
+			std::shared_ptr<widget> root_widget;
 
 		public:
 			uint32_t const id;
 
 			window(std::string const& title, int x, int y, int width, int height, window_flags flags = window_flags::none);
 
-			void set_root_widget(std::shared_ptr<widget_container> widget);
+			void set_root_widget(std::shared_ptr<widget> widget);
 			void draw();
 			void handle_event(SDL_Event const& event);
 		};

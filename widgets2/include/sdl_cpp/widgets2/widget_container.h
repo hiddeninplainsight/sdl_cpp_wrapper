@@ -9,11 +9,8 @@ namespace sdl
 {
 	namespace widgets2
 	{
-		class window;
-
 		class widget_container : public widget
 		{
-			friend class window;
 		public:
 			using widget_ptr = std::shared_ptr<widget>;
 

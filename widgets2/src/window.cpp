@@ -39,7 +39,7 @@ namespace sdl
 		{
 		}
 
-		void window::set_root_widget(std::shared_ptr<widget_container> widget)
+		void window::set_root_widget(std::shared_ptr<widget> widget)
 		{
 			if(root_widget)
 			{

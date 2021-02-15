@@ -9,10 +9,12 @@ namespace sdl
 	namespace widgets2
 	{
 		class widget_container;
+		class window;
 
 		class widget
 		{
 			friend class widget_container;
+			friend class window;
 		protected:
 			renderer* sdl_renderer{nullptr};
 			SDL_Rect requested_position{ 0, 0, 32, 32 };
