@@ -1,0 +1,78 @@
+@startuml
+
+!include ../class-diagram.umlconfig
+
+class application {
+    + std::vector<std::shared_ptr<window>> windows
+
+    + create_window<T>(Args&&... args)
+    + void poll_events()
+    + void draw_all_windows() const
+    + void run()
+    + bool keep_running() const
+}
+
+application o--> window
+
+class window {
+    + std::shared_ptr<widget> root_widget
+
+    + set_root_widget(std::shared_ptr<widget> widget)
+    + void draw()
+    + void handle_event(SDL_Event const& event)
+}
+
+window o--> widget
+
+class widget {
+    + shared_ptr<widget_position> const& position
+    # widget()
+    # {abstract} void set_renderer(renderer* r)
+    # {abstract} void screen_position_updated()
+    + {abstract} void draw()
+    + int actual_width() const
+    + int actual_height() const
+    + int x() const
+    + int y() const
+    + int width() const
+    + int height() const
+    + {abstract} bool x(int x)
+    + {abstract} bool y(int y)
+    + {abstract} bool width(int width)
+    + {abstract} bool height(int height)
+    + {abstract} bool position(int x, int y)
+    + {abstract} bool position(SDL_Point position)
+    + {abstract} bool dimensions(int width, int height)
+}
+
+class widget_container {
+    + using widget_ptr = std::shared_ptr<widget>
+    # std::vector<widget_ptr> children
+    # {static} SDL_Rect& widget_screen_position(widget_ptr const& w)
+    # {static} SDL_Rect& widget_requested_position(widget_ptr const& w)
+    + {abstract} void add_widget(widget_ptr control)
+    + {abstract} void remove_widget(widget_ptr const& control)
+}
+
+widget <|-- widget_container
+
+class panel {
+
+}
+
+widget_container <|-- panel
+
+
+class button {
+
+}
+
+widget <|-- button
+
+class canvas {
+
+}
+
+widget <|-- canvas
+
+@enduml
