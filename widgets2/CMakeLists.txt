@@ -1,5 +1,6 @@
 add_library(widgets2
 		include/sdl_cpp/widgets2/application.h
+		include/sdl_cpp/widgets2/forward_declarations.h
 		include/sdl_cpp/widgets2/panel.h
 		include/sdl_cpp/widgets2/widget.h
 		include/sdl_cpp/widgets2/widget_container.h
