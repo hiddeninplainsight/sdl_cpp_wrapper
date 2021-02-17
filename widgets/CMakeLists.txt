@@ -41,4 +41,5 @@ target_include_directories(widgets SYSTEM PUBLIC
 
 target_link_libraries(widgets PUBLIC
 		sdl-cpp
+		sdl-cpp-ttf
 		)

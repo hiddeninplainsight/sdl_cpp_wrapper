@@ -53,6 +53,7 @@ find_library(SDL2_TTF_LIBRARY SDL2_ttf
 	${SDL2})
 
 add_subdirectory(sdl-cpp)
+add_subdirectory(sdl-cpp-ttf)
 add_subdirectory(widgets)
 add_subdirectory(widgets2)
 

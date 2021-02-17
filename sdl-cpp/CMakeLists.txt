@@ -39,11 +39,6 @@ add_library(sdl-cpp
 		src/rectangle_collider.cpp
 		src/renderer_clip_region.cpp
 		src/texture_pixel_buffer.cpp
-
-		# fonts
-		include/sdl_cpp/fonts/ttf_font.h
-		include/sdl_cpp/fonts/ttf_font_context.h
-		src/fonts/ttf_font.cpp
 		)
 
 target_include_directories(sdl-cpp PRIVATE
@@ -55,8 +50,7 @@ target_include_directories(sdl-cpp SYSTEM PUBLIC
 		"${SDL2_INCLUDE_DIR}"
 		)
 
-target_link_libraries(sdl-cpp
+target_link_libraries(sdl-cpp PUBLIC
 		${SDL2_LIBRARY}
 		${SDL2_IMAGE_LIBRARY}
-		${SDL2_TTF_LIBRARY}
 		)

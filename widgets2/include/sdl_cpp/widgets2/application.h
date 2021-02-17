@@ -2,7 +2,6 @@
 #define SDL_CPP_WRAPPER_APPLICATION_H
 
 #include "sdl_cpp/sdl_cpp.h"
-#include "sdl_cpp/fonts/ttf_font_context.h"
 #include "sdl_cpp/widgets2/window.h"
 #include <memory>
 #include <vector>
@@ -19,7 +18,6 @@ namespace sdl
 		{
 		private:
 			sdl::context context;
-			sdl::fonts::ttf_font_context ttf_context;
 			bool quit{false};
 			std::vector<std::shared_ptr<window>> windows;
 		public:
