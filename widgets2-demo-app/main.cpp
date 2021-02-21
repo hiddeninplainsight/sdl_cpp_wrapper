@@ -2,6 +2,7 @@
 #include <sdl_cpp/widgets2/window.h>
 #include <sdl_cpp/widgets2/widget.h>
 #include <sdl_cpp/widgets2/panel.h>
+#include <sdl_cpp/widgets2/label.h>
 #include <sdl_cpp/renderer.h>
 #include <sdl_cpp/texture.h>
 #include <sdl_cpp/texture_pixel_buffer.h>
@@ -81,7 +82,8 @@ public:
 	{
 		set_root_widget(root_container);
 
-		widget1 = make_shared<pixel_buffer_widget>();
+		//widget1 = make_shared<pixel_buffer_widget>();
+		widget1 = make_shared<label>();
 		widget1->position(10, 10);
 		widget1->dimensions(500, 500);
 		root_container->add_widget(widget1);
