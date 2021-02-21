@@ -12,6 +12,8 @@ namespace freetype_cpp
 {
 	class library;
 
+	using draw_glyph_callback = void(void*, FT_GlyphSlot const);
+
 	class face
 	{
 	private:
@@ -39,6 +41,8 @@ namespace freetype_cpp
 
 		void set_font_size(points size, FT_UInt horizontal_resolution = 300,
 						   FT_UInt vertical_resolution = 300);
+
+		bool draw_glyph(FT_ULong c, draw_glyph_callback* callback, void* object = nullptr);
 	};
 }
 

@@ -61,4 +61,14 @@ namespace freetype_cpp
 			throw exception{};
 		}
 	}
+
+	bool face::draw_glyph(FT_ULong c, draw_glyph_callback* callback, void* object)
+	{
+		auto error = FT_Load_Char(face_object, c, FT_LOAD_RENDER);
+		if(error)
+			return false;
+
+		callback(object, face_object->glyph);
+		return true;
+	}
 }
