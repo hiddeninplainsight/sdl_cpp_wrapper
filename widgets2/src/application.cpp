@@ -8,6 +8,11 @@ namespace sdl
 {
 	namespace widgets2
 	{
+		application::application()
+			: freetype{freetype_library::initialise_instance()}
+		{
+		}
+
 		window* application::window_with_id(uint32_t id)
 		{
 			auto is_valid_id = [id](shared_ptr<window>& w) -> bool

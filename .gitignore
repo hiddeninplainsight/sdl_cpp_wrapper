@@ -1,2 +1,7 @@
+# CLion files
 /cmake-build-*/
 /.idea/
+
+# Visual Studio files
+/.vs/
+/out/

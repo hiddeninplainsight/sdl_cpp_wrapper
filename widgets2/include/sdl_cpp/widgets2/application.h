@@ -3,6 +3,7 @@
 
 #include "sdl_cpp/sdl_cpp.h"
 #include "sdl_cpp/widgets2/window.h"
+#include "freetype_library.h"
 #include <memory>
 #include <vector>
 #include <string>
@@ -18,10 +19,11 @@ namespace sdl
 		{
 		private:
 			sdl::context context;
+			std::shared_ptr<freetype_library> freetype;
 			bool quit{false};
 			std::vector<std::shared_ptr<window>> windows;
 		public:
-			application() = default;
+			application();
 			application(application const&) = delete;
 			application& operator=(application const&) = delete;
 

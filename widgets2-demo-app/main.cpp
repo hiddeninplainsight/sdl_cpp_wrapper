@@ -94,7 +94,7 @@ int main(int argc, char** argv)
 	(void)argv;
 
 	application app;
-	app.create_window<main_window>("Demo app", 0, 0, 640, 480);
+	app.create_window<main_window>("Demo app", 0, 50, 640, 480);
 	app.run();
 
 	return 0;
