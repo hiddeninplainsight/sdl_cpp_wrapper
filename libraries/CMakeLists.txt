@@ -1,4 +1,4 @@
-if($UNIX)
+if(${UNIX})
 
 add_custom_command(OUTPUT ${CMAKE_CURRENT_SOURCE_DIR}/build/out/lib/libfreetype.a
 		COMMAND ./build-freetype.sh
@@ -25,8 +25,8 @@ target_link_libraries(freetype INTERFACE
 		${CMAKE_CURRENT_SOURCE_DIR}/build/out/lib/libfreetype.a
 		)
 
-else($UNIX)
+else(${UNIX})
 	cmake_policy(PUSH)
 	add_subdirectory(freetype)
 	cmake_policy(POP)
-endif($UNIX)
+endif(${UNIX})

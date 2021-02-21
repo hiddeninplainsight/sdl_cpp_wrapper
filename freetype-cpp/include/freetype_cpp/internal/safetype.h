@@ -28,8 +28,8 @@ namespace freetype_cpp
 		class safe_type_scaled : public safe_type<T, tag>
 		{
 		public:
-			static T const scale = scale;
-			static T const max = std::numeric_limits<T>::max() / scale;
+			static T const value_scale = scale;
+			static T const max = std::numeric_limits<T>::max() / value_scale;
 
 			constexpr explicit safe_type_scaled(T value)
 				: safe_type<T, tag>{value * scale}

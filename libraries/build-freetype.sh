@@ -6,10 +6,12 @@ rm -rf $builddir
 mkdir -p $builddir
 cd build
 
-build_opts="-DWITH_ZLIB=0 \
-    -DWITH_BZip2=0 \
-    -DWITH_PNG=0 \
-    -DWITH_HarfBuzz=0 \
+build_opts=" \
+    -D CMAKE_DISABLE_FIND_PACKAGE_ZLIB=TRUE \
+    -D CMAKE_DISABLE_FIND_PACKAGE_BZip2=TRUE \
+    -D CMAKE_DISABLE_FIND_PACKAGE_PNG=TRUE \
+    -D CMAKE_DISABLE_FIND_PACKAGE_HarfBuzz=TRUE \
+    -D CMAKE_DISABLE_FIND_PACKAGE_BrotliDec=TRUE \
     -UBUILD_SHARED_LIBS \
     -DCMAKE_INSTALL_PREFIX=$builddir/out"
 
