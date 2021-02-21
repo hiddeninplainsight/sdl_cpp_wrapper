@@ -3,11 +3,11 @@
 
 #include "sdl_cpp/sdl_cpp.h"
 #include "sdl_cpp/widgets2/window.h"
-#include "freetype_library.h"
-#include <memory>
-#include <vector>
-#include <string>
+#include "freetype_cpp/library.h"
 #include <cstdint>
+#include <memory>
+#include <string>
+#include <vector>
 
 union SDL_Event;
 
@@ -19,7 +19,7 @@ namespace sdl
 		{
 		private:
 			sdl::context context;
-			std::shared_ptr<freetype_library> freetype;
+			std::shared_ptr<freetype_cpp::library> freetype;
 			bool quit{false};
 			std::vector<std::shared_ptr<window>> windows;
 		public:

@@ -9,7 +9,7 @@ namespace sdl
 	namespace widgets2
 	{
 		application::application()
-			: freetype{freetype_library::initialise_instance()}
+			: freetype{freetype_cpp::library::initialise_instance()}
 		{
 		}
 
