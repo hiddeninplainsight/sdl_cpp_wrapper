@@ -17,3 +17,16 @@ target_include_directories(freetype-cpp PUBLIC SYSTEM
 target_link_libraries(freetype-cpp PUBLIC
 		freetype
 		)
+
+add_library(freetype-cpp::freetype ALIAS freetype-cpp)
+
+add_library(freetype-cpp-fonts
+		fonts/PressStart2P_Regular_ttf.cpp
+		fonts/PressStart2P_Regular_ttf.h
+		)
+
+target_include_directories(freetype-cpp PUBLIC SYSTEM
+		fonts
+		)
+
+add_library(freetype-cpp::fonts ALIAS freetype-cpp-fonts)
