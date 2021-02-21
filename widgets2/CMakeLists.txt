@@ -24,5 +24,5 @@ target_include_directories(widgets2 SYSTEM PUBLIC
 
 target_link_libraries(widgets2 PUBLIC
 		sdl-cpp
-		freetype-cpp
+		freetype-cpp::freetype
 		)
