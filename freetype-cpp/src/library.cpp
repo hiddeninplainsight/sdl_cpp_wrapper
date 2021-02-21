@@ -1,5 +1,5 @@
 #include "freetype_cpp/library.h"
-#include <exception>
+#include "freetype_cpp/freetype_exception.h"
 
 using namespace std;
 
@@ -10,7 +10,7 @@ namespace freetype_cpp
 		FT_Error error = FT_Init_FreeType(&library_object);
 		if (error)
 		{
-			throw std::exception();
+			throw freetype_exception{};
 		}
 	}
 

@@ -6,6 +6,7 @@ add_library(freetype-cpp
 		include/freetype_cpp/internal/safetype.h
 
 		include/freetype_cpp/face.h
+		include/freetype_cpp/freetype_exception.h
 		include/freetype_cpp/library.h
 		include/freetype_cpp/points.h
 		)
@@ -25,7 +26,7 @@ add_library(freetype-cpp-fonts
 		fonts/PressStart2P_Regular_ttf.h
 		)
 
-target_include_directories(freetype-cpp PUBLIC SYSTEM
+target_include_directories(freetype-cpp-fonts PUBLIC SYSTEM
 		fonts
 		)
 
