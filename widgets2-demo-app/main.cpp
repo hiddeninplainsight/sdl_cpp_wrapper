@@ -75,6 +75,7 @@ class main_window : public window
 public:
 	shared_ptr<panel> root_container;
 	shared_ptr<widget> widget1;
+	shared_ptr<widget> widget2;
 
 	main_window(string const& title, int x, int y, int width, int height)
 		: window(title, x, y, width, height)
@@ -82,11 +83,15 @@ public:
 	{
 		set_root_widget(root_container);
 
-		//widget1 = make_shared<pixel_buffer_widget>();
-		widget1 = make_shared<label>();
-		widget1->position(10, 10);
-		widget1->dimensions(500, 500);
+		widget1 = make_shared<pixel_buffer_widget>();
+		widget1->position(10, 260);
+		widget1->dimensions(1000, 1000);
 		root_container->add_widget(widget1);
+
+		widget2 = make_shared<label>("Hello World");
+		widget2->position(10, 5);
+		widget2->dimensions(700, 250);
+		root_container->add_widget(widget2);
 	}
 };
 

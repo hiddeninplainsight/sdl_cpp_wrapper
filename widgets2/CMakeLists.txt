@@ -1,5 +1,6 @@
 add_library(widgets2
 		include/sdl_cpp/widgets2/application.h
+		include/sdl_cpp/widgets2/font_writer.h
 		include/sdl_cpp/widgets2/forward_declarations.h
 		include/sdl_cpp/widgets2/label.h
 		include/sdl_cpp/widgets2/panel.h
@@ -9,6 +10,7 @@ add_library(widgets2
 		include/sdl_cpp/widgets2/window_flags.h
 
 		src/application.cpp
+		src/font_writer.cpp
 		src/label.cpp
 		src/panel.cpp
 		src/widget.cpp
