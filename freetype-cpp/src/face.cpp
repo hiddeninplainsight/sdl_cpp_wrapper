@@ -28,7 +28,7 @@ namespace freetype_cpp
 							   memory_size, face_index, &face_object);
 		if (error)
 		{
-			throw freetype_exception();
+			throw freetype_exception{};
 		}
 	}
 

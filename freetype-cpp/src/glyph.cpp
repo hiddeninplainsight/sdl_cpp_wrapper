@@ -32,7 +32,7 @@ namespace freetype_cpp
 		auto error = FT_Get_Glyph(glyph, &glyph_object);
 		if(error)
 		{
-			throw freetype_exception();
+			throw freetype_exception{};
 		}
 	}
 }
