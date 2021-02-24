@@ -11,14 +11,7 @@
 namespace freetype_cpp
 {
 	class library;
-
-	class draw_glyph_callback
-	{
-	public:
-		virtual ~draw_glyph_callback() = default;
-
-		virtual void draw_glyph(FT_GlyphSlot const& glyph) = 0;
-	};
+	class draw_glyph_callback;
 
 	class face
 	{

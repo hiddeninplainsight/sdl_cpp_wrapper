@@ -1,7 +1,7 @@
 #ifndef FREETYPE_CPP_FREETYPE_GLYPH_H
 #define FREETYPE_CPP_FREETYPE_GLYPH_H
 
-#include "face.h"
+#include "draw_glyph_callback.h"
 
 #include <ft2build.h>
 #include FT_FREETYPE_H

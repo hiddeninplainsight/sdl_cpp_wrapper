@@ -1,7 +1,8 @@
 #include "freetype_cpp/face.h"
 #include "freetype_cpp/freetype_exception.h"
-#include <utility>
 #include "freetype_cpp/library.h"
+#include "freetype_cpp/draw_glyph_callback.h"
+#include <utility>
 
 using namespace std;
 

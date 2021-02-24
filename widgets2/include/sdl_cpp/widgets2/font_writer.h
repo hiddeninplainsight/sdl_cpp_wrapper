@@ -2,6 +2,7 @@
 #define SDL_CPP_WRAPPER_FONT_WRITER_H
 
 #include <freetype_cpp/face.h>
+#include <freetype_cpp/draw_glyph_callback.h>
 #include <sdl_cpp/texture_pixel_buffer.h>
 
 namespace sdl

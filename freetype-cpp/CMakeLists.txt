@@ -8,6 +8,7 @@ add_library(freetype-cpp
 		include/freetype_cpp/internal/safetype.h
 
 		include/freetype_cpp/bitmap_glyph.h
+		include/freetype_cpp/draw_glyph_callback.h
 		include/freetype_cpp/face.h
 		include/freetype_cpp/freetype_exception.h
 		include/freetype_cpp/glyph.h
