@@ -11,8 +11,8 @@ namespace freetype_cpp
 			   FT_Long face_index)
 		: library_ptr{move(library_ptr)}
 	{
-		FT_Error error = FT_New_Face(this->library_ptr->library_object, file_path,
-									 face_index, &face_object);
+		FT_Error error = FT_New_Face(this->library_ptr->library_object,
+									 file_path, face_index, &face_object);
 		if (error)
 		{
 			throw freetype_exception{};
@@ -24,8 +24,8 @@ namespace freetype_cpp
 		: library_ptr{move(library_ptr)}
 	{
 		FT_Error error =
-			FT_New_Memory_Face(this->library_ptr->library_object, memory, memory_size,
-							   face_index, &face_object);
+			FT_New_Memory_Face(this->library_ptr->library_object, memory,
+							   memory_size, face_index, &face_object);
 		if (error)
 		{
 			throw freetype_exception();
@@ -62,10 +62,11 @@ namespace freetype_cpp
 		}
 	}
 
-	bool face::draw_glyph(FT_ULong c, draw_glyph_callback& callback)
+	bool face::draw_glyph(FT_ULong c, draw_glyph_callback& callback,
+						  FT_Int32 load_flags)
 	{
-		auto error = FT_Load_Char(face_object, c, FT_LOAD_RENDER);
-		if(error)
+		auto error = FT_Load_Char(face_object, c, load_flags);
+		if (error)
 			return false;
 
 		callback.draw_glyph(face_object->glyph);
@@ -75,7 +76,7 @@ namespace freetype_cpp
 	FT_Pos face::line_height() const
 	{
 		auto error = FT_Load_Char(face_object, 'T', FT_LOAD_RENDER);
-		if(error)
+		if (error)
 		{
 			throw freetype_exception{};
 		}
@@ -83,12 +84,13 @@ namespace freetype_cpp
 		auto above_origin = face_object->glyph->metrics.horiBearingY;
 
 		error = FT_Load_Char(face_object, 'g', FT_LOAD_RENDER);
-		if(error)
+		if (error)
 		{
 			throw freetype_exception{};
 		}
 
-		auto below_origin = face_object->glyph->metrics.height - face_object->glyph->metrics.horiBearingY;
+		auto below_origin = face_object->glyph->metrics.height -
+							face_object->glyph->metrics.horiBearingY;
 
 		return above_origin + below_origin;
 	}

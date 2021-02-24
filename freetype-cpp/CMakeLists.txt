@@ -1,5 +1,6 @@
 add_library(freetype-cpp
 		src/face.cpp
+		src/glyph.cpp
 		src/library.cpp
 
 		include/freetype_cpp/internal/literal_parser.h
@@ -7,6 +8,7 @@ add_library(freetype-cpp
 
 		include/freetype_cpp/face.h
 		include/freetype_cpp/freetype_exception.h
+		include/freetype_cpp/glyph.h
 		include/freetype_cpp/library.h
 		include/freetype_cpp/points.h
 		)
