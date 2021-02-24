@@ -12,9 +12,13 @@
 namespace freetype_cpp
 {
 	class face;
+	class bitmap_glyph;
 
 	class glyph : private draw_glyph_callback
 	{
+	public:
+		friend class bitmap_glyph;
+
 	private:
 		std::shared_ptr<face> face_ptr;
 		FT_Glyph glyph_object{nullptr};
