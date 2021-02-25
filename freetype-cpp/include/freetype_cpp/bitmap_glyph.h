@@ -27,6 +27,9 @@ namespace freetype_cpp
 		bitmap_glyph(bitmap_glyph const&) = delete;
 		bitmap_glyph operator=(bitmap_glyph const&) = delete;
 
+		static std::shared_ptr<bitmap_glyph> initialise_from_glyph(
+			std::shared_ptr<glyph> glyph_ptr);
+
 		void draw(draw_glyph_callback& callback);
 	};
 }
