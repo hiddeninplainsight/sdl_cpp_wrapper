@@ -5,6 +5,8 @@
 #include FT_FREETYPE_H
 #include FT_GLYPH_H
 
+#include "draw_glyph_callback.h"
+
 #include <memory>
 
 namespace freetype_cpp
@@ -16,6 +18,7 @@ namespace freetype_cpp
 	private:
 		std::shared_ptr<glyph> glyph_ptr;
 		FT_BitmapGlyph bitmap_object{nullptr};
+		FT_Vector advance;
 
 		explicit bitmap_glyph(std::shared_ptr<glyph> glyph_ptr);
 
@@ -23,6 +26,8 @@ namespace freetype_cpp
 		~bitmap_glyph();
 		bitmap_glyph(bitmap_glyph const&) = delete;
 		bitmap_glyph operator=(bitmap_glyph const&) = delete;
+
+		void draw(draw_glyph_callback& callback);
 	};
 }
 

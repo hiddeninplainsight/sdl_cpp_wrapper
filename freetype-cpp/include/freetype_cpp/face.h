@@ -12,6 +12,7 @@ namespace freetype_cpp
 {
 	class library;
 	class draw_glyph_callback;
+	class get_glyph_callback;
 
 	class face
 	{
@@ -43,8 +44,10 @@ namespace freetype_cpp
 		void set_font_size(points size, FT_UInt horizontal_resolution = 300,
 						   FT_UInt vertical_resolution = 300);
 
-		bool draw_glyph(FT_ULong c, draw_glyph_callback& callback,
-						FT_Int32 load_flags = FT_LOAD_RENDER);
+		bool draw_glyph(FT_ULong c, draw_glyph_callback& callback);
+
+		bool get_glyph(FT_ULong c, get_glyph_callback& callback,
+					   FT_Int32 load_flags = FT_LOAD_RENDER);
 
 		FT_Pos line_height() const;
 	};

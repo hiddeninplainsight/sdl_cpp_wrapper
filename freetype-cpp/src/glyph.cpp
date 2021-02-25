@@ -24,11 +24,11 @@ namespace freetype_cpp
 		std::shared_ptr<face> face_ptr, FT_ULong c)
 	{
 		auto g = shared_ptr<glyph>{new glyph{move(face_ptr)}};
-		g->face_ptr->draw_glyph(c, *g, FT_LOAD_NO_BITMAP);
+		g->face_ptr->get_glyph(c, *g, FT_LOAD_NO_BITMAP);
 		return g;
 	}
 
-	void glyph::draw_glyph(const FT_GlyphSlot &glyph)
+	void glyph::receive_glyph(const FT_GlyphSlot &glyph)
 	{
 		auto error = FT_Get_Glyph(glyph, &glyph_object);
 		if(error)

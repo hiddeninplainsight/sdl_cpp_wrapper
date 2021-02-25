@@ -11,7 +11,8 @@ namespace freetype_cpp
 	public:
 		virtual ~draw_glyph_callback() = default;
 
-		virtual void draw_glyph(FT_GlyphSlot const& glyph) = 0;
+		virtual void draw_glyph(FT_Bitmap const& bitmap, FT_Int left,
+								FT_Int top, FT_Vector advance) = 0;
 	};
 }
 

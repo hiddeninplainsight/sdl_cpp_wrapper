@@ -17,12 +17,13 @@ namespace sdl
 			long y{0};
 
 			explicit font_writer(sdl::texture_pixel_buffer& pixels)
-					: pixels{pixels}
+				: pixels{pixels}
 			{
 			}
 
 			void set_pixel(int px, int py) const;
-			void draw_glyph(FT_GlyphSlot const &glyph) override;
+			void draw_glyph(FT_Bitmap const& bitmap, FT_Int left, FT_Int top,
+							FT_Vector advance) override;
 		};
 	}
 }

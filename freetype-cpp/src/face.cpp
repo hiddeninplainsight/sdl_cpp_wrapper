@@ -2,6 +2,7 @@
 #include "freetype_cpp/freetype_exception.h"
 #include "freetype_cpp/library.h"
 #include "freetype_cpp/draw_glyph_callback.h"
+#include "freetype_cpp/get_glyph_callback.h"
 #include <utility>
 
 using namespace std;
@@ -63,14 +64,26 @@ namespace freetype_cpp
 		}
 	}
 
-	bool face::draw_glyph(FT_ULong c, draw_glyph_callback& callback,
-						  FT_Int32 load_flags)
+	bool face::draw_glyph(FT_ULong c, draw_glyph_callback& callback)
+	{
+		auto error = FT_Load_Char(face_object, c, FT_LOAD_RENDER);
+		if (error)
+			return false;
+
+		callback.draw_glyph(
+			face_object->glyph->bitmap, face_object->glyph->bitmap_left,
+			face_object->glyph->bitmap_top, face_object->glyph->advance);
+		return true;
+	}
+
+	bool face::get_glyph(FT_ULong c, get_glyph_callback& callback,
+				   FT_Int32 load_flags)
 	{
 		auto error = FT_Load_Char(face_object, c, load_flags);
 		if (error)
 			return false;
 
-		callback.draw_glyph(face_object->glyph);
+		callback.receive_glyph(face_object->glyph);
 		return true;
 	}
 

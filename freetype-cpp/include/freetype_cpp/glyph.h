@@ -1,7 +1,7 @@
 #ifndef FREETYPE_CPP_FREETYPE_GLYPH_H
 #define FREETYPE_CPP_FREETYPE_GLYPH_H
 
-#include "draw_glyph_callback.h"
+#include "get_glyph_callback.h"
 
 #include <ft2build.h>
 #include FT_FREETYPE_H
@@ -14,7 +14,7 @@ namespace freetype_cpp
 	class face;
 	class bitmap_glyph;
 
-	class glyph : private draw_glyph_callback
+	class glyph : private get_glyph_callback
 	{
 	public:
 		friend class bitmap_glyph;
@@ -35,7 +35,7 @@ namespace freetype_cpp
 			std::shared_ptr<face> face_ptr, FT_ULong c);
 
 	private:
-		void draw_glyph(const FT_GlyphSlot &glyph) override;
+		void receive_glyph(FT_GlyphSlot const& glyph) override;
 	};
 }
 
