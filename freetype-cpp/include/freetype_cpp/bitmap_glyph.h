@@ -31,6 +31,8 @@ namespace freetype_cpp
 			std::shared_ptr<glyph> glyph_ptr);
 
 		void draw(draw_glyph_callback& callback);
+
+		FT_Pos width() const { return advance.x; }
 	};
 }
 
