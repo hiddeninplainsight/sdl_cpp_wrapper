@@ -18,8 +18,9 @@ namespace sdl
 		{
 			sdl::texture_pixel_buffer pixels{texture_ptr.get()};
 			pixels.clear(0x222222FF);
+			auto painter = sdl::pixel_buffer_painter::from_texture_pixel_buffer(pixels);
 
-			font_writer writer{pixels};
+			font_writer writer{painter};
 
 			auto line_height = fonts().press_start_font_line_height;
 			writer.y = (requested_position.h / 2) + (line_height / 2);
